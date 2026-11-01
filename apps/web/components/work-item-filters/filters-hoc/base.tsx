@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { observer } from "mobx-react";
 import { v4 as uuidv4 } from "uuid";
 // plane imports
@@ -92,12 +92,17 @@ const WorkItemFilterRoot = observer(function WorkItemFilterRoot(props: TWorkItem
   );
 
   // delete filter instance when component unmounts
-  useEffect(
-    () => () => {
-      deleteFilter(entityType, workItemEntityID);
-    },
-    [deleteFilter, entityType, workItemEntityID]
-  );
+  const mountedEntityID = useRef<string | undefined>(undefined);
+  useEffect(() => {
+    mountedEntityID.current = workItemEntityID;
+    return () => {
+      mountedEntityID.current = undefined;
+      // StrictMode remounts immediately in development, which must not delete the instance this component still uses.
+      setTimeout(() => {
+        if (mountedEntityID.current !== workItemEntityID) deleteFilter(entityType, workItemEntityID);
+      });
+    };
+  }, [deleteFilter, entityType, workItemEntityID]);
 
   useEffect(() => {
     workItemLayoutFilter.configManager.setAreConfigsReady(workItemFiltersConfig.areAllConfigsInitialized);

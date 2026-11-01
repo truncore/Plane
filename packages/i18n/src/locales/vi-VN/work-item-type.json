@@ -2,6 +2,14 @@
   "work_item_types": {
     "label": "Loại mục công việc",
     "label_lowercase": "loại mục công việc",
+    "label_singular": "Loại mục công việc",
+    "built_in": {
+      "user_story": "Câu chuyện người dùng",
+      "task": "Nhiệm vụ"
+    },
+    "activity": {
+      "changed_to": "đã đổi loại mục công việc thành {type}"
+    },
     "settings": {
       "description": "Tùy chỉnh và thêm thuộc tính riêng của bạn để điều chỉnh theo nhu cầu của nhóm.",
       "cant_delete_default_message": "Không thể xóa loại hạng mục công việc này vì nó đang được liên kết với các hạng mục công việc hiện có.",

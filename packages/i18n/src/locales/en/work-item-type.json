@@ -2,6 +2,14 @@
   "work_item_types": {
     "label": "Work item Types",
     "label_lowercase": "work item types",
+    "label_singular": "Work item type",
+    "built_in": {
+      "user_story": "User Story",
+      "task": "Task"
+    },
+    "activity": {
+      "changed_to": "changed the work item type to {type}"
+    },
     "settings": {
       "description": "Customize and add your own properties to tailor it to your team's needs.",
       "cant_delete_default_message": "This work item type cannot be deleted because it's set as the default for this project",

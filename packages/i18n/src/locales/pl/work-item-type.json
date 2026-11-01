@@ -2,6 +2,14 @@
   "work_item_types": {
     "label": "Typy Elementów Pracy",
     "label_lowercase": "typy elementów pracy",
+    "label_singular": "Typ elementu pracy",
+    "built_in": {
+      "user_story": "Historyjka użytkownika",
+      "task": "Zadanie"
+    },
+    "activity": {
+      "changed_to": "zmienił(a) typ elementu pracy na {type}"
+    },
     "settings": {
       "description": "Dostosuj i dodaj własne właściwości, aby dopasować do potrzeb zespołu.",
       "cant_delete_default_message": "Nie można usunąć tego typu elementu pracy, ponieważ jest on ustawiony jako domyślny dla tego projektu.",

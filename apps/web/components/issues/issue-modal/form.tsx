@@ -467,6 +467,8 @@ export const IssueFormRoot = observer(function IssueFormRoot(props: IssueFormPro
                   stretch="auto"
                   type="submit"
                   ref={submitBtnRef}
+                  // This modal can render inside a work item row, whose click handler would cancel the submit.
+                  onClick={(e) => e.stopPropagation()}
                   loading={isSubmitting}
                   disabled={isDisabled}
                   label={isSubmitting ? primaryButtonText.loading : primaryButtonText.default}

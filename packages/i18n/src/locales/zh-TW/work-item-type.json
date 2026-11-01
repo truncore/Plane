@@ -2,6 +2,14 @@
   "work_item_types": {
     "label": "工作項目類型",
     "label_lowercase": "工作項目類型",
+    "label_singular": "工作項目類型",
+    "built_in": {
+      "user_story": "使用者故事",
+      "task": "任務"
+    },
+    "activity": {
+      "changed_to": "將工作項目類型變更為{type}"
+    },
     "settings": {
       "description": "自訂並新增您自己的屬性，以符合您團隊的需求。",
       "cant_delete_default_message": "無法刪除此工作項目類型，因為它已設置為該專案的預設類型。",

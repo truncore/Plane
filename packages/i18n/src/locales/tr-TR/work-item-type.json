@@ -2,6 +2,14 @@
   "work_item_types": {
     "label": "İş Öğesi Tipleri",
     "label_lowercase": "iş öğesi tipleri",
+    "label_singular": "İş öğesi tipi",
+    "built_in": {
+      "user_story": "Kullanıcı Hikayesi",
+      "task": "Görev"
+    },
+    "activity": {
+      "changed_to": "iş öğesi tipini {type} olarak değiştirdi"
+    },
     "settings": {
       "description": "Ekibinizin ihtiyaçlarına göre özelleştirin ve kendi özelliklerinizi ekleyin.",
       "cant_delete_default_message": "Bu iş öğesi türü mevcut iş öğeleriyle bağlantılı olduğundan silinemez.",

@@ -2,6 +2,14 @@
   "work_item_types": {
     "label": "Tipos de elementos de trabajo",
     "label_lowercase": "tipos de elementos de trabajo",
+    "label_singular": "Tipo de elemento de trabajo",
+    "built_in": {
+      "user_story": "Historia de usuario",
+      "task": "Tarea"
+    },
+    "activity": {
+      "changed_to": "cambió el tipo de elemento de trabajo a {type}"
+    },
     "settings": {
       "description": "Personaliza y agrega tus propias propiedades para adaptarlo a las necesidades de tu equipo.",
       "cant_delete_default_message": "No se puede eliminar este tipo de elemento de trabajo porque está establecido como el tipo predeterminado para este proyecto.",

@@ -9,6 +9,7 @@ import { observer } from "mobx-react";
 import { useTranslation } from "@plane/i18n";
 // ui icons
 import {
+  BookmarkOutline,
   CyclesOutline,
   DueDateOutline,
   EstimateOutline,
@@ -29,6 +30,7 @@ import { ButtonAvatars } from "@/components/dropdowns/member/avatar";
 import { MemberSelect } from "@/components/dropdowns/member/member-select";
 import { PrioritySelect } from "@/components/dropdowns/priority/priority-select";
 import { StateSelect } from "@/components/dropdowns/state/state-select";
+import { WorkItemTypeSelect } from "@/components/dropdowns/work-item-type/work-item-type-select";
 import { SidebarPropertyListItem } from "@/components/common/layout/sidebar/property-list-item";
 // helpers
 import { useIssueDetail } from "@/hooks/store/use-issue-detail";
@@ -80,6 +82,17 @@ export const PeekOverviewProperties = observer(function PeekOverviewProperties(p
     <div>
       <h6 className="text-body-xs-medium">{t("common.properties")}</h6>
       <div className={`mt-3 w-full space-y-3 ${disabled ? "opacity-60" : ""}`}>
+        <SidebarPropertyListItem icon={BookmarkOutline} label={t("work_item_types.label_singular")}>
+          <WorkItemTypeSelect
+            testId="work-item-type-select"
+            value={issue?.type_id}
+            onChange={(val) => issueOperations.update(workspaceSlug, projectId, issueId, { type_id: val })}
+            disabled={disabled}
+            variant="select-ghost-md"
+            tooltip
+          />
+        </SidebarPropertyListItem>
+
         <SidebarPropertyListItem icon={StateOutline} label={t("common.state")}>
           <StateSelect
             testId="work-item-state-select"

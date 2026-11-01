@@ -86,6 +86,9 @@ export const WORKSPACE_FAVORITE = (workspaceSlug: string) => `WORKSPACE_FAVORITE
 
 export const WORKSPACE_STATES = (workspaceSlug: string) => `WORKSPACE_STATES_${workspaceSlug.toUpperCase()}`;
 
+export const WORKSPACE_WORK_ITEM_TYPES = (workspaceSlug: string) =>
+  `WORKSPACE_WORK_ITEM_TYPES_${workspaceSlug.toUpperCase()}`;
+
 export const WORKSPACE_SIDEBAR_PREFERENCES = (workspaceSlug: string) =>
   `WORKSPACE_SIDEBAR_PREFERENCES_${workspaceSlug.toUpperCase()}`;
 

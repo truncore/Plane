@@ -2,6 +2,14 @@
   "work_item_types": {
     "label": "Types d'éléments de travail",
     "label_lowercase": "types d'éléments de travail",
+    "label_singular": "Type d'élément de travail",
+    "built_in": {
+      "user_story": "Récit utilisateur",
+      "task": "Tâche"
+    },
+    "activity": {
+      "changed_to": "a changé le type d'élément de travail en {type}"
+    },
     "settings": {
       "description": "Personnalisez et ajoutez vos propres propriétés pour l’adapter aux besoins de votre équipe.",
       "cant_delete_default_message": "Ce type d'élément de travail ne peut pas être supprimé car il est défini comme le type par défaut pour ce projet.",

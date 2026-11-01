@@ -22,6 +22,7 @@ from plane.db.models import (
     IssueLink,
     IssueRelation,
     Label,
+    ProjectIssueType,
     ProjectMember,
     State,
     User,
@@ -178,6 +179,14 @@ class IssueSerializer(BaseSerializer):
             ).exists()
         ):
             raise serializers.ValidationError("Estimate point is not valid please pass a valid estimate_point_id")
+
+        if (
+            data.get("type")
+            and not ProjectIssueType.objects.filter(
+                project_id=self.context.get("project_id"), issue_type_id=data.get("type").id
+            ).exists()
+        ):
+            raise serializers.ValidationError("Work item type is not valid please pass a valid type_id")
 
         return data
 

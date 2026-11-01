@@ -2,6 +2,14 @@
   "work_item_types": {
     "label": "Typy pracovných položiek",
     "label_lowercase": "typy pracovných položiek",
+    "label_singular": "Typ pracovnej položky",
+    "built_in": {
+      "user_story": "Používateľský príbeh",
+      "task": "Úloha"
+    },
+    "activity": {
+      "changed_to": "zmenil(a) typ pracovnej položky na {type}"
+    },
     "settings": {
       "description": "Prispôsobte a pridajte si vlastné vlastnosti, aby zodpovedali potrebám vášho tímu.",
       "cant_delete_default_message": "Tento typ pracovnej položky nie je možné odstrániť, pretože je nastavený ako predvolený pre tento projekt.",

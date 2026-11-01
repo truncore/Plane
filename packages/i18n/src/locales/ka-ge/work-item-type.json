@@ -2,6 +2,14 @@
   "work_item_types": {
     "label": "Work item Types",
     "label_lowercase": "work item types",
+    "label_singular": "სამუშაო ელემენტის ტიპი",
+    "built_in": {
+      "user_story": "მომხმარებლის ისტორია",
+      "task": "დავალება"
+    },
+    "activity": {
+      "changed_to": "შეცვალა სამუშაო ელემენტის ტიპი: {type}"
+    },
     "settings": {
       "description": "Customize and add your own properties to tailor it to your team's needs.",
       "cant_delete_default_message": "This work item type cannot be deleted because it's set as the default for this project",

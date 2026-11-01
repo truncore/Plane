@@ -2,6 +2,14 @@
   "work_item_types": {
     "label": "工作项类型",
     "label_lowercase": "工作项类型",
+    "label_singular": "工作项类型",
+    "built_in": {
+      "user_story": "用户故事",
+      "task": "任务"
+    },
+    "activity": {
+      "changed_to": "将工作项类型更改为{type}"
+    },
     "settings": {
       "description": "自定义并添加您自己的属性以适应团队需求。",
       "cant_delete_default_message": "无法删除此工作项类型，因为它已设置为该项目的默认类型。",

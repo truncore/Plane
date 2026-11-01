@@ -12,6 +12,7 @@ import type { ISearchIssueResponse, TIssue } from "@plane/types";
 import { IssueModalContext } from "@/components/issues/issue-modal/context";
 // hooks
 import { useUser } from "@/hooks/store/user/user-user";
+import { useWorkItemType } from "@/hooks/store/use-work-item-type";
 
 export type TIssueModalProviderProps = {
   templateId?: string;
@@ -26,6 +27,7 @@ export const IssueModalProvider = observer(function IssueModalProvider(props: TI
   const [selectedParentIssue, setSelectedParentIssue] = useState<ISearchIssueResponse | null>(null);
   // store hooks
   const { projectsWithCreatePermissions } = useUser();
+  const { defaultWorkItemTypeId } = useWorkItemType();
   // derived values
   const projectIdsWithCreatePermissions = Object.keys(projectsWithCreatePermissions ?? {});
 
@@ -44,7 +46,7 @@ export const IssueModalProvider = observer(function IssueModalProvider(props: TI
         setIssuePropertyValues: () => {},
         issuePropertyValueErrors: {},
         setIssuePropertyValueErrors: () => {},
-        getIssueTypeIdOnProjectChange: () => null,
+        getIssueTypeIdOnProjectChange: () => defaultWorkItemTypeId,
         getActiveAdditionalPropertiesLength: () => 0,
         handlePropertyValuesValidation: () => true,
         handleCreateUpdatePropertyValues: () => Promise.resolve(),

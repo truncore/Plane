@@ -9,6 +9,7 @@ import { observer } from "mobx-react";
 import { useTranslation } from "@plane/i18n";
 // ui
 import {
+  BookmarkOutline,
   CyclesOutline,
   DueDateOutline,
   EstimateOutline,
@@ -29,6 +30,7 @@ import { ButtonAvatars } from "@/components/dropdowns/member/avatar";
 import { MemberSelect } from "@/components/dropdowns/member/member-select";
 import { PrioritySelect } from "@/components/dropdowns/priority/priority-select";
 import { StateSelect } from "@/components/dropdowns/state/state-select";
+import { WorkItemTypeSelect } from "@/components/dropdowns/work-item-type/work-item-type-select";
 // hooks
 import { useProjectEstimates } from "@/hooks/store/estimates";
 import { useIssueDetail } from "@/hooks/store/use-issue-detail";
@@ -85,6 +87,17 @@ export const IssueDetailsSidebar = observer(function IssueDetailsSidebar(props: 
         <div className="h-full w-full overflow-y-auto px-6">
           <h5 className="mt-5 text-body-xs-medium">{t("common.properties")}</h5>
           <div className={`mt-4 mb-2 space-y-2.5 truncate ${!isEditable ? "opacity-60" : ""}`}>
+            <SidebarPropertyListItem icon={BookmarkOutline} label={t("work_item_types.label_singular")}>
+              <WorkItemTypeSelect
+                testId="work-item-type-select"
+                value={issue?.type_id}
+                onChange={(val) => issueOperations.update(workspaceSlug, projectId, issueId, { type_id: val })}
+                disabled={!isEditable}
+                variant="select-ghost-md"
+                tooltip
+              />
+            </SidebarPropertyListItem>
+
             <SidebarPropertyListItem icon={StateOutline} label={t("common.state")}>
               <StateSelect
                 testId="work-item-state-select"

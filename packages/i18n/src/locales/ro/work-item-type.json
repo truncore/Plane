@@ -2,6 +2,14 @@
   "work_item_types": {
     "label": "Tipuri de Elemente de Lucru",
     "label_lowercase": "tipuri de elemente de lucru",
+    "label_singular": "Tip de element de lucru",
+    "built_in": {
+      "user_story": "Poveste de utilizator",
+      "task": "Sarcină"
+    },
+    "activity": {
+      "changed_to": "a schimbat tipul elementului de lucru în {type}"
+    },
     "settings": {
       "description": "Personalizează și adaugă propriile proprietăți pentru a le adapta nevoilor echipei tale.",
       "cant_delete_default_message": "Nu se poate șterge acest tip de element de lucru deoarece este setat ca tip implicit pentru acest proiect.",

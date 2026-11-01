@@ -104,6 +104,17 @@ def filter_state_group(params, issue_filter, method, prefix=""):
     return issue_filter
 
 
+def filter_work_item_type(params, issue_filter, method, prefix=""):
+    if method == "GET":
+        type_ids = [item for item in params.get("type_id").split(",") if item != "null"]
+        if len(type_ids) and "" not in type_ids:
+            issue_filter[f"{prefix}type_id__in"] = type_ids
+    else:
+        if params.get("type_id", None) and len(params.get("type_id")) and params.get("type_id") != "null":
+            issue_filter[f"{prefix}type_id__in"] = params.get("type_id")
+    return issue_filter
+
+
 def filter_estimate_point(params, issue_filter, method, prefix=""):
     if method == "GET":
         estimate_points = [item for item in params.get("estimate_point").split(",") if item != "null"]
@@ -446,6 +457,7 @@ def issue_filters(query_params, method, prefix=""):
         "target_date": filter_target_date,
         "completed_at": filter_completed_at,
         "type": filter_issue_state_type,
+        "type_id": filter_work_item_type,
         "project": filter_project,
         "cycle": filter_cycle,
         "module": filter_module,

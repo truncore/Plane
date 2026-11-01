@@ -2,6 +2,14 @@
   "work_item_types": {
     "label": "Arbeitsaufgabentypen",
     "label_lowercase": "arbeitsaufgabentypen",
+    "label_singular": "Arbeitsaufgabentyp",
+    "built_in": {
+      "user_story": "User Story",
+      "task": "Aufgabe"
+    },
+    "activity": {
+      "changed_to": "hat den Arbeitsaufgabentyp in {type} geändert"
+    },
     "settings": {
       "description": "Passen Sie eigene Eigenschaften an und fügen Sie sie hinzu, um sie an die Bedürfnisse Ihres Teams anzupassen.",
       "cant_delete_default_message": "Dieser Arbeitselementtyp kann nicht gelöscht werden, da er als Standard für dieses Projekt festgelegt ist.",

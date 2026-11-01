@@ -28,6 +28,7 @@ import { MemberSelect } from "@/components/dropdowns/member/member-select";
 import { ModuleSelect } from "@/components/dropdowns/module/module-select";
 import { PrioritySelect } from "@/components/dropdowns/priority/priority-select";
 import { StateSelect } from "@/components/dropdowns/state/state-select";
+import { WorkItemTypeSelect } from "@/components/dropdowns/work-item-type/work-item-type-select";
 import { ParentIssuesListModal } from "@/components/issues/parent-issues-list-modal";
 import { IssueIdentifier } from "@/components/issues/issue-detail/issue-identifier";
 // hooks
@@ -87,6 +88,22 @@ export const IssueDefaultProperties = observer(function IssueDefaultProperties(p
 
   return (
     <div className="flex flex-wrap items-center gap-2">
+      <Controller
+        control={control}
+        name="type_id"
+        render={({ field: { value, onChange } }) => (
+          <WorkItemTypeSelect
+            testId="create-work-item-type-select"
+            value={value}
+            onChange={(typeId) => {
+              onChange(typeId);
+              handleFormChange();
+            }}
+            variant="pill-md"
+            tabIndex={getIndex("type_id")}
+          />
+        )}
+      />
       <Controller
         control={control}
         name="state_id"

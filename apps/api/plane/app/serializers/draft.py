@@ -13,7 +13,9 @@ from .base import BaseSerializer
 from plane.db.models import (
     User,
     Issue,
+    IssueType,
     Label,
+    ProjectIssueType,
     State,
     DraftIssue,
     DraftIssueAssignee,
@@ -40,6 +42,9 @@ class DraftIssueCreateSerializer(BaseSerializer):
     parent_id = serializers.PrimaryKeyRelatedField(
         source="parent", queryset=Issue.objects.all(), required=False, allow_null=True
     )
+    type_id = serializers.PrimaryKeyRelatedField(
+        source="type", queryset=IssueType.objects.all(), required=False, allow_null=True
+    )
     label_ids = serializers.ListField(
         child=serializers.PrimaryKeyRelatedField(queryset=Label.objects.all()),
         write_only=True,
@@ -62,6 +67,7 @@ class DraftIssueCreateSerializer(BaseSerializer):
             "updated_by",
             "created_at",
             "updated_at",
+            "type",
         ]
 
     def to_representation(self, instance):
@@ -140,6 +146,14 @@ class DraftIssueCreateSerializer(BaseSerializer):
             ).exists()
         ):
             raise serializers.ValidationError("Estimate point is not valid please pass a valid estimate_point_id")
+
+        if (
+            attrs.get("type")
+            and not ProjectIssueType.objects.filter(
+                project_id=self.context.get("project_id"), issue_type_id=attrs["type"].id
+            ).exists()
+        ):
+            raise serializers.ValidationError("Work item type is not valid please pass a valid type_id")
 
         # Cycle and modules must belong to the draft's own project
         if self.instance:

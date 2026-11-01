@@ -2,6 +2,14 @@
   "work_item_types": {
     "label": "Tipos de Item de Trabalho",
     "label_lowercase": "tipos de item de trabalho",
+    "label_singular": "Tipo de item de trabalho",
+    "built_in": {
+      "user_story": "História de usuário",
+      "task": "Tarefa"
+    },
+    "activity": {
+      "changed_to": "alterou o tipo de item de trabalho para {type}"
+    },
     "settings": {
       "description": "Personalize e adicione suas próprias propriedades para adaptar às necessidades da sua equipe.",
       "cant_delete_default_message": "Não é possível excluir este tipo de item de trabalho, pois ele está definido como o tipo padrão para este projeto.",

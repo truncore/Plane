@@ -179,6 +179,7 @@ class Issue(ChangeTrackerMixin, ProjectBaseModel):
 
     def save(self, *args, **kwargs):
         self._ensure_default_state()
+        self._ensure_default_type()
         kwargs = self._sync_completed_at(kwargs)
 
         if self._state.adding:
@@ -236,6 +237,18 @@ class Issue(ChangeTrackerMixin, ProjectBaseModel):
             self.state = default_state or State.objects.filter(~models.Q(is_triage=True), project=self.project).first()
         except ImportError as e:
             log_exception(e)
+
+    def _ensure_default_type(self):
+        """Assign the project's default work item type to a new work item."""
+        if not self._state.adding or self.type_id is not None:
+            return
+        from plane.db.models import ProjectIssueType
+
+        self.type_id = (
+            ProjectIssueType.objects.filter(project_id=self.project_id, is_default=True)
+            .values_list("issue_type_id", flat=True)
+            .first()
+        )
 
     def _sync_completed_at(self, kwargs):
         """Update completed_at when state changes. Returns kwargs."""

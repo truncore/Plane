@@ -2,6 +2,14 @@
   "work_item_types": {
     "label": "Werkitemtypes",
     "label_lowercase": "werkitemtypes",
+    "label_singular": "Werkitemtype",
+    "built_in": {
+      "user_story": "User story",
+      "task": "Taak"
+    },
+    "activity": {
+      "changed_to": "heeft het werkitemtype gewijzigd naar {type}"
+    },
     "settings": {
       "description": "Pas eigenschappen aan en voeg je eigen eigenschappen toe zodat ze aansluiten op de behoeften van je team.",
       "cant_delete_default_message": "Dit werkitemtype kan niet worden verwijderd omdat het is ingesteld als standaard voor dit project",

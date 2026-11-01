@@ -13,6 +13,7 @@ import { TriangleIcon, SignalMediumIcon } from "lucide-react";
 import {
   ArchiveOutline,
   AttachOutline,
+  BookmarkOutline,
   CalendarOutline,
   ChatOutline,
   CyclesOutline,
@@ -31,6 +32,8 @@ import { BlockedIcon, BlockerIcon } from "@plane/blocks/icons";
 import { Tooltip } from "@makeplane/propel/components/tooltip";
 import type { IIssueActivity } from "@plane/types";
 import { renderFormattedDate, generateWorkItemLink, capitalizeFirstLetter } from "@plane/utils";
+// components
+import { WorkItemTypeChangeMessage } from "@/components/issues/work-item-type";
 // helpers
 import { useLabel } from "@/hooks/store/use-label";
 import { usePlatformOS } from "@/hooks/use-platform-os";
@@ -574,6 +577,20 @@ const activityDetails: {
       </>
     ),
     icon: <SignalMediumIcon size={12} className="text-secondary" aria-hidden="true" />,
+  },
+  type: {
+    message: (activity, showIssue) => (
+      <>
+        <WorkItemTypeChangeMessage typeId={activity.new_identifier} fallbackName={activity.new_value} />
+        {showIssue && (
+          <>
+            {" "}
+            for <IssueLink activity={activity} />
+          </>
+        )}
+      </>
+    ),
+    icon: <BookmarkOutline className="size-3 text-secondary" aria-hidden="true" />,
   },
   relates_to: {
     message: (activity, showIssue) => {

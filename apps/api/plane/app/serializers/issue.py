@@ -22,6 +22,8 @@ from plane.db.models import (
     Issue,
     IssueActivity,
     IssueComment,
+    IssueType,
+    ProjectIssueType,
     ProjectUserProperty,
     IssueAssignee,
     IssueSubscriber,
@@ -87,6 +89,9 @@ class IssueCreateSerializer(BaseSerializer):
     parent_id = serializers.PrimaryKeyRelatedField(
         source="parent", queryset=Issue.objects.all(), required=False, allow_null=True
     )
+    type_id = serializers.PrimaryKeyRelatedField(
+        source="type", queryset=IssueType.objects.all(), required=False, allow_null=True
+    )
     label_ids = serializers.ListField(
         child=serializers.PrimaryKeyRelatedField(queryset=Label.objects.all()),
         write_only=True,
@@ -114,6 +119,7 @@ class IssueCreateSerializer(BaseSerializer):
             "deleted_at",
             "archived_at",
             "sequence_id",
+            "type",
         ]
 
     def get_fields(self):
@@ -203,6 +209,14 @@ class IssueCreateSerializer(BaseSerializer):
             ).exists()
         ):
             raise serializers.ValidationError("Estimate point is not valid please pass a valid estimate_point_id")
+
+        # A work item always has a type: an empty value means the default on create and no change on update
+        if attrs.get("type") is None:
+            attrs.pop("type", None)
+        elif not ProjectIssueType.objects.filter(
+            project_id=self.context.get("project_id"), issue_type_id=attrs["type"].id
+        ).exists():
+            raise serializers.ValidationError("Work item type is not valid please pass a valid type_id")
 
         return attrs
 
@@ -797,6 +811,7 @@ class IssueSerializer(DynamicBaseSerializer):
             "id",
             "name",
             "state_id",
+            "type_id",
             "sort_order",
             "completed_at",
             "estimate_point",
@@ -854,6 +869,7 @@ class IssueListDetailSerializer(serializers.Serializer):
             "id": instance.id,
             "name": instance.name,
             "state_id": instance.state_id,
+            "type_id": instance.type_id,
             "sort_order": instance.sort_order,
             "completed_at": instance.completed_at,
             "estimate_point": instance.estimate_point_id,

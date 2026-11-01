@@ -21,6 +21,7 @@ from plane.db.models import (
     CommentReaction,
     Cycle,
     Issue,
+    IssueType,
     IssueActivity,
     IssueComment,
     IssueReaction,
@@ -234,6 +235,47 @@ def track_state(
                 epoch=epoch,
             )
         )
+
+
+# Track changes in work item type
+def track_type(
+    requested_data,
+    current_instance,
+    issue_id,
+    project_id,
+    workspace_id,
+    actor_id,
+    issue_activities,
+    epoch,
+):
+    current_type_id = current_instance.get("type_id")
+    requested_type_id = requested_data.get("type_id")
+
+    # An empty type_id is ignored by the serializer, so it is not a change.
+    if not requested_type_id or current_type_id == requested_type_id:
+        return
+
+    new_type = IssueType.objects.filter(pk=requested_type_id, project_issue_types__project_id=project_id).first()
+    old_type = IssueType.objects.filter(pk=current_type_id).first() if current_type_id else None
+    if new_type is None:
+        return
+
+    issue_activities.append(
+        IssueActivity(
+            issue_id=issue_id,
+            actor_id=actor_id,
+            verb="updated",
+            old_value=old_type.name if old_type else None,
+            new_value=new_type.name,
+            field="type",
+            project_id=project_id,
+            workspace_id=workspace_id,
+            comment="updated the work item type to",
+            old_identifier=old_type.id if old_type else None,
+            new_identifier=new_type.id,
+            epoch=epoch,
+        )
+    )
 
 
 # Track changes in issue target date
@@ -638,6 +680,7 @@ def update_issue_activity(
         "parent_id": track_parent,
         "priority": track_priority,
         "state_id": track_state,
+        "type_id": track_type,
         "description_html": track_description,
         "target_date": track_target_date,
         "start_date": track_start_date,
