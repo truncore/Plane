@@ -10,6 +10,17 @@
     "activity": {
       "changed_to": "alterou o tipo de item de trabalho para {type}"
     },
+    "rules": {
+      "story_with_parent": "Uma história de usuário não pode ser um subitem de trabalho. Remova primeiro o item pai.",
+      "story_with_tasks": "Esta história de usuário tem tarefas. Mova-as para outra história antes de transformá-la em tarefa."
+    },
+    "progress": {
+      "tasks_done": "{completed} de {total, plural, one {# tarefa concluída} many {# tarefas concluídas} other {# tarefas concluídas}}"
+    },
+    "story_template": {
+      "statement": "Como [tipo de usuário], eu quero [objetivo] para que [motivo].",
+      "acceptance_criteria": "Critérios de aceitação"
+    },
     "settings": {
       "description": "Personalize e adicione suas próprias propriedades para adaptar às necessidades da sua equipe.",
       "cant_delete_default_message": "Não é possível excluir este tipo de item de trabalho, pois ele está definido como o tipo padrão para este projeto.",

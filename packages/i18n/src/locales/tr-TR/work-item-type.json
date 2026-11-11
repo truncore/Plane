@@ -10,6 +10,17 @@
     "activity": {
       "changed_to": "iş öğesi tipini {type} olarak değiştirdi"
     },
+    "rules": {
+      "story_with_parent": "Kullanıcı Hikayesi bir alt iş öğesi olamaz. Önce üst öğesini kaldırın.",
+      "story_with_tasks": "Bu Kullanıcı Hikayesinin altında görevler var. Göreve dönüştürmeden önce bunları başka bir hikayeye taşıyın."
+    },
+    "progress": {
+      "tasks_done": "{total} görevden {completed} tanesi tamamlandı"
+    },
+    "story_template": {
+      "statement": "Bir [kullanıcı türü] olarak, [neden] için [hedef] istiyorum.",
+      "acceptance_criteria": "Kabul kriterleri"
+    },
     "settings": {
       "description": "Ekibinizin ihtiyaçlarına göre özelleştirin ve kendi özelliklerinizi ekleyin.",
       "cant_delete_default_message": "Bu iş öğesi türü mevcut iş öğeleriyle bağlantılı olduğundan silinemez.",

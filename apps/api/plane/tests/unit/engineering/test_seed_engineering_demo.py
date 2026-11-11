@@ -40,6 +40,13 @@ class TestSeedEngineeringDemo:
         assert tasks.count() == sum(len(story["tasks"]) for story in DEMO_STORIES)
         assert all(task.parent in stories and task.estimate_point is None for task in tasks)
 
+    def test_stories_use_the_story_template(self):
+        project = seed()
+
+        for story in Issue.objects.filter(project=project, type__external_id="user_story"):
+            assert story.description_html.startswith("<p>As a")
+            assert "<h3>Acceptance criteria</h3>" in story.description_html
+
     def test_project_has_fibonacci_estimate_and_a_current_cycle(self):
         project = seed()
 

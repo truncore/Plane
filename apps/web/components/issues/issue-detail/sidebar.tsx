@@ -30,7 +30,6 @@ import { ButtonAvatars } from "@/components/dropdowns/member/avatar";
 import { MemberSelect } from "@/components/dropdowns/member/member-select";
 import { PrioritySelect } from "@/components/dropdowns/priority/priority-select";
 import { StateSelect } from "@/components/dropdowns/state/state-select";
-import { WorkItemTypeSelect } from "@/components/dropdowns/work-item-type/work-item-type-select";
 // hooks
 import { useProjectEstimates } from "@/hooks/store/estimates";
 import { useIssueDetail } from "@/hooks/store/use-issue-detail";
@@ -40,6 +39,8 @@ import { useProjectState } from "@/hooks/store/use-project-state";
 import { useUserProfile } from "@/hooks/store/user";
 // components
 import { IssueParentSelectRoot } from "@/components/issues/parent-select-root";
+import { useWorkItemTypeRules } from "@/components/issues/work-item-type/rules";
+import { WorkItemTypeProperty } from "@/components/issues/work-item-type/type-property";
 import { SidebarPropertyListItem } from "@/components/common/layout/sidebar/property-list-item";
 import { IssueCycleSelect } from "./cycle-select";
 import { IssueLabel } from "./label";
@@ -66,6 +67,7 @@ export const IssueDetailsSidebar = observer(function IssueDetailsSidebar(props: 
   const { getUserDetails } = useMember();
   const { getStateById } = useProjectState();
   const { data: userProfile } = useUserProfile();
+  const { isStory, showsStoryPoints } = useWorkItemTypeRules();
   const issue = getIssueById(issueId);
   if (!issue) return <></>;
 
@@ -88,13 +90,10 @@ export const IssueDetailsSidebar = observer(function IssueDetailsSidebar(props: 
           <h5 className="mt-5 text-body-xs-medium">{t("common.properties")}</h5>
           <div className={`mt-4 mb-2 space-y-2.5 truncate ${!isEditable ? "opacity-60" : ""}`}>
             <SidebarPropertyListItem icon={BookmarkOutline} label={t("work_item_types.label_singular")}>
-              <WorkItemTypeSelect
-                testId="work-item-type-select"
-                value={issue?.type_id}
-                onChange={(val) => issueOperations.update(workspaceSlug, projectId, issueId, { type_id: val })}
+              <WorkItemTypeProperty
+                workItem={issue}
                 disabled={!isEditable}
-                variant="select-ghost-md"
-                tooltip
+                onUpdate={(data) => issueOperations.update(workspaceSlug, projectId, issueId, data)}
               />
             </SidebarPropertyListItem>
 
@@ -190,7 +189,7 @@ export const IssueDetailsSidebar = observer(function IssueDetailsSidebar(props: 
               </div>
             </SidebarPropertyListItem>
 
-            {projectId && areEstimateEnabledByProjectId(projectId) && (
+            {projectId && areEstimateEnabledByProjectId(projectId) && showsStoryPoints(issue) && (
               <SidebarPropertyListItem icon={EstimateOutline} label={t("common.estimate")}>
                 <EstimateSelect
                   value={issue?.estimate_point ?? undefined}
@@ -232,16 +231,18 @@ export const IssueDetailsSidebar = observer(function IssueDetailsSidebar(props: 
               </SidebarPropertyListItem>
             )}
 
-            <SidebarPropertyListItem icon={ParentOutline} label={t("common.parent")}>
-              <IssueParentSelectRoot
-                className="h-7.5 w-full grow"
-                workspaceSlug={workspaceSlug}
-                projectId={projectId}
-                issueId={issueId}
-                issueOperations={issueOperations}
-                disabled={!isEditable}
-              />
-            </SidebarPropertyListItem>
+            {(!isStory(issue.type_id) || issue.parent_id) && (
+              <SidebarPropertyListItem icon={ParentOutline} label={t("common.parent")}>
+                <IssueParentSelectRoot
+                  className="h-7.5 w-full grow"
+                  workspaceSlug={workspaceSlug}
+                  projectId={projectId}
+                  issueId={issueId}
+                  issueOperations={issueOperations}
+                  disabled={!isEditable}
+                />
+              </SidebarPropertyListItem>
+            )}
 
             <SidebarPropertyListItem icon={LabelsOutline} label={t("common.labels")}>
               <IssueLabel

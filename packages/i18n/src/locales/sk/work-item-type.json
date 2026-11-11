@@ -10,6 +10,17 @@
     "activity": {
       "changed_to": "zmenil(a) typ pracovnej položky na {type}"
     },
+    "rules": {
+      "story_with_parent": "Používateľský príbeh nemôže byť podriadenou pracovnou položkou. Najprv odstráňte jeho nadradenú položku.",
+      "story_with_tasks": "Tento používateľský príbeh obsahuje úlohy. Pred zmenou na úlohu ich presuňte do iného príbehu."
+    },
+    "progress": {
+      "tasks_done": "Hotové úlohy: {completed} z {total}"
+    },
+    "story_template": {
+      "statement": "Ako [typ používateľa] chcem [cieľ], aby [dôvod].",
+      "acceptance_criteria": "Akceptačné kritériá"
+    },
     "settings": {
       "description": "Prispôsobte a pridajte si vlastné vlastnosti, aby zodpovedali potrebám vášho tímu.",
       "cant_delete_default_message": "Tento typ pracovnej položky nie je možné odstrániť, pretože je nastavený ako predvolený pre tento projekt.",

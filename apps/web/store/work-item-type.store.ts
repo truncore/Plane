@@ -7,7 +7,7 @@
 import { action, computed, makeObservable, observable, runInAction } from "mobx";
 import { computedFn } from "mobx-utils";
 // types
-import type { TWorkItemType } from "@plane/types";
+import type { TStoryProgress, TWorkItemType, TWorkItemTypeKey } from "@plane/types";
 // services
 import { WorkItemTypeService } from "@/services/issue";
 // store
@@ -17,19 +17,25 @@ export interface IWorkItemTypeStore {
   // observables
   workItemTypeMap: Record<string, TWorkItemType>;
   workspaceTypeIds: Record<string, string[]>;
+  storyProgressMap: Record<string, Record<string, TStoryProgress>>;
   // computed
   currentWorkItemTypes: TWorkItemType[];
   defaultWorkItemTypeId: string | null;
   // computed actions
   getWorkItemTypeById: (typeId: string | null | undefined) => TWorkItemType | undefined;
+  getWorkItemTypeKey: (typeId: string | null | undefined) => TWorkItemTypeKey | undefined;
+  getStoryProgress: (projectId: string, storyId: string) => TStoryProgress | undefined;
   // fetch actions
   fetchWorkItemTypes: (workspaceSlug: string) => Promise<TWorkItemType[]>;
+  fetchStoryProgress: (workspaceSlug: string, projectId: string) => Promise<void>;
 }
 
 export class WorkItemTypeStore implements IWorkItemTypeStore {
   // observables
   workItemTypeMap: Record<string, TWorkItemType> = {};
   workspaceTypeIds: Record<string, string[]> = {};
+  /** projectId -> storyId -> progress */
+  storyProgressMap: Record<string, Record<string, TStoryProgress>> = {};
   // root store
   rootStore;
   // services
@@ -39,9 +45,11 @@ export class WorkItemTypeStore implements IWorkItemTypeStore {
     makeObservable(this, {
       workItemTypeMap: observable,
       workspaceTypeIds: observable,
+      storyProgressMap: observable,
       currentWorkItemTypes: computed,
       defaultWorkItemTypeId: computed,
       fetchWorkItemTypes: action,
+      fetchStoryProgress: action,
     });
 
     this.rootStore = _rootStore;
@@ -69,6 +77,15 @@ export class WorkItemTypeStore implements IWorkItemTypeStore {
     typeId ? this.workItemTypeMap[typeId] : undefined
   );
 
+  /**
+   * Returns the built-in key of a work item type. A work item without a type has the default type.
+   */
+  getWorkItemTypeKey = computedFn(
+    (typeId: string | null | undefined) => this.getWorkItemTypeById(typeId ?? this.defaultWorkItemTypeId)?.key
+  );
+
+  getStoryProgress = computedFn((projectId: string, storyId: string) => this.storyProgressMap[projectId]?.[storyId]);
+
   fetchWorkItemTypes = async (workspaceSlug: string) => {
     const workItemTypes = await this.workItemTypeService.getWorkspaceWorkItemTypes(workspaceSlug);
     runInAction(() => {
@@ -78,5 +95,20 @@ export class WorkItemTypeStore implements IWorkItemTypeStore {
       this.workspaceTypeIds[workspaceSlug] = workItemTypes.map((type) => type.id);
     });
     return workItemTypes;
+  };
+
+  /**
+   * Refreshes how many tasks are done for every User Story in a project.
+   * Progress is extra information, so a failed refresh keeps the previous numbers.
+   */
+  fetchStoryProgress = async (workspaceSlug: string, projectId: string) => {
+    try {
+      const progress = await this.workItemTypeService.getStoryProgress(workspaceSlug, projectId);
+      runInAction(() => {
+        this.storyProgressMap[projectId] = progress;
+      });
+    } catch (error) {
+      console.error("Failed to fetch story progress:", error);
+    }
   };
 }

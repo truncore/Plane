@@ -43,6 +43,7 @@ import {
   IssueProjectSelect,
   IssueTitleInput,
 } from "@/components/issues/issue-modal/components";
+import { isDescriptionEmpty, useWorkItemTypeRules } from "@/components/issues/work-item-type/rules";
 // helpers
 // hooks
 import { useIssueModal } from "@/hooks/context/use-issue-modal";
@@ -136,6 +137,7 @@ export const IssueFormRoot = observer(function IssueFormRoot(props: IssueFormPro
   } = useIssueDetail();
   const { fetchCycles } = useProjectIssueProperties();
   const { getStateById } = useProjectState();
+  const { isStory, storyTemplate } = useWorkItemTypeRules();
 
   // form info
   const methods = useForm<TIssue>({
@@ -298,6 +300,17 @@ export const IssueFormRoot = observer(function IssueFormRoot(props: IssueFormPro
   const condition =
     (watch("name") && watch("name") !== "") || (watch("description_html") && watch("description_html") !== "<p></p>");
 
+  // A Task has no story points; a User Story has no parent and starts from the story template
+  const handleTypeChange = (typeId: string) => {
+    if (!isStory(typeId)) {
+      setValue("estimate_point", null);
+      return;
+    }
+    setValue("parent_id", null);
+    setSelectedParentIssue(null);
+    if (isDescriptionEmpty(getValues("description_html"))) editorRef.current?.setEditorValue(storyTemplate, true);
+  };
+
   const handleFormChange = () => {
     if (!onChange) return;
 
@@ -424,6 +437,7 @@ export const IssueFormRoot = observer(function IssueFormRoot(props: IssueFormPro
                 parentId={watch("parent_id")}
                 isDraft={isDraft}
                 handleFormChange={handleFormChange}
+                handleTypeChange={handleTypeChange}
                 setSelectedParentIssue={setSelectedParentIssue}
               />
             </div>

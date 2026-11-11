@@ -10,6 +10,17 @@
     "activity": {
       "changed_to": "ha modificato il tipo di elemento di lavoro in {type}"
     },
+    "rules": {
+      "story_with_parent": "Una storia utente non può essere un elemento di lavoro secondario. Rimuova prima il suo elemento padre.",
+      "story_with_tasks": "Questa storia utente contiene attività. Le sposti in un’altra storia prima di trasformarla in attività."
+    },
+    "progress": {
+      "tasks_done": "{completed} di {total, plural, one {# attività completata} many {# attività completate} other {# attività completate}}"
+    },
+    "story_template": {
+      "statement": "Come [tipo di utente], voglio [obiettivo] in modo da [motivo].",
+      "acceptance_criteria": "Criteri di accettazione"
+    },
     "settings": {
       "description": "Personalizza e aggiungi le tue proprietà per adattarle alle esigenze del tuo team.",
       "cant_delete_default_message": "Il tipo di elemento di lavoro non può essere eliminato perché è impostato come tipo predefinito per questo progetto.",

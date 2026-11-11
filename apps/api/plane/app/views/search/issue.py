@@ -13,6 +13,7 @@ from rest_framework.response import Response
 from .base import BaseAPIView
 from plane.app.permissions import ROLE
 from plane.db.models import Issue, IssueRelation
+from plane.db.models.issue_type import BUILT_IN_WORK_ITEM_TYPE_SOURCE
 from plane.utils.issue_search import search_issues
 
 
@@ -107,6 +108,7 @@ class IssueSearchEndpoint(BaseAPIView):
         sub_issue = request.query_params.get("sub_issue", "false")
         target_date = request.query_params.get("target_date", True)
         issue_id = request.query_params.get("issue_id", False)
+        work_item_type = request.query_params.get("work_item_type", False)
 
         # Guests only see issues they created unless guest_view_all_features
         issues = Issue.issue_objects.filter(
@@ -143,6 +145,11 @@ class IssueSearchEndpoint(BaseAPIView):
 
         if target_date == "none":
             issues = self.filter_issues_without_target_date(issues)
+
+        if work_item_type:
+            issues = issues.filter(
+                type__external_source=BUILT_IN_WORK_ITEM_TYPE_SOURCE, type__external_id=work_item_type
+            )
 
         return Response(
             issues.values(

@@ -30,7 +30,6 @@ import { ButtonAvatars } from "@/components/dropdowns/member/avatar";
 import { MemberSelect } from "@/components/dropdowns/member/member-select";
 import { PrioritySelect } from "@/components/dropdowns/priority/priority-select";
 import { StateSelect } from "@/components/dropdowns/state/state-select";
-import { WorkItemTypeSelect } from "@/components/dropdowns/work-item-type/work-item-type-select";
 import { SidebarPropertyListItem } from "@/components/common/layout/sidebar/property-list-item";
 // helpers
 import { useIssueDetail } from "@/hooks/store/use-issue-detail";
@@ -40,6 +39,8 @@ import { useProjectState } from "@/hooks/store/use-project-state";
 import { useUserProfile } from "@/hooks/store/user";
 // plane web components
 import { IssueParentSelectRoot } from "@/components/issues/parent-select-root";
+import { useWorkItemTypeRules } from "@/components/issues/work-item-type/rules";
+import { WorkItemTypeProperty } from "@/components/issues/work-item-type/type-property";
 import type { TIssueOperations } from "../issue-detail";
 import { IssueCycleSelect } from "../issue-detail/cycle-select";
 import { IssueLabel } from "../issue-detail/label";
@@ -64,6 +65,7 @@ export const PeekOverviewProperties = observer(function PeekOverviewProperties(p
   const { getStateById } = useProjectState();
   const { getUserDetails } = useMember();
   const { data: userProfile } = useUserProfile();
+  const { isStory, showsStoryPoints } = useWorkItemTypeRules();
   // derived values
   const issue = getIssueById(issueId);
   if (!issue) return <></>;
@@ -83,13 +85,10 @@ export const PeekOverviewProperties = observer(function PeekOverviewProperties(p
       <h6 className="text-body-xs-medium">{t("common.properties")}</h6>
       <div className={`mt-3 w-full space-y-3 ${disabled ? "opacity-60" : ""}`}>
         <SidebarPropertyListItem icon={BookmarkOutline} label={t("work_item_types.label_singular")}>
-          <WorkItemTypeSelect
-            testId="work-item-type-select"
-            value={issue?.type_id}
-            onChange={(val) => issueOperations.update(workspaceSlug, projectId, issueId, { type_id: val })}
+          <WorkItemTypeProperty
+            workItem={issue}
             disabled={disabled}
-            variant="select-ghost-md"
-            tooltip
+            onUpdate={(data) => issueOperations.update(workspaceSlug, projectId, issueId, data)}
           />
         </SidebarPropertyListItem>
 
@@ -188,7 +187,7 @@ export const PeekOverviewProperties = observer(function PeekOverviewProperties(p
           </div>
         </SidebarPropertyListItem>
 
-        {isEstimateEnabled && (
+        {isEstimateEnabled && showsStoryPoints(issue) && (
           <SidebarPropertyListItem icon={EstimateOutline} label={t("common.estimate")}>
             <EstimateSelect
               value={issue.estimate_point ?? undefined}
@@ -228,16 +227,18 @@ export const PeekOverviewProperties = observer(function PeekOverviewProperties(p
           </SidebarPropertyListItem>
         )}
 
-        <SidebarPropertyListItem icon={ParentOutline} label={t("common.parent")}>
-          <IssueParentSelectRoot
-            className="h-7.5 w-full grow"
-            disabled={disabled}
-            issueId={issueId}
-            issueOperations={issueOperations}
-            projectId={projectId}
-            workspaceSlug={workspaceSlug}
-          />
-        </SidebarPropertyListItem>
+        {(!isStory(issue.type_id) || issue.parent_id) && (
+          <SidebarPropertyListItem icon={ParentOutline} label={t("common.parent")}>
+            <IssueParentSelectRoot
+              className="h-7.5 w-full grow"
+              disabled={disabled}
+              issueId={issueId}
+              issueOperations={issueOperations}
+              projectId={projectId}
+              workspaceSlug={workspaceSlug}
+            />
+          </SidebarPropertyListItem>
+        )}
 
         <SidebarPropertyListItem icon={LabelsOutline} label={t("common.labels")}>
           <IssueLabel workspaceSlug={workspaceSlug} projectId={projectId} issueId={issueId} disabled={disabled} />

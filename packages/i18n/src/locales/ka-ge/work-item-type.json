@@ -10,6 +10,17 @@
     "activity": {
       "changed_to": "შეცვალა სამუშაო ელემენტის ტიპი: {type}"
     },
+    "rules": {
+      "story_with_parent": "მომხმარებლის ისტორია ვერ იქნება ქვე-სამუშაო ელემენტი. ჯერ წაშალეთ მისი მშობელი ელემენტი.",
+      "story_with_tasks": "ამ მომხმარებლის ისტორიას აქვს დავალებები. დავალებად გადაქცევამდე გადაიტანეთ ისინი სხვა ისტორიაში."
+    },
+    "progress": {
+      "tasks_done": "დასრულებული დავალებები: {completed} / {total}"
+    },
+    "story_template": {
+      "statement": "როგორც [მომხმარებლის ტიპი], მსურს [მიზანი], რათა [მიზეზი].",
+      "acceptance_criteria": "მიღების კრიტერიუმები"
+    },
     "settings": {
       "description": "Customize and add your own properties to tailor it to your team's needs.",
       "cant_delete_default_message": "This work item type cannot be deleted because it's set as the default for this project",

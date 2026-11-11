@@ -5,6 +5,7 @@
  */
 
 import type { TLogoProps } from "../common";
+import type { TWorkItemTypeKey } from "../issues/work-item-type";
 import type { TUserPermissions } from "../enums";
 import type { TStateGroups } from "../state";
 import type { IUser, IUserLite } from "../users";
@@ -156,6 +157,7 @@ export type TProjectIssuesSearchParams = {
   workspace_search: boolean;
   target_date?: string;
   epic?: boolean;
+  work_item_type?: TWorkItemTypeKey;
 };
 
 export interface ISearchIssueResponse {

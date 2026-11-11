@@ -10,6 +10,17 @@
     "activity": {
       "changed_to": "作業項目タイプを{type}に変更しました"
     },
+    "rules": {
+      "story_with_parent": "ユーザーストーリーをサブ作業項目にすることはできません。先に親を解除してください。",
+      "story_with_tasks": "このユーザーストーリーにはタスクがあります。タスクに変更する前に、タスクを別のストーリーに移動してください。"
+    },
+    "progress": {
+      "tasks_done": "{total}件中{completed}件のタスクが完了"
+    },
+    "story_template": {
+      "statement": "[ユーザーの種類]として、[理由]のために[目標]を実現したい。",
+      "acceptance_criteria": "受け入れ基準"
+    },
     "settings": {
       "description": "チームのニーズに合わせて独自のプロパティをカスタマイズして追加できます。",
       "cant_delete_default_message": "この作業項目タイプは削除できません。このプロジェクトのデフォルトの作業項目タイプとして設定されているためです。",

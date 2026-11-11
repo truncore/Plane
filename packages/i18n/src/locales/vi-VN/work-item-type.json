@@ -10,6 +10,17 @@
     "activity": {
       "changed_to": "đã đổi loại mục công việc thành {type}"
     },
+    "rules": {
+      "story_with_parent": "Câu chuyện người dùng không thể là mục công việc con. Hãy xóa mục cha của nó trước.",
+      "story_with_tasks": "Câu chuyện người dùng này có nhiệm vụ. Hãy chuyển chúng sang câu chuyện khác trước khi đổi thành Nhiệm vụ."
+    },
+    "progress": {
+      "tasks_done": "Đã hoàn thành {completed}/{total} nhiệm vụ"
+    },
+    "story_template": {
+      "statement": "Là [loại người dùng], tôi muốn [mục tiêu] để [lý do].",
+      "acceptance_criteria": "Tiêu chí chấp nhận"
+    },
     "settings": {
       "description": "Tùy chỉnh và thêm thuộc tính riêng của bạn để điều chỉnh theo nhu cầu của nhóm.",
       "cant_delete_default_message": "Không thể xóa loại hạng mục công việc này vì nó đang được liên kết với các hạng mục công việc hiện có.",

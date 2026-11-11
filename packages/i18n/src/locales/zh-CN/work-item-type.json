@@ -10,6 +10,17 @@
     "activity": {
       "changed_to": "将工作项类型更改为{type}"
     },
+    "rules": {
+      "story_with_parent": "用户故事不能作为子工作项。请先移除其父项。",
+      "story_with_tasks": "此用户故事下有任务。将其改为任务前，请先将这些任务移至其他故事。"
+    },
+    "progress": {
+      "tasks_done": "已完成 {completed}/{total} 个任务"
+    },
+    "story_template": {
+      "statement": "作为[用户类型]，我希望[目标]，以便[原因]。",
+      "acceptance_criteria": "验收标准"
+    },
     "settings": {
       "description": "自定义并添加您自己的属性以适应团队需求。",
       "cant_delete_default_message": "无法删除此工作项类型，因为它已设置为该项目的默认类型。",

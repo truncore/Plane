@@ -10,6 +10,17 @@
     "activity": {
       "changed_to": "changed the work item type to {type}"
     },
+    "rules": {
+      "story_with_parent": "A User Story can't be a sub-work item. Remove its parent first.",
+      "story_with_tasks": "This User Story has tasks under it. Move them to another story before making it a Task."
+    },
+    "progress": {
+      "tasks_done": "{completed} of {total, plural, one {# task} other {# tasks}} done"
+    },
+    "story_template": {
+      "statement": "As a [type of user], I want [goal] so that [reason].",
+      "acceptance_criteria": "Acceptance criteria"
+    },
     "settings": {
       "description": "Customize and add your own properties to tailor it to your team's needs.",
       "cant_delete_default_message": "This work item type cannot be deleted because it's set as the default for this project",

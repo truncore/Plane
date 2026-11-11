@@ -13,6 +13,7 @@ import type { TIssue, TIssueServiceType } from "@plane/types";
 import { Menu, MenuContent, MenuItem, MenuTrigger } from "@makeplane/propel/components/menu";
 // components
 import { handleTriggerClick, handleTriggerKeyDown } from "@/components/common/trigger-guard";
+import { useWorkItemTypeRules } from "@/components/issues/work-item-type/rules";
 // hooks
 import { useIssueDetail } from "@/hooks/store/use-issue-detail";
 
@@ -36,24 +37,26 @@ export const SubIssuesActionButton = observer(function SubIssuesActionButton(pro
     setIssueCrudOperationState,
     issueCrudOperationState,
   } = useIssueDetail(issueServiceType);
+  const { isStory } = useWorkItemTypeRules();
 
   // derived values
   const issue = getIssueById(issueId);
 
-  if (!issue) return <></>;
+  // Only a User Story holds sub-work items (its tasks)
+  if (!issue || !isStory(issue.type_id)) return <></>;
 
   // handlers
   const handleIssueCrudState = (
     key: "create" | "existing",
     _parentIssueId: string | null,
-    issue: TIssue | null = null
+    crudIssue: TIssue | null = null
   ) => {
     setIssueCrudOperationState({
       ...issueCrudOperationState,
       [key]: {
         toggle: !issueCrudOperationState[key].toggle,
         parentIssueId: _parentIssueId,
-        issue: issue,
+        issue: crudIssue,
       },
     });
   };

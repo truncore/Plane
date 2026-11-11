@@ -10,6 +10,17 @@
     "activity": {
       "changed_to": "změnil(a) typ pracovní položky na {type}"
     },
+    "rules": {
+      "story_with_parent": "Uživatelský příběh nemůže být podřízenou pracovní položkou. Nejprve odeberte jeho nadřazenou položku.",
+      "story_with_tasks": "Tento uživatelský příběh obsahuje úkoly. Před změnou na úkol je přesuňte do jiného příběhu."
+    },
+    "progress": {
+      "tasks_done": "Hotové úkoly: {completed} z {total}"
+    },
+    "story_template": {
+      "statement": "Jako [typ uživatele] chci [cíl], abych [důvod].",
+      "acceptance_criteria": "Akceptační kritéria"
+    },
     "settings": {
       "description": "Přizpůsobte si a přidejte vlastní vlastnosti, abyste to upravili podle potřeb vašeho týmu.",
       "cant_delete_default_message": "Tento typ pracovního položky nelze odstranit, protože je nastaven jako výchozí pro tento projekt.",

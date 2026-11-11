@@ -24,6 +24,7 @@ from plane.app.serializers import IssueSerializer
 from plane.app.permissions import ProjectEntityPermission
 from plane.db.models import Issue, IssueLink, FileAsset, CycleIssue, IssueLabel, IssueAssignee, ModuleIssue
 from plane.bgtasks.issue_activities_task import issue_activity
+from plane.engineering.work_item_rules import sub_work_items_error
 from plane.utils.timezone_converter import user_timezone_converter
 from collections import defaultdict
 from plane.utils.host import base_host
@@ -232,6 +233,10 @@ class SubIssuesEndpoint(BaseAPIView):
         sub_issues = Issue.issue_objects.filter(
             id__in=sub_issue_ids, workspace__slug=slug, project_id=project_id
         )
+
+        rule_error = sub_work_items_error(parent_issue, sub_issues)
+        if rule_error:
+            return Response({"error": rule_error}, status=status.HTTP_400_BAD_REQUEST)
 
         for sub_issue in sub_issues:
             sub_issue.parent = parent_issue

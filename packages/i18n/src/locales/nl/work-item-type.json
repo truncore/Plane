@@ -10,6 +10,17 @@
     "activity": {
       "changed_to": "heeft het werkitemtype gewijzigd naar {type}"
     },
+    "rules": {
+      "story_with_parent": "Een user story kan geen sub-werkitem zijn. Verwijder eerst het bovenliggende item.",
+      "story_with_tasks": "Deze user story heeft taken. Verplaats ze naar een andere story voordat u er een taak van maakt."
+    },
+    "progress": {
+      "tasks_done": "{completed} van {total, plural, one {# taak} other {# taken}} voltooid"
+    },
+    "story_template": {
+      "statement": "Als [type gebruiker] wil ik [doel] zodat [reden].",
+      "acceptance_criteria": "Acceptatiecriteria"
+    },
     "settings": {
       "description": "Pas eigenschappen aan en voeg je eigen eigenschappen toe zodat ze aansluiten op de behoeften van je team.",
       "cant_delete_default_message": "Dit werkitemtype kan niet worden verwijderd omdat het is ingesteld als standaard voor dit project",

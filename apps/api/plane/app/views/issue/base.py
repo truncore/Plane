@@ -683,7 +683,7 @@ class IssueViewSet(BaseViewSet):
         if serializer.is_valid():
             serializer.save()
             # Read-only fields are ignored on save, so they are not reported as changes either.
-            accepted_data = writable_data(serializer, request.data)
+            accepted_data = {**writable_data(serializer, request.data), **serializer.implied_changes}
             # Check if the update is a migration description update
             is_migration_description_update = skip_activity and is_description_update
             # Log all the updates

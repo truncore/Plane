@@ -26,6 +26,7 @@ from rest_framework import status
 
 from plane.db.models import (
     Issue,
+    IssueType,
     Project,
     ProjectMember,
 )
@@ -35,16 +36,21 @@ SUB_ISSUES_URL = (
 )
 
 
-def _make_issue(name, project, workspace, author, parent=None):
+def _make_issue(name, project, workspace, author, parent=None, type=None):
     """Create an issue with a deterministic ``created_by``.
 
     ``BaseModel.save`` auto-sets ``created_by`` from the current request user
     (None/anonymous under tests), so a ``created_by=`` kwarg to ``create`` is
     overwritten. Passing ``created_by_id`` to ``save`` sets it explicitly.
     """
-    issue = Issue(name=name, project=project, workspace=workspace, parent=parent)
+    issue = Issue(name=name, project=project, workspace=workspace, parent=parent, type=type)
     issue.save(created_by_id=author.id)
     return issue
+
+
+def _user_story(workspace):
+    """Sub-work items (tasks) can only sit under a User Story."""
+    return IssueType.objects.get(workspace=workspace, external_source="plane", external_id="user_story")
 
 
 @pytest.fixture
@@ -78,7 +84,7 @@ def project_b(db, workspace, create_user):
 
 @pytest.fixture
 def parent_b(db, workspace, project_b, create_user):
-    return _make_issue("B parent", project_b, workspace, create_user)
+    return _make_issue("B parent", project_b, workspace, create_user, type=_user_story(workspace))
 
 
 @pytest.fixture
@@ -97,7 +103,7 @@ def orphan_b(db, workspace, project_b, create_user):
 
 @pytest.fixture
 def parent_a(db, workspace, project_a, create_user):
-    return _make_issue("A parent", project_a, workspace, create_user)
+    return _make_issue("A parent", project_a, workspace, create_user, type=_user_story(workspace))
 
 
 @pytest.fixture

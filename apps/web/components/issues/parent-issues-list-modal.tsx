@@ -83,6 +83,8 @@ export function ParentIssuesListModal({
         issue_id: issueId,
         workspace_search: false,
         epic: searchEpic ? true : undefined,
+        // Only a User Story can be a parent
+        work_item_type: searchEpic ? undefined : "user_story",
       })
       .then((res) => setIssues(res))
       .finally(() => {

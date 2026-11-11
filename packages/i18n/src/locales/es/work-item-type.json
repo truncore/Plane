@@ -10,6 +10,17 @@
     "activity": {
       "changed_to": "cambió el tipo de elemento de trabajo a {type}"
     },
+    "rules": {
+      "story_with_parent": "Una historia de usuario no puede ser un subelemento de trabajo. Quite primero su elemento principal.",
+      "story_with_tasks": "Esta historia de usuario tiene tareas. Muévalas a otra historia antes de convertirla en una tarea."
+    },
+    "progress": {
+      "tasks_done": "{completed} de {total, plural, one {# tarea completada} other {# tareas completadas}}"
+    },
+    "story_template": {
+      "statement": "Como [tipo de usuario], quiero [objetivo] para [motivo].",
+      "acceptance_criteria": "Criterios de aceptación"
+    },
     "settings": {
       "description": "Personaliza y agrega tus propias propiedades para adaptarlo a las necesidades de tu equipo.",
       "cant_delete_default_message": "No se puede eliminar este tipo de elemento de trabajo porque está establecido como el tipo predeterminado para este proyecto.",

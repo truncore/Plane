@@ -12,3 +12,9 @@ export type TWorkItemType = {
   key: TWorkItemTypeKey;
   is_default: boolean;
 };
+
+/** How many of a User Story's tasks are done. */
+export type TStoryProgress = {
+  total: number;
+  completed: number;
+};

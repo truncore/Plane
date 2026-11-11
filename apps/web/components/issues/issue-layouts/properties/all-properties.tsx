@@ -32,6 +32,8 @@ import { MemberSelect } from "@/components/dropdowns/member/member-select";
 import { ModuleSelect } from "@/components/dropdowns/module/module-select";
 import { PrioritySelect } from "@/components/dropdowns/priority/priority-select";
 import { StateSelect } from "@/components/dropdowns/state/state-select";
+import { useWorkItemTypeRules } from "@/components/issues/work-item-type/rules";
+import { StoryProgress } from "@/components/issues/work-item-type/story-progress";
 // hooks
 import { useProjectEstimates } from "@/hooks/store/estimates";
 import { useIssues } from "@/hooks/store/use-issues";
@@ -71,6 +73,7 @@ export const IssueProperties = observer(function IssueProperties(props: IIssuePr
     issues: { addCycleToIssue, removeCycleFromIssue },
   } = useIssues(storeType);
   const { areEstimateEnabledByProjectId } = useProjectEstimates();
+  const { isStory, showsStoryPoints } = useWorkItemTypeRules();
   const { getStateById } = useProjectState();
   const { data: userProfile } = useUserProfile();
   const { isMobile } = usePlatformOS();
@@ -374,7 +377,7 @@ export const IssueProperties = observer(function IssueProperties(props: IIssuePr
       </>
 
       {/* estimates */}
-      {projectId && areEstimateEnabledByProjectId(projectId?.toString()) && (
+      {projectId && areEstimateEnabledByProjectId(projectId?.toString()) && showsStoryPoints(issue) && (
         <WithDisplayPropertiesHOC displayProperties={displayProperties} displayPropertyKey="estimate">
           {/* oxlint-disable-next-line jsx_a11y/click-events-have-key-events oxlint-disable-next-line jsx_a11y/no-static-element-interactions */}
           <div className="h-5" onFocus={handleEventPropagation} onClick={handleEventPropagation}>
@@ -398,26 +401,30 @@ export const IssueProperties = observer(function IssueProperties(props: IIssuePr
           displayPropertyKey="sub_issue_count"
           shouldRenderProperty={(properties) => !!properties.sub_issue_count && !!subIssueCount}
         >
-          <Tooltip label={`${t("common.sub_work_items")}: ${subIssueCount}`} disabled={isMobile}>
-            {/* oxlint-disable-next-line jsx_a11y/click-events-have-key-events oxlint-disable-next-line jsx_a11y/no-static-element-interactions */}
-            <div
-              onFocus={handleEventPropagation}
-              onClick={(e) => {
-                e.stopPropagation();
-                e.preventDefault();
-                if (subIssueCount) redirectToIssueDetail();
-              }}
-              className={cn(
-                "flex h-5 flex-shrink-0 items-center justify-center gap-2 overflow-hidden rounded-sm border-[0.5px] border-strong px-2.5 py-1",
-                {
-                  "cursor-pointer hover:bg-layer-1": subIssueCount,
-                }
-              )}
-            >
-              <ViewsOutline className="h-3 w-3 flex-shrink-0" />
-              <div className="text-caption-sm-regular">{subIssueCount}</div>
-            </div>
-          </Tooltip>
+          {isStory(issue.type_id) && issue.project_id ? (
+            <StoryProgress projectId={issue.project_id} storyId={issue.id} />
+          ) : (
+            <Tooltip label={`${t("common.sub_work_items")}: ${subIssueCount}`} disabled={isMobile}>
+              {/* oxlint-disable-next-line jsx_a11y/click-events-have-key-events oxlint-disable-next-line jsx_a11y/no-static-element-interactions */}
+              <div
+                onFocus={handleEventPropagation}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  if (subIssueCount) redirectToIssueDetail();
+                }}
+                className={cn(
+                  "flex h-5 flex-shrink-0 items-center justify-center gap-2 overflow-hidden rounded-sm border-[0.5px] border-strong px-2.5 py-1",
+                  {
+                    "cursor-pointer hover:bg-layer-1": subIssueCount,
+                  }
+                )}
+              >
+                <ViewsOutline className="h-3 w-3 flex-shrink-0" />
+                <div className="text-caption-sm-regular">{subIssueCount}</div>
+              </div>
+            </Tooltip>
+          )}
         </WithDisplayPropertiesHOC>
       )}
 

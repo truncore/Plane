@@ -27,6 +27,7 @@ from plane.db.models import (
     Module,
     EstimatePoint,
 )
+from plane.engineering.work_item_rules import apply_work_item_rules
 from plane.utils.content_validator import (
     validate_html_content,
     validate_binary_data,
@@ -164,6 +165,7 @@ class DraftIssueCreateSerializer(BaseSerializer):
         self.check_cycle_and_modules(
             self.initial_data.get("cycle_id"), self.initial_data.get("module_ids"), project_id, workspace_id
         )
+        apply_work_item_rules(attrs, project_id, self.instance)
 
         return attrs
 

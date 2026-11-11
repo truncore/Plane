@@ -457,6 +457,13 @@ export abstract class BaseIssuesStore implements IBaseIssuesStore {
    * @param projectId
    * @param id Id can be anything from cycleId, moduleId, viewId or userId based on the store
    */
+  /**
+   * Refreshes User Story task progress, which loading a list or updating a work item can change
+   */
+  refreshStoryProgress(workspaceSlug: string, projectId?: string) {
+    if (projectId) void this.rootIssueStore.rootStore.workItemType.fetchStoryProgress(workspaceSlug, projectId);
+  }
+
   onfetchIssues(
     issuesResponse: TIssuesResponse,
     options: IssuePaginationOptions,
@@ -480,6 +487,7 @@ export abstract class BaseIssuesStore implements IBaseIssuesStore {
 
     // fetch parent stats if required, to be handled in the Implemented class
     this.fetchParentStats(workspaceSlug, projectId, id);
+    this.refreshStoryProgress(workspaceSlug, projectId);
 
     this.rootIssueStore.issueDetail.relation.extractRelationsFromIssues(issueList);
 
@@ -580,6 +588,7 @@ export abstract class BaseIssuesStore implements IBaseIssuesStore {
 
       // call fetch Parent Stats
       this.fetchParentStats(workspaceSlug, projectId);
+      this.refreshStoryProgress(workspaceSlug, projectId);
     } catch (error) {
       // If errored out update store again to revert the change
       this.rootIssueStore.issues.updateIssue(issueId, issueBeforeUpdate ?? {});

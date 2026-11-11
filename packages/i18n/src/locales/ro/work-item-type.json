@@ -10,6 +10,17 @@
     "activity": {
       "changed_to": "a schimbat tipul elementului de lucru în {type}"
     },
+    "rules": {
+      "story_with_parent": "O poveste de utilizator nu poate fi un sub-element de lucru. Eliminați mai întâi elementul părinte.",
+      "story_with_tasks": "Această poveste de utilizator are sarcini. Mutați-le în altă poveste înainte de a o transforma în sarcină."
+    },
+    "progress": {
+      "tasks_done": "Sarcini finalizate: {completed} din {total}"
+    },
+    "story_template": {
+      "statement": "Ca [tip de utilizator], vreau [obiectiv] pentru ca [motiv].",
+      "acceptance_criteria": "Criterii de acceptare"
+    },
     "settings": {
       "description": "Personalizează și adaugă propriile proprietăți pentru a le adapta nevoilor echipei tale.",
       "cant_delete_default_message": "Nu se poate șterge acest tip de element de lucru deoarece este setat ca tip implicit pentru acest proiect.",

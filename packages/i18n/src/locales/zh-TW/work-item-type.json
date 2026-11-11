@@ -10,6 +10,17 @@
     "activity": {
       "changed_to": "將工作項目類型變更為{type}"
     },
+    "rules": {
+      "story_with_parent": "使用者故事不能作為子工作項目。請先移除其父項目。",
+      "story_with_tasks": "此使用者故事下有任務。將其改為任務前，請先將這些任務移至其他故事。"
+    },
+    "progress": {
+      "tasks_done": "已完成 {completed}/{total} 個任務"
+    },
+    "story_template": {
+      "statement": "身為[使用者類型]，我希望[目標]，以便[原因]。",
+      "acceptance_criteria": "驗收標準"
+    },
     "settings": {
       "description": "自訂並新增您自己的屬性，以符合您團隊的需求。",
       "cant_delete_default_message": "無法刪除此工作項目類型，因為它已設置為該專案的預設類型。",

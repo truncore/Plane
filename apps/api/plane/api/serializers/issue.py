@@ -28,6 +28,7 @@ from plane.db.models import (
     User,
     EstimatePoint,
 )
+from plane.engineering.work_item_rules import apply_work_item_rules
 from plane.utils.content_validator import (
     validate_html_content,
     validate_binary_data,
@@ -187,6 +188,9 @@ class IssueSerializer(BaseSerializer):
             ).exists()
         ):
             raise serializers.ValidationError("Work item type is not valid please pass a valid type_id")
+
+        # Fields the type rules changed on their own, for the activity history
+        self.implied_changes = apply_work_item_rules(data, self.context.get("project_id"), self.instance)
 
         return data
 

@@ -10,6 +10,17 @@
     "activity": {
       "changed_to": "mengubah tipe item kerja menjadi {type}"
     },
+    "rules": {
+      "story_with_parent": "Cerita Pengguna tidak dapat menjadi sub-item kerja. Hapus induknya terlebih dahulu.",
+      "story_with_tasks": "Cerita Pengguna ini memiliki tugas. Pindahkan tugas tersebut ke cerita lain sebelum mengubahnya menjadi Tugas."
+    },
+    "progress": {
+      "tasks_done": "{completed} dari {total, plural, one {# tugas} other {# tugas}} selesai"
+    },
+    "story_template": {
+      "statement": "Sebagai [jenis pengguna], saya ingin [tujuan] agar [alasan].",
+      "acceptance_criteria": "Kriteria penerimaan"
+    },
     "settings": {
       "description": "Sesuaikan dan tambahkan properti Anda sendiri untuk menyesuaikannya dengan kebutuhan tim Anda.",
       "cant_delete_default_message": "Jenis item kerja ini tidak dapat dihapus karena diatur sebagai default untuk proyek ini.",

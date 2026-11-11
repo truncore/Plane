@@ -10,6 +10,17 @@
     "activity": {
       "changed_to": "a changé le type d'élément de travail en {type}"
     },
+    "rules": {
+      "story_with_parent": "Un récit utilisateur ne peut pas être un sous-élément de travail. Retirez d’abord son élément parent.",
+      "story_with_tasks": "Ce récit utilisateur contient des tâches. Déplacez-les vers un autre récit avant de le transformer en tâche."
+    },
+    "progress": {
+      "tasks_done": "{completed} sur {total, plural, one {# tâche terminée} many {# tâches terminées} other {# tâches terminées}}"
+    },
+    "story_template": {
+      "statement": "En tant que [type d’utilisateur], je veux [objectif] afin de [raison].",
+      "acceptance_criteria": "Critères d’acceptation"
+    },
     "settings": {
       "description": "Personnalisez et ajoutez vos propres propriétés pour l’adapter aux besoins de votre équipe.",
       "cant_delete_default_message": "Ce type d'élément de travail ne peut pas être supprimé car il est défini comme le type par défaut pour ce projet.",

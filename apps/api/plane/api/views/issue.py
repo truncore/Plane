@@ -738,7 +738,7 @@ class IssueDetailAPIEndpoint(BaseAPIView):
                     # the update issue activity worker event.
                     serializer.save()
                     # Read-only fields are ignored on save, so they are not reported as changes either.
-                    accepted_data = writable_data(serializer, request.data)
+                    accepted_data = {**writable_data(serializer, request.data), **serializer.implied_changes}
                     issue_activity.delay(
                         type="issue.activity.updated",
                         requested_data=json.dumps(accepted_data, cls=DjangoJSONEncoder),
@@ -873,7 +873,7 @@ class IssueDetailAPIEndpoint(BaseAPIView):
 
             serializer.save()
             # Read-only fields are ignored on save, so they are not reported as changes either.
-            accepted_data = writable_data(serializer, request.data)
+            accepted_data = {**writable_data(serializer, request.data), **serializer.implied_changes}
             issue_activity.delay(
                 type="issue.activity.updated",
                 requested_data=json.dumps(accepted_data, cls=DjangoJSONEncoder),

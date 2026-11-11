@@ -10,6 +10,17 @@
     "activity": {
       "changed_to": "zmienił(a) typ elementu pracy na {type}"
     },
+    "rules": {
+      "story_with_parent": "Historyjka użytkownika nie może być podrzędnym elementem pracy. Najpierw należy usunąć jej element nadrzędny.",
+      "story_with_tasks": "Ta historyjka użytkownika zawiera zadania. Przed zmianą na zadanie należy przenieść je do innej historyjki."
+    },
+    "progress": {
+      "tasks_done": "Ukończone zadania: {completed} z {total}"
+    },
+    "story_template": {
+      "statement": "Jako [typ użytkownika] chcę [cel], aby [powód].",
+      "acceptance_criteria": "Kryteria akceptacji"
+    },
     "settings": {
       "description": "Dostosuj i dodaj własne właściwości, aby dopasować do potrzeb zespołu.",
       "cant_delete_default_message": "Nie można usunąć tego typu elementu pracy, ponieważ jest on ustawiony jako domyślny dla tego projektu.",

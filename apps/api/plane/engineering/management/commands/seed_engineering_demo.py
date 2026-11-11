@@ -53,6 +53,8 @@ DEMO_STORIES = [
         "points": "8",
         "state": "In Progress",
         "assignee": 1,
+        "statement": "As a returning customer, I want to pay with a saved card so that checkout takes seconds.",
+        "criteria": ["Saved cards show the brand and last four digits", "Paying with a saved card needs no re-entry"],
         "tasks": [
             ("Store card tokens securely", "Done"),
             ("Add saved-card picker to checkout", "In Progress"),
@@ -64,6 +66,8 @@ DEMO_STORIES = [
         "points": "3",
         "state": "Todo",
         "assignee": 2,
+        "statement": "As a customer, I want an email receipt after paying so that I have proof of my purchase.",
+        "criteria": ["The receipt arrives within a minute", "It lists every item, tax and the total"],
         "tasks": [("Design the receipt template", "Todo"), ("Send the receipt after payment", "Todo")],
     },
     {
@@ -71,9 +75,19 @@ DEMO_STORIES = [
         "points": "5",
         "state": "Done",
         "assignee": 0,
+        "statement": "As an admin, I want to refund a payment so that I can resolve customer complaints quickly.",
+        "criteria": ["Full and partial refunds are possible", "The customer gets a refund email"],
         "tasks": [("Refund endpoint", "Done"), ("Refund button in the admin panel", "Done")],
     },
 ]
+
+
+def story_description(statement, criteria):
+    """A story description in the shape of the User Story template: statement plus acceptance criteria."""
+    checklist = "".join(
+        f'<li data-type="taskItem" data-checked="false"><p>{criterion}</p></li>' for criterion in criteria
+    )
+    return f'<p>{statement}</p><h3>Acceptance criteria</h3><ul data-type="taskList">{checklist}</ul>'
 
 
 class Command(BaseCommand):
@@ -201,6 +215,9 @@ class Command(BaseCommand):
                 type=types["user_story"],
                 estimate_point=points[story_data["points"]],
             )
+            if not story.description_stripped:
+                story.description_html = story_description(story_data["statement"], story_data["criteria"])
+                story.save(update_fields=["description_html", "description_stripped"])
             CycleIssue.objects.get_or_create(cycle=cycle, issue=story, project=project)
             for task_name, task_state in story_data["tasks"]:
                 self.get_work_item(

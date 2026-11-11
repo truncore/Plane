@@ -137,6 +137,8 @@ export const IssueDetailWidgetModals = observer(function IssueDetailWidgetModals
   const existingIssuesModalSearchParams = {
     sub_issue: true,
     issue_id: issueCrudOperationState?.existing?.parentIssueId,
+    // Only Tasks go under a User Story
+    work_item_type: "task" as const,
   };
 
   // render conditions

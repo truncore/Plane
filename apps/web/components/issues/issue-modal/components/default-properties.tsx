@@ -7,7 +7,7 @@
 import { useState } from "react";
 import { observer } from "mobx-react";
 import type { Control } from "react-hook-form";
-import { Controller } from "react-hook-form";
+import { Controller, useWatch } from "react-hook-form";
 import { Icon as PropelIcon } from "@makeplane/propel/components/icon";
 import { Menu, MenuContent, MenuItem, MenuTrigger } from "@makeplane/propel/components/menu";
 import { Pill } from "@makeplane/propel/components/pill";
@@ -31,6 +31,7 @@ import { StateSelect } from "@/components/dropdowns/state/state-select";
 import { WorkItemTypeSelect } from "@/components/dropdowns/work-item-type/work-item-type-select";
 import { ParentIssuesListModal } from "@/components/issues/parent-issues-list-modal";
 import { IssueIdentifier } from "@/components/issues/issue-detail/issue-identifier";
+import { useWorkItemTypeRules } from "@/components/issues/work-item-type/rules";
 // hooks
 import { useProjectEstimates } from "@/hooks/store/estimates";
 import { useProject } from "@/hooks/store/use-project";
@@ -49,6 +50,7 @@ type TIssueDefaultPropertiesProps = {
   parentId: string | null;
   isDraft: boolean;
   handleFormChange: () => void;
+  handleTypeChange: (typeId: string) => void;
   setSelectedParentIssue: (issue: ISearchIssueResponse) => void;
 };
 
@@ -64,6 +66,7 @@ export const IssueDefaultProperties = observer(function IssueDefaultProperties(p
     parentId,
     isDraft,
     handleFormChange,
+    handleTypeChange,
     setSelectedParentIssue,
   } = props;
   // states
@@ -71,12 +74,15 @@ export const IssueDefaultProperties = observer(function IssueDefaultProperties(p
   // store hooks
   const { t } = useTranslation();
   const { areEstimateEnabledByProjectId } = useProjectEstimates();
+  const { isStory } = useWorkItemTypeRules();
   const { getProjectById } = useProject();
   const { getProjectDefaultStateId } = useProjectState();
   const { isMobile } = usePlatformOS();
   const { data: userProfile } = useUserProfile();
   // derived values
   const projectDetails = getProjectById(projectId);
+  const selectedTypeId = useWatch({ control, name: "type_id" });
+  const isUserStory = isStory(selectedTypeId);
 
   const { getIndex } = getTabIndex(ETabIndices.ISSUE_FORM, isMobile);
 
@@ -97,6 +103,7 @@ export const IssueDefaultProperties = observer(function IssueDefaultProperties(p
             value={value}
             onChange={(typeId) => {
               onChange(typeId);
+              handleTypeChange(typeId);
               handleFormChange();
             }}
             variant="pill-md"
@@ -257,7 +264,7 @@ export const IssueDefaultProperties = observer(function IssueDefaultProperties(p
           )}
         />
       )}
-      {projectId && areEstimateEnabledByProjectId(projectId) && (
+      {projectId && areEstimateEnabledByProjectId(projectId) && isUserStory && (
         <Controller
           control={control}
           name="estimate_point"
@@ -276,7 +283,7 @@ export const IssueDefaultProperties = observer(function IssueDefaultProperties(p
           )}
         />
       )}
-      {parentId ? (
+      {isUserStory ? null : parentId ? (
         <Menu>
           <MenuTrigger
             tabIndex={getIndex("parent_id")}
