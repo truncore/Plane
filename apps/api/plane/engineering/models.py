@@ -6,6 +6,7 @@
 import uuid
 
 # Django imports
+from django.conf import settings
 from django.db import models
 from django.db.models import Q
 
@@ -168,3 +169,26 @@ class GitHubWebhookDelivery(TimeAuditModel):
 
     def __str__(self):
         return f"{self.event} {self.delivery_id}"
+
+
+class GitHubAccount(TimeAuditModel):
+    """A person's own GitHub token, so reviews, merges and new pull requests happen as them."""
+
+    id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="github_account")
+    login = models.CharField(max_length=100)
+    encrypted_token = models.TextField()
+
+    class Meta:
+        db_table = "engineering_github_accounts"
+
+    def __str__(self):
+        return self.login
+
+    @property
+    def token(self):
+        return decrypt_data(self.encrypted_token)
+
+    @token.setter
+    def token(self, value):
+        self.encrypted_token = encrypt_data(value)

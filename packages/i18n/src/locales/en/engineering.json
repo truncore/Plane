@@ -66,6 +66,8 @@
         "no_commits": "This branch has no commits that aren't already in the base branch. Push your work first.",
         "pr_exists": "A pull request is already open for this branch.",
         "protected_branch": "GitHub refused because of the branch's protection rules.",
+        "no_personal_account": "Connect your own GitHub account in your profile settings to do this as yourself.",
+        "not_mergeable": "GitHub says this pull request can't be merged right now.",
         "github_error": "GitHub returned an unexpected error. Try again."
       },
       "webhook": {
@@ -106,6 +108,61 @@
         "body_opened_by": "Opened from Plane by {name}.",
         "create": "Create pull request",
         "created": "Pull request #{number} opened."
+      },
+      "account": {
+        "title": "GitHub account",
+        "description": "Connect your own GitHub account so reviews, merges and pull requests you start from Plane show up as yours on GitHub. Your token is stored encrypted and never shown again.",
+        "token": "Personal access token",
+        "token_hint": "A fine-grained token for the repositories you work on, with Pull requests (read and write) and Contents (read).",
+        "connect": "Connect",
+        "connected_as": "Connected as {login}"
+      },
+      "pull_request": {
+        "show": "Details",
+        "hide": "Hide",
+        "review_on_github": "Review the changes on GitHub",
+        "reviewers": "Reviewers",
+        "no_reviewers": "No reviews yet.",
+        "checks": "Checks",
+        "no_checks": "No checks have run.",
+        "verdict": {
+          "APPROVED": "Approved",
+          "CHANGES_REQUESTED": "Changes requested",
+          "COMMENTED": "Commented",
+          "DISMISSED": "Dismissed",
+          "PENDING": "Waiting"
+        },
+        "mergeable": {
+          "clean": "Ready to merge.",
+          "unstable": "Some checks failed, but GitHub allows merging.",
+          "blocked": "Blocked: required reviews or checks are missing.",
+          "behind": "The branch is behind its base branch. Update it first.",
+          "dirty": "There are merge conflicts to resolve on GitHub.",
+          "draft": "Draft pull requests can't be merged.",
+          "has_hooks": "Ready to merge.",
+          "unknown": "GitHub is still checking whether this can be merged."
+        },
+        "acting_as": "Actions run as your GitHub account {login}.",
+        "request_review_label": "Ask for a review from (GitHub usernames, separated by commas)",
+        "request_review": "Request review",
+        "review_requested": "Review requested.",
+        "comment": "Comment",
+        "approve": "Approve",
+        "request_changes": "Request changes",
+        "review_sent": "Review sent.",
+        "merge_method": {
+          "merge": "Create a merge commit",
+          "squash": "Squash and merge",
+          "rebase": "Rebase and merge"
+        },
+        "merge": "Merge",
+        "merged": "Pull request merged.",
+        "connect_account": "Connect your own GitHub account to review and merge from Plane.",
+        "connect_account_link": "Connect GitHub account"
+      },
+      "copy_branch": {
+        "button": "Copy branch name",
+        "copied": "Branch name copied"
       }
     }
   }

@@ -66,6 +66,8 @@
         "no_commits": "Bu dalda temel dalda olmayan hiçbir commit yok. Önce çalışmanızı push edin.",
         "pr_exists": "Bu dal için zaten açık bir pull request var.",
         "protected_branch": "GitHub, dalın koruma kuralları nedeniyle isteği reddetti.",
+        "no_personal_account": "Bunu kendi adınıza yapmak için profil ayarlarınızdan kendi GitHub hesabınızı bağlayın.",
+        "not_mergeable": "GitHub'a göre bu pull request şu anda birleştirilemiyor.",
         "github_error": "GitHub beklenmeyen bir hata döndürdü. Tekrar deneyin."
       },
       "webhook": {
@@ -106,6 +108,61 @@
         "body_opened_by": "{name} tarafından Plane üzerinden açıldı.",
         "create": "Pull request oluştur",
         "created": "Pull request #{number} açıldı."
+      },
+      "account": {
+        "title": "GitHub hesabı",
+        "description": "Plane'den başlattığınız incelemelerin, birleştirmelerin ve pull request'lerin GitHub'da sizin adınıza görünmesi için kendi GitHub hesabınızı bağlayın. Token'ınız şifrelenmiş olarak saklanır ve bir daha gösterilmez.",
+        "token": "Kişisel erişim token'ı",
+        "token_hint": "Çalıştığınız depolar için Pull requests (okuma ve yazma) ve Contents (okuma) izinlerine sahip ayrıntılı (fine-grained) bir token.",
+        "connect": "Bağla",
+        "connected_as": "{login} olarak bağlı"
+      },
+      "pull_request": {
+        "show": "Ayrıntılar",
+        "hide": "Gizle",
+        "review_on_github": "Değişiklikleri GitHub'da inceleyin",
+        "reviewers": "İnceleyenler",
+        "no_reviewers": "Henüz inceleme yok.",
+        "checks": "Kontroller",
+        "no_checks": "Hiç kontrol çalışmadı.",
+        "verdict": {
+          "APPROVED": "Onaylandı",
+          "CHANGES_REQUESTED": "Değişiklik istendi",
+          "COMMENTED": "Yorum yapıldı",
+          "DISMISSED": "Reddedildi",
+          "PENDING": "Bekliyor"
+        },
+        "mergeable": {
+          "clean": "Birleştirmeye hazır.",
+          "unstable": "Bazı kontroller başarısız oldu, ancak GitHub birleştirmeye izin veriyor.",
+          "blocked": "Engellendi: gerekli incelemeler veya kontroller eksik.",
+          "behind": "Dal, temel dalının gerisinde. Önce dalı güncelleyin.",
+          "dirty": "GitHub'da çözülmesi gereken birleştirme çakışmaları var.",
+          "draft": "Taslak pull request'ler birleştirilemez.",
+          "has_hooks": "Birleştirmeye hazır.",
+          "unknown": "GitHub bunun birleştirilip birleştirilemeyeceğini hâlâ kontrol ediyor."
+        },
+        "acting_as": "İşlemler {login} GitHub hesabınızla yapılır.",
+        "request_review_label": "Şu kişilerden inceleme isteyin (GitHub kullanıcı adları, virgülle ayrılmış)",
+        "request_review": "İnceleme iste",
+        "review_requested": "İnceleme istendi.",
+        "comment": "Yorum yap",
+        "approve": "Onayla",
+        "request_changes": "Değişiklik iste",
+        "review_sent": "İnceleme gönderildi.",
+        "merge_method": {
+          "merge": "Birleştirme commit'i oluştur",
+          "squash": "Squash ve birleştir",
+          "rebase": "Rebase ve birleştir"
+        },
+        "merge": "Birleştir",
+        "merged": "Pull request birleştirildi.",
+        "connect_account": "Plane'den inceleme ve birleştirme yapmak için kendi GitHub hesabınızı bağlayın.",
+        "connect_account_link": "GitHub hesabını bağla"
+      },
+      "copy_branch": {
+        "button": "Dal adını kopyala",
+        "copied": "Dal adı kopyalandı"
       }
     }
   }

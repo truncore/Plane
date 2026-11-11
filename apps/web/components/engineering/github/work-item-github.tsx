@@ -4,6 +4,7 @@
  * See the LICENSE file for details.
  */
 
+import { useState } from "react";
 import useSWR from "swr";
 import { Badge } from "@makeplane/propel/components/badge";
 import type { BadgeProps } from "@makeplane/propel/components/badge";
@@ -13,6 +14,8 @@ import { useTranslation } from "@plane/i18n";
 import type { TPullRequestState } from "@plane/types";
 // services
 import { GitHubService } from "@/services/engineering/github.service";
+// local imports
+import { PullRequestDetails } from "./pull-request-details";
 
 const githubService = new GitHubService();
 
@@ -35,6 +38,7 @@ type Props = {
 export function WorkItemGitHub(props: Props) {
   const { workspaceSlug, projectId, workItemId } = props;
   const { t } = useTranslation();
+  const [expandedId, setExpandedId] = useState<string | null>(null);
   // Webhooks update these on the server, so check again every so often
   const { data } = useSWR(
     workItemGitHubKey(workItemId),
@@ -49,28 +53,50 @@ export function WorkItemGitHub(props: Props) {
       <h3 className="text-body-sm-medium">{t("engineering.github.work_item.title")}</h3>
       <ul className="flex flex-col gap-1.5">
         {data.pull_requests.map((pullRequest) => (
-          <li key={pullRequest.id} className="flex min-w-0 items-center gap-2 text-body-xs-regular">
-            {pullRequest.state === "merged" ? (
-              <GitMergeOutline className="size-4 flex-shrink-0 text-tertiary" />
-            ) : (
-              <GitPullRequestOutline className="size-4 flex-shrink-0 text-tertiary" />
+          <li key={pullRequest.id} className="flex flex-col gap-2">
+            <div className="flex min-w-0 items-center gap-2 text-body-xs-regular">
+              {pullRequest.state === "merged" ? (
+                <GitMergeOutline className="size-4 flex-shrink-0 text-tertiary" />
+              ) : (
+                <GitPullRequestOutline className="size-4 flex-shrink-0 text-tertiary" />
+              )}
+              <a
+                href={pullRequest.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="min-w-0 truncate hover:underline"
+              >
+                #{pullRequest.number} {pullRequest.title}
+              </a>
+              <Badge
+                size="sm"
+                variant={STATE_BADGES[pullRequest.state]}
+                label={t(`engineering.github.work_item.pull_request_state.${pullRequest.state}`)}
+              />
+              <span className="flex-shrink-0 truncate text-tertiary">
+                {pullRequest.head_branch} → {pullRequest.base_branch}
+              </span>
+              <button
+                type="button"
+                className="flex-shrink-0 text-accent-primary hover:underline"
+                onClick={() => setExpandedId(expandedId === pullRequest.id ? null : pullRequest.id)}
+              >
+                {t(
+                  expandedId === pullRequest.id
+                    ? "engineering.github.pull_request.hide"
+                    : "engineering.github.pull_request.show"
+                )}
+              </button>
+            </div>
+            {expandedId === pullRequest.id && (
+              <PullRequestDetails
+                workspaceSlug={workspaceSlug}
+                projectId={projectId}
+                workItemId={workItemId}
+                pullRequestId={pullRequest.id}
+                listKey={workItemGitHubKey(workItemId)}
+              />
             )}
-            <a
-              href={pullRequest.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="min-w-0 truncate hover:underline"
-            >
-              #{pullRequest.number} {pullRequest.title}
-            </a>
-            <Badge
-              size="sm"
-              variant={STATE_BADGES[pullRequest.state]}
-              label={t(`engineering.github.work_item.pull_request_state.${pullRequest.state}`)}
-            />
-            <span className="flex-shrink-0 truncate text-tertiary">
-              {pullRequest.head_branch} → {pullRequest.base_branch}
-            </span>
           </li>
         ))}
         {data.commits.map((commit) => (

@@ -8,8 +8,9 @@ from rest_framework import serializers
 # Module imports
 from plane.app.serializers.base import BaseSerializer
 from plane.db.models import Project, State, StateGroup
-from plane.engineering.github.client import is_valid_branch, is_valid_repository
+from plane.engineering.github.client import OWNER_PATTERN, is_valid_branch, is_valid_repository
 from plane.engineering.github.connection import default_review_state, first_state
+from plane.engineering.github.reviews import MERGE_METHODS, REVIEW_EVENTS
 from plane.engineering.models import GitHubConnection, LinkedCommit, PullRequest
 
 SECRET_FIELDS = ("token", "webhook_secret")
@@ -155,3 +156,26 @@ class PullRequestBranchesSerializer(serializers.Serializer):
 class CreatePullRequestSerializer(PullRequestBranchesSerializer):
     title = serializers.CharField(max_length=256)
     body = serializers.CharField(max_length=65536, allow_blank=True, required=False, default="")
+
+
+class ReviewSerializer(serializers.Serializer):
+    event = serializers.ChoiceField(choices=REVIEW_EVENTS)
+    body = serializers.CharField(max_length=65536, allow_blank=True, required=False, default="")
+
+    def validate(self, attrs):
+        # GitHub needs a comment to request changes or to leave a plain comment
+        if attrs["event"] != "APPROVE" and not attrs["body"].strip():
+            raise serializers.ValidationError({"body": "Write a comment."})
+        return attrs
+
+
+class RequestReviewersSerializer(serializers.Serializer):
+    reviewers = serializers.ListField(child=serializers.RegexField(OWNER_PATTERN), min_length=1, max_length=15)
+
+
+class MergeSerializer(serializers.Serializer):
+    method = serializers.ChoiceField(choices=MERGE_METHODS)
+
+
+class GitHubAccountSerializer(serializers.Serializer):
+    token = serializers.CharField(write_only=True)

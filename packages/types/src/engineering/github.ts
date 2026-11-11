@@ -54,6 +54,8 @@ export type TGitHubErrorCode =
   | "no_commits"
   | "pr_exists"
   | "protected_branch"
+  | "no_personal_account"
+  | "not_mergeable"
   | "github_error";
 
 export type TGitHubError = {
@@ -131,4 +133,27 @@ export type TCreatePullRequest = {
   head: string;
   title: string;
   body: string;
+};
+
+/** The signed-in person's own GitHub account; null login when not connected. */
+export type TGitHubAccount = {
+  login: string | null;
+};
+
+export type TReviewVerdict = "APPROVED" | "CHANGES_REQUESTED" | "COMMENTED" | "DISMISSED" | "PENDING";
+export type TReviewEvent = "APPROVE" | "REQUEST_CHANGES" | "COMMENT";
+export type TMergeMethod = "merge" | "squash" | "rebase";
+
+/** A pull request's live status on GitHub, and what the signed-in person may do with it. */
+export type TPullRequestDetails = {
+  url: string;
+  files_url: string;
+  state: TPullRequestState;
+  /** GitHub's mergeable_state: clean, unstable, blocked, behind, dirty, draft, has_hooks or unknown */
+  mergeable_state: string;
+  reviewers: { login: string; state: TReviewVerdict }[];
+  checks: { name: string; status: string; conclusion: string | null; url: string }[];
+  acting_as: string | null;
+  can_review: boolean;
+  can_merge: boolean;
 };

@@ -66,6 +66,8 @@
         "no_commits": "Branch ini tidak memiliki commit yang belum ada di branch dasar. Push pekerjaan Anda terlebih dahulu.",
         "pr_exists": "Pull request untuk branch ini sudah dibuka.",
         "protected_branch": "GitHub menolak karena aturan perlindungan branch.",
+        "no_personal_account": "Hubungkan akun GitHub Anda sendiri di pengaturan profil untuk melakukan ini atas nama Anda.",
+        "not_mergeable": "Menurut GitHub, pull request ini tidak dapat digabungkan saat ini.",
         "github_error": "GitHub mengembalikan kesalahan yang tidak terduga. Coba lagi."
       },
       "webhook": {
@@ -106,6 +108,61 @@
         "body_opened_by": "Dibuka dari Plane oleh {name}.",
         "create": "Buat pull request",
         "created": "Pull request #{number} dibuka."
+      },
+      "account": {
+        "title": "Akun GitHub",
+        "description": "Hubungkan akun GitHub Anda sendiri agar tinjauan, penggabungan, dan pull request yang Anda mulai dari Plane tampil sebagai milik Anda di GitHub. Token Anda disimpan dalam bentuk terenkripsi dan tidak akan pernah ditampilkan lagi.",
+        "token": "Token akses pribadi",
+        "token_hint": "Token fine-grained untuk repositori yang Anda kerjakan, dengan Pull requests (baca dan tulis) dan Contents (baca).",
+        "connect": "Hubungkan",
+        "connected_as": "Terhubung sebagai {login}"
+      },
+      "pull_request": {
+        "show": "Detail",
+        "hide": "Sembunyikan",
+        "review_on_github": "Tinjau perubahan di GitHub",
+        "reviewers": "Peninjau",
+        "no_reviewers": "Belum ada tinjauan.",
+        "checks": "Pemeriksaan",
+        "no_checks": "Belum ada pemeriksaan yang dijalankan.",
+        "verdict": {
+          "APPROVED": "Disetujui",
+          "CHANGES_REQUESTED": "Perubahan diminta",
+          "COMMENTED": "Dikomentari",
+          "DISMISSED": "Ditolak",
+          "PENDING": "Menunggu"
+        },
+        "mergeable": {
+          "clean": "Siap digabungkan.",
+          "unstable": "Beberapa pemeriksaan gagal, tetapi GitHub mengizinkan penggabungan.",
+          "blocked": "Diblokir: tinjauan atau pemeriksaan wajib belum ada.",
+          "behind": "Branch tertinggal dari branch dasarnya. Perbarui terlebih dahulu.",
+          "dirty": "Ada konflik penggabungan yang harus diselesaikan di GitHub.",
+          "draft": "Pull request draf tidak dapat digabungkan.",
+          "has_hooks": "Siap digabungkan.",
+          "unknown": "GitHub masih memeriksa apakah ini dapat digabungkan."
+        },
+        "acting_as": "Tindakan dijalankan sebagai akun GitHub Anda {login}.",
+        "request_review_label": "Minta tinjauan dari (nama pengguna GitHub, dipisahkan koma)",
+        "request_review": "Minta tinjauan",
+        "review_requested": "Tinjauan diminta.",
+        "comment": "Komentari",
+        "approve": "Setujui",
+        "request_changes": "Minta perubahan",
+        "review_sent": "Tinjauan dikirim.",
+        "merge_method": {
+          "merge": "Buat commit merge",
+          "squash": "Squash dan gabungkan",
+          "rebase": "Rebase dan gabungkan"
+        },
+        "merge": "Gabungkan",
+        "merged": "Pull request digabungkan.",
+        "connect_account": "Hubungkan akun GitHub Anda sendiri untuk meninjau dan menggabungkan dari Plane.",
+        "connect_account_link": "Hubungkan akun GitHub"
+      },
+      "copy_branch": {
+        "button": "Salin nama branch",
+        "copied": "Nama branch disalin"
       }
     }
   }

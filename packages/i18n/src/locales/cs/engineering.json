@@ -66,6 +66,8 @@
         "no_commits": "Tato větev nemá žádné commity, které by už nebyly v základní větvi. Nejprve pushněte svou práci.",
         "pr_exists": "Pro tuto větev už je otevřený pull request.",
         "protected_branch": "GitHub požadavek odmítl kvůli pravidlům ochrany větve.",
+        "no_personal_account": "Chcete-li to provést svým jménem, propojte v nastavení profilu svůj vlastní účet GitHub.",
+        "not_mergeable": "Podle služby GitHub nelze tento pull request nyní sloučit.",
         "github_error": "GitHub vrátil neočekávanou chybu. Zkuste to znovu."
       },
       "webhook": {
@@ -106,6 +108,61 @@
         "body_opened_by": "Otevřeno z Plane uživatelem {name}.",
         "create": "Vytvořit pull request",
         "created": "Pull request #{number} byl otevřen."
+      },
+      "account": {
+        "title": "Účet GitHub",
+        "description": "Propojte svůj vlastní účet GitHub, aby se revize, sloučení a pull requesty, které zahájíte v Plane, zobrazovaly ve službě GitHub jako vaše. Token je uložen šifrovaně a už se nikdy nezobrazí.",
+        "token": "Osobní přístupový token",
+        "token_hint": "Token typu fine-grained pro repozitáře, na kterých pracujete, s oprávněními Pull requests (čtení a zápis) a Contents (čtení).",
+        "connect": "Propojit",
+        "connected_as": "Propojeno jako {login}"
+      },
+      "pull_request": {
+        "show": "Podrobnosti",
+        "hide": "Skrýt",
+        "review_on_github": "Zkontrolovat změny ve službě GitHub",
+        "reviewers": "Revidenti",
+        "no_reviewers": "Zatím žádné revize.",
+        "checks": "Kontroly",
+        "no_checks": "Neproběhly žádné kontroly.",
+        "verdict": {
+          "APPROVED": "Schváleno",
+          "CHANGES_REQUESTED": "Požadovány změny",
+          "COMMENTED": "Okomentováno",
+          "DISMISSED": "Zamítnuto",
+          "PENDING": "Čeká se"
+        },
+        "mergeable": {
+          "clean": "Připraveno ke sloučení.",
+          "unstable": "Některé kontroly selhaly, ale GitHub sloučení povoluje.",
+          "blocked": "Blokováno: chybí požadované revize nebo kontroly.",
+          "behind": "Větev zaostává za svou základní větví. Nejprve ji aktualizujte.",
+          "dirty": "Ve službě GitHub je třeba vyřešit konflikty sloučení.",
+          "draft": "Koncepty pull requestů nelze sloučit.",
+          "has_hooks": "Připraveno ke sloučení.",
+          "unknown": "GitHub stále ověřuje, zda lze sloučení provést."
+        },
+        "acting_as": "Akce se provádějí pod vaším účtem GitHub {login}.",
+        "request_review_label": "Požádat o revizi (uživatelská jména GitHub oddělená čárkami)",
+        "request_review": "Požádat o revizi",
+        "review_requested": "O revizi bylo požádáno.",
+        "comment": "Komentovat",
+        "approve": "Schválit",
+        "request_changes": "Požádat o změny",
+        "review_sent": "Revize byla odeslána.",
+        "merge_method": {
+          "merge": "Vytvořit slučovací commit",
+          "squash": "Squash a sloučit",
+          "rebase": "Rebase a sloučit"
+        },
+        "merge": "Sloučit",
+        "merged": "Pull request byl sloučen.",
+        "connect_account": "Propojte svůj vlastní účet GitHub, abyste mohli revidovat a slučovat přímo z Plane.",
+        "connect_account_link": "Propojit účet GitHub"
+      },
+      "copy_branch": {
+        "button": "Kopírovat název větve",
+        "copied": "Název větve zkopírován"
       }
     }
   }

@@ -66,6 +66,8 @@
         "no_commits": "Esta rama no tiene commits que no estén ya en la rama base. Primero haga push de su trabajo.",
         "pr_exists": "Ya hay un pull request abierto para esta rama.",
         "protected_branch": "GitHub lo rechazó debido a las reglas de protección de la rama.",
+        "no_personal_account": "Conecte su propia cuenta de GitHub en la configuración de su perfil para hacerlo en su nombre.",
+        "not_mergeable": "Según GitHub, este pull request no se puede fusionar en este momento.",
         "github_error": "GitHub devolvió un error inesperado. Inténtelo de nuevo."
       },
       "webhook": {
@@ -106,6 +108,61 @@
         "body_opened_by": "Abierto desde Plane por {name}.",
         "create": "Crear pull request",
         "created": "Pull request #{number} abierto."
+      },
+      "account": {
+        "title": "Cuenta de GitHub",
+        "description": "Conecte su propia cuenta de GitHub para que las revisiones, fusiones y pull requests que inicie desde Plane aparezcan como suyas en GitHub. Su token se guarda cifrado y no se vuelve a mostrar.",
+        "token": "Token de acceso personal",
+        "token_hint": "Un token de granularidad fina para los repositorios en los que trabaja, con Pull requests (lectura y escritura) y Contents (lectura).",
+        "connect": "Conectar",
+        "connected_as": "Conectado como {login}"
+      },
+      "pull_request": {
+        "show": "Detalles",
+        "hide": "Ocultar",
+        "review_on_github": "Revisar los cambios en GitHub",
+        "reviewers": "Revisores",
+        "no_reviewers": "Aún no hay revisiones.",
+        "checks": "Comprobaciones",
+        "no_checks": "No se ha ejecutado ninguna comprobación.",
+        "verdict": {
+          "APPROVED": "Aprobado",
+          "CHANGES_REQUESTED": "Cambios solicitados",
+          "COMMENTED": "Comentado",
+          "DISMISSED": "Descartado",
+          "PENDING": "En espera"
+        },
+        "mergeable": {
+          "clean": "Listo para fusionar.",
+          "unstable": "Algunas comprobaciones fallaron, pero GitHub permite fusionar.",
+          "blocked": "Bloqueado: faltan revisiones o comprobaciones obligatorias.",
+          "behind": "La rama está por detrás de su rama base. Actualícela primero.",
+          "dirty": "Hay conflictos de fusión que resolver en GitHub.",
+          "draft": "Los pull requests en borrador no se pueden fusionar.",
+          "has_hooks": "Listo para fusionar.",
+          "unknown": "GitHub aún está comprobando si se puede fusionar."
+        },
+        "acting_as": "Las acciones se realizan con su cuenta de GitHub {login}.",
+        "request_review_label": "Solicitar revisión a (nombres de usuario de GitHub, separados por comas)",
+        "request_review": "Solicitar revisión",
+        "review_requested": "Revisión solicitada.",
+        "comment": "Comentar",
+        "approve": "Aprobar",
+        "request_changes": "Solicitar cambios",
+        "review_sent": "Revisión enviada.",
+        "merge_method": {
+          "merge": "Crear un commit de fusión",
+          "squash": "Hacer squash y fusionar",
+          "rebase": "Hacer rebase y fusionar"
+        },
+        "merge": "Fusionar",
+        "merged": "Pull request fusionado.",
+        "connect_account": "Conecte su propia cuenta de GitHub para revisar y fusionar desde Plane.",
+        "connect_account_link": "Conectar cuenta de GitHub"
+      },
+      "copy_branch": {
+        "button": "Copiar nombre de la rama",
+        "copied": "Nombre de la rama copiado"
       }
     }
   }

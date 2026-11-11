@@ -66,6 +66,8 @@
         "no_commits": "Táto vetva nemá žiadne commity, ktoré by už neboli v základnej vetve. Najprv pushnite svoju prácu.",
         "pr_exists": "Pre túto vetvu je už otvorený pull request.",
         "protected_branch": "GitHub požiadavku odmietol pre pravidlá ochrany vetvy.",
+        "no_personal_account": "Ak to chcete urobiť vo vlastnom mene, prepojte v nastaveniach profilu svoj vlastný účet GitHub.",
+        "not_mergeable": "Podľa služby GitHub tento pull request teraz nemožno zlúčiť.",
         "github_error": "GitHub vrátil neočakávanú chybu. Skúste to znova."
       },
       "webhook": {
@@ -106,6 +108,61 @@
         "body_opened_by": "Otvorené z Plane používateľom {name}.",
         "create": "Vytvoriť pull request",
         "created": "Pull request #{number} bol otvorený."
+      },
+      "account": {
+        "title": "Účet GitHub",
+        "description": "Prepojte svoj vlastný účet GitHub, aby sa recenzie, zlúčenia a pull requesty, ktoré spustíte z Plane, v službe GitHub zobrazovali ako vaše. Token je uložený šifrovane a už sa nikdy nezobrazí.",
+        "token": "Osobný prístupový token",
+        "token_hint": "Token typu fine-grained pre repozitáre, na ktorých pracujete, s oprávneniami Pull requests (čítanie a zápis) a Contents (čítanie).",
+        "connect": "Prepojiť",
+        "connected_as": "Prepojené ako {login}"
+      },
+      "pull_request": {
+        "show": "Podrobnosti",
+        "hide": "Skryť",
+        "review_on_github": "Skontrolovať zmeny v službe GitHub",
+        "reviewers": "Recenzenti",
+        "no_reviewers": "Zatiaľ žiadne recenzie.",
+        "checks": "Kontroly",
+        "no_checks": "Nespustili sa žiadne kontroly.",
+        "verdict": {
+          "APPROVED": "Schválené",
+          "CHANGES_REQUESTED": "Požadované zmeny",
+          "COMMENTED": "Komentované",
+          "DISMISSED": "Zamietnuté",
+          "PENDING": "Čaká sa"
+        },
+        "mergeable": {
+          "clean": "Pripravené na zlúčenie.",
+          "unstable": "Niektoré kontroly zlyhali, ale GitHub zlúčenie povoľuje.",
+          "blocked": "Zablokované: chýbajú povinné recenzie alebo kontroly.",
+          "behind": "Vetva zaostáva za svojou základnou vetvou. Najprv ju aktualizujte.",
+          "dirty": "V službe GitHub treba vyriešiť konflikty zlúčenia.",
+          "draft": "Koncepty pull requestov nemožno zlúčiť.",
+          "has_hooks": "Pripravené na zlúčenie.",
+          "unknown": "GitHub stále overuje, či je možné zlúčenie."
+        },
+        "acting_as": "Akcie sa vykonávajú pod vaším účtom GitHub {login}.",
+        "request_review_label": "Požiadať o recenziu (používateľské mená GitHub oddelené čiarkami)",
+        "request_review": "Požiadať o recenziu",
+        "review_requested": "O recenziu bolo požiadané.",
+        "comment": "Komentovať",
+        "approve": "Schváliť",
+        "request_changes": "Požiadať o zmeny",
+        "review_sent": "Recenzia bola odoslaná.",
+        "merge_method": {
+          "merge": "Vytvoriť zlučovací commit",
+          "squash": "Squash a zlúčiť",
+          "rebase": "Rebase a zlúčiť"
+        },
+        "merge": "Zlúčiť",
+        "merged": "Pull request bol zlúčený.",
+        "connect_account": "Prepojte svoj vlastný účet GitHub, aby ste mohli recenzovať a zlučovať priamo z Plane.",
+        "connect_account_link": "Prepojiť účet GitHub"
+      },
+      "copy_branch": {
+        "button": "Kopírovať názov vetvy",
+        "copied": "Názov vetvy bol skopírovaný"
       }
     }
   }

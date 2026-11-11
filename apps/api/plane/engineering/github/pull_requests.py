@@ -11,25 +11,28 @@ from django.utils.dateparse import parse_datetime
 # Module imports
 from plane.engineering.github.client import GitHubClient
 from plane.engineering.github.sync import mentioned_sequence_ids, move_forward, record_pull_request
-from plane.engineering.models import WorkflowMode
+from plane.engineering.models import GitHubAccount, WorkflowMode
 from plane.engineering.work_items import add_link
 
 
-def client_for(connection):
-    return GitHubClient(connection.token, connection.repository_owner, connection.repository_name)
+def client_for(connection, user):
+    """A client for the project's repository that acts as the user when they have connected their own GitHub account."""
+    account = GitHubAccount.objects.filter(user=user).first()
+    token = account.token if account else connection.token
+    return GitHubClient(token, connection.repository_owner, connection.repository_name)
 
 
-def work_item_branches(connection, issue):
+def work_item_branches(connection, issue, user):
     """The repository's recent branches, newest first, with the ones naming this work item at the top."""
-    branches = client_for(connection).list_branches()
+    branches = client_for(connection, user).list_branches()
     for branch in branches:
         branch["suggested"] = issue.sequence_id in mentioned_sequence_ids(branch["name"], connection.project.identifier)
     return sorted(branches, key=lambda branch: not branch["suggested"])
 
 
-def preview_pull_request(connection, base, head):
+def preview_pull_request(connection, user, base, head):
     """What a pull request from head into base would contain, with the trunk-based warnings."""
-    client = client_for(connection)
+    client = client_for(connection, user)
     comparison = client.compare(base, head)
     commits = comparison.get("commits", [])
     files = comparison.get("files", [])
@@ -52,7 +55,7 @@ def preview_pull_request(connection, base, head):
 
 def open_pull_request(connection, issue, user, base, head, title, body):
     """Open the pull request on GitHub, then record and link it and move the work item, as the user who asked."""
-    pull_request = client_for(connection).create_pull_request(base, head, title, body)
+    pull_request = client_for(connection, user).create_pull_request(base, head, title, body)
     record = record_pull_request(issue, connection.repository_full_name, pull_request)
     add_link(issue, record.url, f"PR #{record.number}: {record.title}", user)
     move_forward(issue, connection.review_state, user)

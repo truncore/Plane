@@ -66,6 +66,8 @@
         "no_commits": "Deze branch heeft geen commits die nog niet in de basisbranch staan. Push eerst je werk.",
         "pr_exists": "Er is al een pull request geopend voor deze branch.",
         "protected_branch": "GitHub heeft dit geweigerd vanwege de beveiligingsregels van de branch.",
+        "no_personal_account": "Koppel je eigen GitHub-account in je profielinstellingen om dit namens jezelf te doen.",
+        "not_mergeable": "Volgens GitHub kan deze pull request nu niet worden gemerged.",
         "github_error": "GitHub gaf een onverwachte fout. Probeer het opnieuw."
       },
       "webhook": {
@@ -106,6 +108,61 @@
         "body_opened_by": "Geopend vanuit Plane door {name}.",
         "create": "Pull request maken",
         "created": "Pull request #{number} geopend."
+      },
+      "account": {
+        "title": "GitHub-account",
+        "description": "Koppel je eigen GitHub-account, zodat reviews, merges en pull requests die je vanuit Plane start op GitHub als de jouwe verschijnen. Je token wordt versleuteld opgeslagen en nooit meer getoond.",
+        "token": "Persoonlijk toegangstoken",
+        "token_hint": "Een fine-grained token voor de repository's waaraan je werkt, met Pull requests (lezen en schrijven) en Contents (lezen).",
+        "connect": "Koppelen",
+        "connected_as": "Gekoppeld als {login}"
+      },
+      "pull_request": {
+        "show": "Details",
+        "hide": "Verbergen",
+        "review_on_github": "Bekijk de wijzigingen op GitHub",
+        "reviewers": "Beoordelaars",
+        "no_reviewers": "Nog geen reviews.",
+        "checks": "Controles",
+        "no_checks": "Er zijn geen controles uitgevoerd.",
+        "verdict": {
+          "APPROVED": "Goedgekeurd",
+          "CHANGES_REQUESTED": "Wijzigingen gevraagd",
+          "COMMENTED": "Gereageerd",
+          "DISMISSED": "Afgewezen",
+          "PENDING": "Wachtend"
+        },
+        "mergeable": {
+          "clean": "Klaar om te mergen.",
+          "unstable": "Sommige controles zijn mislukt, maar GitHub staat mergen toe.",
+          "blocked": "Geblokkeerd: vereiste reviews of controles ontbreken.",
+          "behind": "De branch loopt achter op de basisbranch. Werk hem eerst bij.",
+          "dirty": "Er zijn mergeconflicten die op GitHub moeten worden opgelost.",
+          "draft": "Concept-pull requests kunnen niet worden gemerged.",
+          "has_hooks": "Klaar om te mergen.",
+          "unknown": "GitHub controleert nog of dit kan worden gemerged."
+        },
+        "acting_as": "Acties worden uitgevoerd met je GitHub-account {login}.",
+        "request_review_label": "Vraag een review aan bij (GitHub-gebruikersnamen, gescheiden door komma's)",
+        "request_review": "Review aanvragen",
+        "review_requested": "Review aangevraagd.",
+        "comment": "Reageren",
+        "approve": "Goedkeuren",
+        "request_changes": "Wijzigingen vragen",
+        "review_sent": "Review verzonden.",
+        "merge_method": {
+          "merge": "Een mergecommit maken",
+          "squash": "Squashen en mergen",
+          "rebase": "Rebasen en mergen"
+        },
+        "merge": "Mergen",
+        "merged": "Pull request gemerged.",
+        "connect_account": "Koppel je eigen GitHub-account om vanuit Plane te reviewen en te mergen.",
+        "connect_account_link": "GitHub-account koppelen"
+      },
+      "copy_branch": {
+        "button": "Branchnaam kopiëren",
+        "copied": "Branchnaam gekopieerd"
       }
     }
   }

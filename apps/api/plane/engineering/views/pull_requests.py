@@ -42,7 +42,7 @@ class WorkItemBranchesEndpoint(WorkItemPullRequestBaseEndpoint):
         if connection is None:
             return not_connected_response()
         try:
-            branches = work_item_branches(connection, issue)
+            branches = work_item_branches(connection, issue, request.user)
         except GitHubError as error:
             return github_error_response(error)
         return Response(
@@ -67,7 +67,7 @@ class WorkItemPullRequestPreviewEndpoint(WorkItemPullRequestBaseEndpoint):
         if not serializer.is_valid():
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         try:
-            preview = preview_pull_request(connection, **serializer.validated_data)
+            preview = preview_pull_request(connection, request.user, **serializer.validated_data)
         except GitHubError as error:
             return github_error_response(error)
         return Response(preview, status=status.HTTP_200_OK)

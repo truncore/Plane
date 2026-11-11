@@ -5,6 +5,11 @@
 from django.urls import path
 
 from plane.engineering.views import (
+    GitHubAccountEndpoint,
+    WorkItemPullRequestDetailsEndpoint,
+    WorkItemPullRequestMergeEndpoint,
+    WorkItemPullRequestReviewEndpoint,
+    WorkItemPullRequestReviewersEndpoint,
     GitHubConnectionEndpoint,
     GitHubConnectionTestEndpoint,
     GitHubWebhookEndpoint,
@@ -51,5 +56,26 @@ urlpatterns = [
         WorkItemPullRequestCreateEndpoint.as_view(),
         name="work-item-github-pull-requests",
     ),
+    path(
+        "workspaces/<str:slug>/projects/<uuid:project_id>/issues/<uuid:issue_id>/github/pull-requests/<uuid:pull_request_id>/",
+        WorkItemPullRequestDetailsEndpoint.as_view(),
+        name="work-item-pull-request",
+    ),
+    path(
+        "workspaces/<str:slug>/projects/<uuid:project_id>/issues/<uuid:issue_id>/github/pull-requests/<uuid:pull_request_id>/reviews/",
+        WorkItemPullRequestReviewEndpoint.as_view(),
+        name="work-item-pull-request-review",
+    ),
+    path(
+        "workspaces/<str:slug>/projects/<uuid:project_id>/issues/<uuid:issue_id>/github/pull-requests/<uuid:pull_request_id>/reviewers/",
+        WorkItemPullRequestReviewersEndpoint.as_view(),
+        name="work-item-pull-request-reviewers",
+    ),
+    path(
+        "workspaces/<str:slug>/projects/<uuid:project_id>/issues/<uuid:issue_id>/github/pull-requests/<uuid:pull_request_id>/merge/",
+        WorkItemPullRequestMergeEndpoint.as_view(),
+        name="work-item-pull-request-merge",
+    ),
+    path("users/me/github/", GitHubAccountEndpoint.as_view(), name="user-github-account"),
     path("github/webhook/", GitHubWebhookEndpoint.as_view(), name="github-webhook"),
 ]

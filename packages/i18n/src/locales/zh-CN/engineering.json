@@ -66,6 +66,8 @@
         "no_commits": "此分支没有基础分支中尚不存在的提交。请先推送您的工作。",
         "pr_exists": "此分支已有一个打开的拉取请求。",
         "protected_branch": "由于分支保护规则，GitHub 拒绝了此操作。",
+        "no_personal_account": "请在个人资料设置中连接您自己的 GitHub 账户，以您本人的身份执行此操作。",
+        "not_mergeable": "GitHub 表示此拉取请求目前无法合并。",
         "github_error": "GitHub 返回了意外错误。请重试。"
       },
       "webhook": {
@@ -106,6 +108,61 @@
         "body_opened_by": "由 {name} 从 Plane 创建。",
         "create": "创建拉取请求",
         "created": "已创建拉取请求 #{number}。"
+      },
+      "account": {
+        "title": "GitHub 账户",
+        "description": "连接您自己的 GitHub 账户后，您从 Plane 发起的审查、合并和拉取请求将在 GitHub 上显示为您本人的操作。您的令牌会加密存储，且不会再次显示。",
+        "token": "个人访问令牌",
+        "token_hint": "适用于您所参与仓库的细粒度令牌，需具备 Pull requests（读取和写入）和 Contents（读取）权限。",
+        "connect": "连接",
+        "connected_as": "已作为 {login} 连接"
+      },
+      "pull_request": {
+        "show": "详情",
+        "hide": "隐藏",
+        "review_on_github": "在 GitHub 上审查更改",
+        "reviewers": "审查者",
+        "no_reviewers": "暂无审查。",
+        "checks": "检查",
+        "no_checks": "尚未运行任何检查。",
+        "verdict": {
+          "APPROVED": "已批准",
+          "CHANGES_REQUESTED": "已请求更改",
+          "COMMENTED": "已评论",
+          "DISMISSED": "已驳回",
+          "PENDING": "等待中"
+        },
+        "mergeable": {
+          "clean": "可以合并。",
+          "unstable": "部分检查失败，但 GitHub 允许合并。",
+          "blocked": "已阻止：缺少必需的审查或检查。",
+          "behind": "该分支落后于其基础分支。请先更新。",
+          "dirty": "存在需要在 GitHub 上解决的合并冲突。",
+          "draft": "草稿拉取请求无法合并。",
+          "has_hooks": "可以合并。",
+          "unknown": "GitHub 仍在检查是否可以合并。"
+        },
+        "acting_as": "操作将以您的 GitHub 账户 {login} 执行。",
+        "request_review_label": "请求以下用户审查（GitHub 用户名，以逗号分隔）",
+        "request_review": "请求审查",
+        "review_requested": "已请求审查。",
+        "comment": "评论",
+        "approve": "批准",
+        "request_changes": "请求更改",
+        "review_sent": "已提交审查。",
+        "merge_method": {
+          "merge": "创建合并提交",
+          "squash": "压缩并合并",
+          "rebase": "变基并合并"
+        },
+        "merge": "合并",
+        "merged": "拉取请求已合并。",
+        "connect_account": "连接您自己的 GitHub 账户，即可在 Plane 中审查和合并。",
+        "connect_account_link": "连接 GitHub 账户"
+      },
+      "copy_branch": {
+        "button": "复制分支名称",
+        "copied": "已复制分支名称"
       }
     }
   }

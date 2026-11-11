@@ -66,6 +66,8 @@
         "no_commits": "Nhánh này không có commit nào chưa có trong nhánh cơ sở. Hãy push công việc của bạn trước.",
         "pr_exists": "Đã có một pull request đang mở cho nhánh này.",
         "protected_branch": "GitHub đã từ chối do quy tắc bảo vệ của nhánh.",
+        "no_personal_account": "Hãy kết nối tài khoản GitHub của riêng bạn trong cài đặt hồ sơ để thực hiện việc này với tư cách của bạn.",
+        "not_mergeable": "GitHub cho biết pull request này hiện không thể hợp nhất.",
         "github_error": "GitHub trả về lỗi không mong muốn. Hãy thử lại."
       },
       "webhook": {
@@ -106,6 +108,61 @@
         "body_opened_by": "Được mở từ Plane bởi {name}.",
         "create": "Tạo pull request",
         "created": "Đã mở pull request #{number}."
+      },
+      "account": {
+        "title": "Tài khoản GitHub",
+        "description": "Kết nối tài khoản GitHub của riêng bạn để các đánh giá, lần hợp nhất và pull request bạn khởi tạo từ Plane hiển thị là của bạn trên GitHub. Token của bạn được lưu trữ dưới dạng mã hóa và sẽ không bao giờ hiển thị lại.",
+        "token": "Token truy cập cá nhân",
+        "token_hint": "Một token fine-grained cho các kho lưu trữ bạn làm việc, với quyền Pull requests (đọc và ghi) và Contents (đọc).",
+        "connect": "Kết nối",
+        "connected_as": "Đã kết nối với tên {login}"
+      },
+      "pull_request": {
+        "show": "Chi tiết",
+        "hide": "Ẩn",
+        "review_on_github": "Xem xét các thay đổi trên GitHub",
+        "reviewers": "Người đánh giá",
+        "no_reviewers": "Chưa có đánh giá nào.",
+        "checks": "Kiểm tra",
+        "no_checks": "Chưa có kiểm tra nào được chạy.",
+        "verdict": {
+          "APPROVED": "Đã phê duyệt",
+          "CHANGES_REQUESTED": "Đã yêu cầu thay đổi",
+          "COMMENTED": "Đã bình luận",
+          "DISMISSED": "Đã bị bác bỏ",
+          "PENDING": "Đang chờ"
+        },
+        "mergeable": {
+          "clean": "Sẵn sàng hợp nhất.",
+          "unstable": "Một số kiểm tra thất bại, nhưng GitHub vẫn cho phép hợp nhất.",
+          "blocked": "Bị chặn: thiếu đánh giá hoặc kiểm tra bắt buộc.",
+          "behind": "Nhánh đang chậm hơn nhánh cơ sở. Hãy cập nhật nhánh trước.",
+          "dirty": "Có xung đột hợp nhất cần giải quyết trên GitHub.",
+          "draft": "Không thể hợp nhất pull request nháp.",
+          "has_hooks": "Sẵn sàng hợp nhất.",
+          "unknown": "GitHub vẫn đang kiểm tra xem có thể hợp nhất hay không."
+        },
+        "acting_as": "Các thao tác được thực hiện bằng tài khoản GitHub {login} của bạn.",
+        "request_review_label": "Yêu cầu đánh giá từ (tên người dùng GitHub, phân tách bằng dấu phẩy)",
+        "request_review": "Yêu cầu đánh giá",
+        "review_requested": "Đã yêu cầu đánh giá.",
+        "comment": "Bình luận",
+        "approve": "Phê duyệt",
+        "request_changes": "Yêu cầu thay đổi",
+        "review_sent": "Đã gửi đánh giá.",
+        "merge_method": {
+          "merge": "Tạo commit hợp nhất",
+          "squash": "Squash và hợp nhất",
+          "rebase": "Rebase và hợp nhất"
+        },
+        "merge": "Hợp nhất",
+        "merged": "Đã hợp nhất pull request.",
+        "connect_account": "Kết nối tài khoản GitHub của riêng bạn để đánh giá và hợp nhất từ Plane.",
+        "connect_account_link": "Kết nối tài khoản GitHub"
+      },
+      "copy_branch": {
+        "button": "Sao chép tên nhánh",
+        "copied": "Đã sao chép tên nhánh"
       }
     }
   }

@@ -66,6 +66,8 @@
         "no_commits": "Ta gałąź nie ma commitów, których nie ma już w gałęzi bazowej. Najpierw wypchnij swoje zmiany.",
         "pr_exists": "Dla tej gałęzi jest już otwarty pull request.",
         "protected_branch": "GitHub odmówił z powodu reguł ochrony gałęzi.",
+        "no_personal_account": "Połącz własne konto GitHub w ustawieniach profilu, aby wykonać tę czynność we własnym imieniu.",
+        "not_mergeable": "Według GitHub tego pull requesta nie można teraz scalić.",
         "github_error": "GitHub zwrócił nieoczekiwany błąd. Spróbuj ponownie."
       },
       "webhook": {
@@ -106,6 +108,61 @@
         "body_opened_by": "Otwarty z Plane przez {name}.",
         "create": "Utwórz pull request",
         "created": "Otwarto pull request #{number}."
+      },
+      "account": {
+        "title": "Konto GitHub",
+        "description": "Połącz własne konto GitHub, aby recenzje, scalenia i pull requesty uruchamiane z Plane były widoczne w GitHub jako Twoje. Token jest przechowywany w postaci zaszyfrowanej i nigdy nie jest ponownie wyświetlany.",
+        "token": "Osobisty token dostępu",
+        "token_hint": "Token fine-grained dla repozytoriów, nad którymi pracujesz, z uprawnieniami Pull requests (odczyt i zapis) oraz Contents (odczyt).",
+        "connect": "Połącz",
+        "connected_as": "Połączono jako {login}"
+      },
+      "pull_request": {
+        "show": "Szczegóły",
+        "hide": "Ukryj",
+        "review_on_github": "Przejrzyj zmiany w GitHub",
+        "reviewers": "Recenzenci",
+        "no_reviewers": "Brak recenzji.",
+        "checks": "Kontrole",
+        "no_checks": "Nie uruchomiono żadnych kontroli.",
+        "verdict": {
+          "APPROVED": "Zatwierdzono",
+          "CHANGES_REQUESTED": "Zażądano zmian",
+          "COMMENTED": "Skomentowano",
+          "DISMISSED": "Odrzucono",
+          "PENDING": "Oczekuje"
+        },
+        "mergeable": {
+          "clean": "Gotowy do scalenia.",
+          "unstable": "Niektóre kontrole nie powiodły się, ale GitHub pozwala na scalenie.",
+          "blocked": "Zablokowany: brakuje wymaganych recenzji lub kontroli.",
+          "behind": "Gałąź jest za swoją gałęzią bazową. Najpierw ją zaktualizuj.",
+          "dirty": "Istnieją konflikty scalania do rozwiązania w GitHub.",
+          "draft": "Szkiców pull requestów nie można scalić.",
+          "has_hooks": "Gotowy do scalenia.",
+          "unknown": "GitHub nadal sprawdza, czy można to scalić."
+        },
+        "acting_as": "Działania są wykonywane z Twojego konta GitHub {login}.",
+        "request_review_label": "Poproś o recenzję (nazwy użytkowników GitHub oddzielone przecinkami)",
+        "request_review": "Poproś o recenzję",
+        "review_requested": "Poproszono o recenzję.",
+        "comment": "Skomentuj",
+        "approve": "Zatwierdź",
+        "request_changes": "Zażądaj zmian",
+        "review_sent": "Wysłano recenzję.",
+        "merge_method": {
+          "merge": "Utwórz commit scalający",
+          "squash": "Squash i scal",
+          "rebase": "Rebase i scal"
+        },
+        "merge": "Scal",
+        "merged": "Scalono pull request.",
+        "connect_account": "Połącz własne konto GitHub, aby recenzować i scalać z poziomu Plane.",
+        "connect_account_link": "Połącz konto GitHub"
+      },
+      "copy_branch": {
+        "button": "Kopiuj nazwę gałęzi",
+        "copied": "Skopiowano nazwę gałęzi"
       }
     }
   }

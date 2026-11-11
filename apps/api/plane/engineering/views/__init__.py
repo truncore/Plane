@@ -9,10 +9,22 @@ from .pull_requests import (
     WorkItemPullRequestCreateEndpoint,
     WorkItemPullRequestPreviewEndpoint,
 )
+from .reviews import (
+    GitHubAccountEndpoint,
+    WorkItemPullRequestDetailsEndpoint,
+    WorkItemPullRequestMergeEndpoint,
+    WorkItemPullRequestReviewEndpoint,
+    WorkItemPullRequestReviewersEndpoint,
+)
 from .story_progress import StoryProgressEndpoint
 from .work_item_github import WorkItemGitHubEndpoint
 
 __all__ = [
+    "GitHubAccountEndpoint",
+    "WorkItemPullRequestDetailsEndpoint",
+    "WorkItemPullRequestMergeEndpoint",
+    "WorkItemPullRequestReviewEndpoint",
+    "WorkItemPullRequestReviewersEndpoint",
     "GitHubConnectionEndpoint",
     "GitHubConnectionTestEndpoint",
     "GitHubWebhookEndpoint",

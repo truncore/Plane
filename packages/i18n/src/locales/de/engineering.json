@@ -66,6 +66,8 @@
         "no_commits": "Dieser Branch enthält keine Commits, die nicht bereits im Basis-Branch sind. Pushen Sie zuerst Ihre Arbeit.",
         "pr_exists": "Für diesen Branch ist bereits ein Pull Request geöffnet.",
         "protected_branch": "GitHub hat die Aktion aufgrund der Schutzregeln des Branches abgelehnt.",
+        "no_personal_account": "Verbinden Sie in Ihren Profileinstellungen Ihr eigenes GitHub-Konto, um dies in Ihrem Namen zu tun.",
+        "not_mergeable": "Laut GitHub kann dieser Pull Request derzeit nicht gemergt werden.",
         "github_error": "GitHub hat einen unerwarteten Fehler zurückgegeben. Versuchen Sie es erneut."
       },
       "webhook": {
@@ -106,6 +108,61 @@
         "body_opened_by": "Aus Plane geöffnet von {name}.",
         "create": "Pull Request erstellen",
         "created": "Pull Request #{number} geöffnet."
+      },
+      "account": {
+        "title": "GitHub-Konto",
+        "description": "Verbinden Sie Ihr eigenes GitHub-Konto, damit Reviews, Merges und Pull Requests, die Sie in Plane starten, auf GitHub als Ihre angezeigt werden. Ihr Token wird verschlüsselt gespeichert und nie wieder angezeigt.",
+        "token": "Persönliches Zugriffstoken",
+        "token_hint": "Ein Fine-grained Token für die Repositorys, an denen Sie arbeiten, mit Pull requests (Lesen und Schreiben) und Contents (Lesen).",
+        "connect": "Verbinden",
+        "connected_as": "Verbunden als {login}"
+      },
+      "pull_request": {
+        "show": "Details",
+        "hide": "Ausblenden",
+        "review_on_github": "Änderungen auf GitHub reviewen",
+        "reviewers": "Reviewer",
+        "no_reviewers": "Noch keine Reviews.",
+        "checks": "Prüfungen",
+        "no_checks": "Es wurden keine Prüfungen ausgeführt.",
+        "verdict": {
+          "APPROVED": "Genehmigt",
+          "CHANGES_REQUESTED": "Änderungen angefordert",
+          "COMMENTED": "Kommentiert",
+          "DISMISSED": "Verworfen",
+          "PENDING": "Ausstehend"
+        },
+        "mergeable": {
+          "clean": "Bereit zum Mergen.",
+          "unstable": "Einige Prüfungen sind fehlgeschlagen, aber GitHub erlaubt das Mergen.",
+          "blocked": "Blockiert: Erforderliche Reviews oder Prüfungen fehlen.",
+          "behind": "Der Branch liegt hinter seinem Basis-Branch zurück. Aktualisieren Sie ihn zuerst.",
+          "dirty": "Es gibt Merge-Konflikte, die auf GitHub gelöst werden müssen.",
+          "draft": "Pull-Request-Entwürfe können nicht gemergt werden.",
+          "has_hooks": "Bereit zum Mergen.",
+          "unknown": "GitHub prüft noch, ob dies gemergt werden kann."
+        },
+        "acting_as": "Aktionen werden mit Ihrem GitHub-Konto {login} ausgeführt.",
+        "request_review_label": "Review anfordern von (GitHub-Benutzernamen, durch Kommas getrennt)",
+        "request_review": "Review anfordern",
+        "review_requested": "Review angefordert.",
+        "comment": "Kommentieren",
+        "approve": "Genehmigen",
+        "request_changes": "Änderungen anfordern",
+        "review_sent": "Review gesendet.",
+        "merge_method": {
+          "merge": "Merge-Commit erstellen",
+          "squash": "Squash und Merge",
+          "rebase": "Rebase und Merge"
+        },
+        "merge": "Mergen",
+        "merged": "Pull Request gemergt.",
+        "connect_account": "Verbinden Sie Ihr eigenes GitHub-Konto, um in Plane zu reviewen und zu mergen.",
+        "connect_account_link": "GitHub-Konto verbinden"
+      },
+      "copy_branch": {
+        "button": "Branch-Namen kopieren",
+        "copied": "Branch-Name kopiert"
       }
     }
   }

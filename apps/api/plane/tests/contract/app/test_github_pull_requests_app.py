@@ -17,9 +17,7 @@ from plane.db.models import Issue, IssueLink, Project, ProjectMember, State, Wor
 from plane.engineering.models import GitHubConnection, PullRequest
 from plane.engineering.serializers import GitHubConnectionSerializer
 from plane.tests.factories import UserFactory
-
-REQUEST_PATH = "plane.engineering.github.client.requests.request"
-API = "https://api.github.com"
+from plane.tests.github_fakes import REQUEST_PATH, FakeGitHub, response
 
 
 @pytest.fixture
@@ -57,25 +55,6 @@ def activity():
         mock.patch("plane.engineering.work_items.model_activity"),
     ):
         yield issue_activity
-
-
-def response(status_code=200, json=None):
-    fake = mock.Mock(status_code=status_code, ok=status_code < 400, headers={}, content=b"{}")
-    fake.json.return_value = json if json is not None else {}
-    return fake
-
-
-class FakeGitHub:
-    """Answers GitHub API requests by (method, path) with canned responses, and records them."""
-
-    def __init__(self, routes):
-        self.routes = routes
-        self.calls = []
-
-    def __call__(self, method, url, **kwargs):
-        path = url.removeprefix(API)
-        self.calls.append((method, path, kwargs))
-        return self.routes[(method, path)]
 
 
 def branches_graphql(*names_and_dates):

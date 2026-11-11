@@ -66,6 +66,8 @@
         "no_commits": "Este branch não tem commits que ainda não estejam no branch base. Faça push do seu trabalho primeiro.",
         "pr_exists": "Já existe um pull request aberto para este branch.",
         "protected_branch": "O GitHub recusou por causa das regras de proteção do branch.",
+        "no_personal_account": "Conecte sua própria conta do GitHub nas configurações do seu perfil para fazer isso em seu nome.",
+        "not_mergeable": "Segundo o GitHub, este pull request não pode ser mesclado agora.",
         "github_error": "O GitHub retornou um erro inesperado. Tente novamente."
       },
       "webhook": {
@@ -106,6 +108,61 @@
         "body_opened_by": "Aberto a partir do Plane por {name}.",
         "create": "Criar pull request",
         "created": "Pull request #{number} aberto."
+      },
+      "account": {
+        "title": "Conta do GitHub",
+        "description": "Conecte sua própria conta do GitHub para que revisões, merges e pull requests que você iniciar no Plane apareçam como seus no GitHub. Seu token é armazenado criptografado e nunca mais é exibido.",
+        "token": "Token de acesso pessoal",
+        "token_hint": "Um token refinado para os repositórios em que você trabalha, com Pull requests (leitura e gravação) e Contents (leitura).",
+        "connect": "Conectar",
+        "connected_as": "Conectado como {login}"
+      },
+      "pull_request": {
+        "show": "Detalhes",
+        "hide": "Ocultar",
+        "review_on_github": "Revisar as alterações no GitHub",
+        "reviewers": "Revisores",
+        "no_reviewers": "Nenhuma revisão ainda.",
+        "checks": "Verificações",
+        "no_checks": "Nenhuma verificação foi executada.",
+        "verdict": {
+          "APPROVED": "Aprovado",
+          "CHANGES_REQUESTED": "Alterações solicitadas",
+          "COMMENTED": "Comentado",
+          "DISMISSED": "Descartado",
+          "PENDING": "Aguardando"
+        },
+        "mergeable": {
+          "clean": "Pronto para mesclar.",
+          "unstable": "Algumas verificações falharam, mas o GitHub permite mesclar.",
+          "blocked": "Bloqueado: faltam revisões ou verificações obrigatórias.",
+          "behind": "O branch está atrás do branch base. Atualize-o primeiro.",
+          "dirty": "Há conflitos de merge para resolver no GitHub.",
+          "draft": "Pull requests em rascunho não podem ser mesclados.",
+          "has_hooks": "Pronto para mesclar.",
+          "unknown": "O GitHub ainda está verificando se é possível mesclar."
+        },
+        "acting_as": "As ações são executadas com sua conta do GitHub {login}.",
+        "request_review_label": "Solicitar revisão de (nomes de usuário do GitHub, separados por vírgulas)",
+        "request_review": "Solicitar revisão",
+        "review_requested": "Revisão solicitada.",
+        "comment": "Comentar",
+        "approve": "Aprovar",
+        "request_changes": "Solicitar alterações",
+        "review_sent": "Revisão enviada.",
+        "merge_method": {
+          "merge": "Criar um commit de merge",
+          "squash": "Fazer squash e mesclar",
+          "rebase": "Fazer rebase e mesclar"
+        },
+        "merge": "Mesclar",
+        "merged": "Pull request mesclado.",
+        "connect_account": "Conecte sua própria conta do GitHub para revisar e mesclar pelo Plane.",
+        "connect_account_link": "Conectar conta do GitHub"
+      },
+      "copy_branch": {
+        "button": "Copiar nome do branch",
+        "copied": "Nome do branch copiado"
       }
     }
   }

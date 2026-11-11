@@ -66,6 +66,8 @@
         "no_commits": "此分支沒有基礎分支中尚未包含的提交。請先推送您的工作。",
         "pr_exists": "此分支已有一個開啟中的拉取請求。",
         "protected_branch": "由於分支保護規則，GitHub 拒絕了此操作。",
+        "no_personal_account": "請在個人資料設定中連接您自己的 GitHub 帳戶，以您本人的身分執行此操作。",
+        "not_mergeable": "GitHub 表示此拉取請求目前無法合併。",
         "github_error": "GitHub 傳回了非預期的錯誤。請再試一次。"
       },
       "webhook": {
@@ -106,6 +108,61 @@
         "body_opened_by": "由 {name} 從 Plane 建立。",
         "create": "建立拉取請求",
         "created": "已建立拉取請求 #{number}。"
+      },
+      "account": {
+        "title": "GitHub 帳戶",
+        "description": "連接您自己的 GitHub 帳戶後，您從 Plane 發起的審查、合併和拉取請求會在 GitHub 上顯示為您本人的操作。您的權杖會加密儲存，且不會再次顯示。",
+        "token": "個人存取權杖",
+        "token_hint": "適用於您參與之儲存庫的細粒度權杖，需具備 Pull requests（讀取和寫入）和 Contents（讀取）權限。",
+        "connect": "連接",
+        "connected_as": "已以 {login} 身分連接"
+      },
+      "pull_request": {
+        "show": "詳細資料",
+        "hide": "隱藏",
+        "review_on_github": "在 GitHub 上審查變更",
+        "reviewers": "審查者",
+        "no_reviewers": "尚無審查。",
+        "checks": "檢查",
+        "no_checks": "尚未執行任何檢查。",
+        "verdict": {
+          "APPROVED": "已核准",
+          "CHANGES_REQUESTED": "已要求變更",
+          "COMMENTED": "已留言",
+          "DISMISSED": "已駁回",
+          "PENDING": "等待中"
+        },
+        "mergeable": {
+          "clean": "可以合併。",
+          "unstable": "部分檢查失敗，但 GitHub 允許合併。",
+          "blocked": "已封鎖：缺少必要的審查或檢查。",
+          "behind": "此分支落後於其基礎分支。請先更新。",
+          "dirty": "有需要在 GitHub 上解決的合併衝突。",
+          "draft": "草稿拉取請求無法合併。",
+          "has_hooks": "可以合併。",
+          "unknown": "GitHub 仍在檢查是否可以合併。"
+        },
+        "acting_as": "操作將以您的 GitHub 帳戶 {login} 執行。",
+        "request_review_label": "要求以下使用者審查（GitHub 使用者名稱，以逗號分隔）",
+        "request_review": "要求審查",
+        "review_requested": "已要求審查。",
+        "comment": "留言",
+        "approve": "核准",
+        "request_changes": "要求變更",
+        "review_sent": "已送出審查。",
+        "merge_method": {
+          "merge": "建立合併提交",
+          "squash": "壓縮並合併",
+          "rebase": "重訂基底並合併"
+        },
+        "merge": "合併",
+        "merged": "拉取請求已合併。",
+        "connect_account": "連接您自己的 GitHub 帳戶，即可在 Plane 中審查和合併。",
+        "connect_account_link": "連接 GitHub 帳戶"
+      },
+      "copy_branch": {
+        "button": "複製分支名稱",
+        "copied": "已複製分支名稱"
       }
     }
   }

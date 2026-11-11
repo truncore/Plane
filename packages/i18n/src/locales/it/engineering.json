@@ -66,6 +66,8 @@
         "no_commits": "Questo branch non ha commit che non siano già nel branch di base. Esegua prima il push del suo lavoro.",
         "pr_exists": "Per questo branch è già aperta una pull request.",
         "protected_branch": "GitHub ha rifiutato l'operazione a causa delle regole di protezione del branch.",
+        "no_personal_account": "Colleghi il suo account GitHub personale nelle impostazioni del profilo per eseguire questa operazione a suo nome.",
+        "not_mergeable": "Secondo GitHub, questa pull request non può essere unita al momento.",
         "github_error": "GitHub ha restituito un errore imprevisto. Riprovi."
       },
       "webhook": {
@@ -106,6 +108,61 @@
         "body_opened_by": "Aperta tramite Plane da {name}.",
         "create": "Crea pull request",
         "created": "Pull request #{number} aperta."
+      },
+      "account": {
+        "title": "Account GitHub",
+        "description": "Colleghi il suo account GitHub personale, così le revisioni, i merge e le pull request avviati da Plane risulteranno suoi su GitHub. Il token viene salvato in forma crittografata e non viene più mostrato.",
+        "token": "Token di accesso personale",
+        "token_hint": "Un token a granularità fine per i repository su cui lavora, con Pull requests (lettura e scrittura) e Contents (lettura).",
+        "connect": "Collega",
+        "connected_as": "Collegato come {login}"
+      },
+      "pull_request": {
+        "show": "Dettagli",
+        "hide": "Nascondi",
+        "review_on_github": "Esamina le modifiche su GitHub",
+        "reviewers": "Revisori",
+        "no_reviewers": "Ancora nessuna revisione.",
+        "checks": "Controlli",
+        "no_checks": "Non è stato eseguito alcun controllo.",
+        "verdict": {
+          "APPROVED": "Approvata",
+          "CHANGES_REQUESTED": "Modifiche richieste",
+          "COMMENTED": "Commentata",
+          "DISMISSED": "Respinta",
+          "PENDING": "In attesa"
+        },
+        "mergeable": {
+          "clean": "Pronta per il merge.",
+          "unstable": "Alcuni controlli non sono riusciti, ma GitHub consente il merge.",
+          "blocked": "Bloccata: mancano revisioni o controlli obbligatori.",
+          "behind": "Il branch è indietro rispetto al branch di base. Lo aggiorni prima.",
+          "dirty": "Ci sono conflitti di merge da risolvere su GitHub.",
+          "draft": "Le pull request in bozza non possono essere unite.",
+          "has_hooks": "Pronta per il merge.",
+          "unknown": "GitHub sta ancora verificando se è possibile eseguire il merge."
+        },
+        "acting_as": "Le azioni vengono eseguite con il suo account GitHub {login}.",
+        "request_review_label": "Richiedi una revisione a (nomi utente GitHub, separati da virgole)",
+        "request_review": "Richiedi revisione",
+        "review_requested": "Revisione richiesta.",
+        "comment": "Commenta",
+        "approve": "Approva",
+        "request_changes": "Richiedi modifiche",
+        "review_sent": "Revisione inviata.",
+        "merge_method": {
+          "merge": "Crea un commit di merge",
+          "squash": "Squash e merge",
+          "rebase": "Rebase e merge"
+        },
+        "merge": "Esegui merge",
+        "merged": "Pull request unita.",
+        "connect_account": "Colleghi il suo account GitHub personale per revisionare ed eseguire merge da Plane.",
+        "connect_account_link": "Collega account GitHub"
+      },
+      "copy_branch": {
+        "button": "Copia nome del branch",
+        "copied": "Nome del branch copiato"
       }
     }
   }

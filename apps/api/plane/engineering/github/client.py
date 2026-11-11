@@ -37,6 +37,8 @@ ERROR_MESSAGES = {
     "no_commits": "The branch has no commits that aren't already in the base branch.",
     "pr_exists": "An open pull request already exists for this branch.",
     "protected_branch": "GitHub refused because of the branch's protection rules.",
+    "no_personal_account": "Connect your own GitHub account in your profile settings to do this as yourself.",
+    "not_mergeable": "GitHub says the pull request can't be merged right now.",
     "github_error": "GitHub returned an unexpected error.",
 }
 
@@ -78,8 +80,9 @@ def is_valid_branch(name):
 
 
 class GitHubClient:
-    def __init__(self, token, owner, repository):
-        if not is_valid_repository(owner, repository):
+    def __init__(self, token, owner=None, repository=None):
+        """A client for one repository; without one, only account-level calls such as get_user work."""
+        if owner is not None and not is_valid_repository(owner, repository):
             raise ValueError("Invalid repository")
         self.owner = owner
         self.repository = repository
@@ -111,6 +114,8 @@ class GitHubClient:
             return GitHubError("forbidden")
         if response.status_code == 404:
             return GitHubError(not_found)
+        if response.status_code == 405:
+            return GitHubError("not_mergeable")
         try:
             body = response.json()
         except ValueError:
@@ -166,3 +171,30 @@ class GitHubClient:
         return self.request(
             "POST", f"{self.repository_path}/pulls", json={"base": base, "head": head, "title": title, "body": body}
         )
+
+    def get_user(self):
+        return self.request("GET", "/user")
+
+    def get_pull_request(self, number):
+        return self.request("GET", f"{self.repository_path}/pulls/{number}")
+
+    def list_reviews(self, number):
+        return self.request("GET", f"{self.repository_path}/pulls/{number}/reviews", params={"per_page": 100})
+
+    def list_check_runs(self, sha):
+        return self.request("GET", f"{self.repository_path}/commits/{sha}/check-runs", params={"per_page": 100})[
+            "check_runs"
+        ]
+
+    def create_review(self, number, event, body):
+        return self.request(
+            "POST", f"{self.repository_path}/pulls/{number}/reviews", json={"event": event, "body": body}
+        )
+
+    def request_reviewers(self, number, reviewers):
+        return self.request(
+            "POST", f"{self.repository_path}/pulls/{number}/requested_reviewers", json={"reviewers": reviewers}
+        )
+
+    def merge_pull_request(self, number, method):
+        return self.request("PUT", f"{self.repository_path}/pulls/{number}/merge", json={"merge_method": method})

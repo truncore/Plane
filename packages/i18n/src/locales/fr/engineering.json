@@ -66,6 +66,8 @@
         "no_commits": "Cette branche ne contient aucun commit qui ne soit pas déjà dans la branche de base. Poussez d'abord votre travail.",
         "pr_exists": "Une pull request est déjà ouverte pour cette branche.",
         "protected_branch": "GitHub a refusé en raison des règles de protection de la branche.",
+        "no_personal_account": "Connectez votre propre compte GitHub dans les paramètres de votre profil pour effectuer cette action en votre nom.",
+        "not_mergeable": "Selon GitHub, cette pull request ne peut pas être fusionnée pour le moment.",
         "github_error": "GitHub a renvoyé une erreur inattendue. Réessayez."
       },
       "webhook": {
@@ -106,6 +108,61 @@
         "body_opened_by": "Ouverte depuis Plane par {name}.",
         "create": "Créer la pull request",
         "created": "Pull request #{number} ouverte."
+      },
+      "account": {
+        "title": "Compte GitHub",
+        "description": "Connectez votre propre compte GitHub pour que les revues, fusions et pull requests que vous lancez depuis Plane apparaissent à votre nom sur GitHub. Votre jeton est stocké chiffré et n'est plus jamais affiché.",
+        "token": "Jeton d'accès personnel",
+        "token_hint": "Un jeton à granularité fine pour les dépôts sur lesquels vous travaillez, avec Pull requests (lecture et écriture) et Contents (lecture).",
+        "connect": "Connecter",
+        "connected_as": "Connecté en tant que {login}"
+      },
+      "pull_request": {
+        "show": "Détails",
+        "hide": "Masquer",
+        "review_on_github": "Examiner les modifications sur GitHub",
+        "reviewers": "Relecteurs",
+        "no_reviewers": "Aucune revue pour l'instant.",
+        "checks": "Vérifications",
+        "no_checks": "Aucune vérification n'a été exécutée.",
+        "verdict": {
+          "APPROVED": "Approuvée",
+          "CHANGES_REQUESTED": "Modifications demandées",
+          "COMMENTED": "Commentée",
+          "DISMISSED": "Révoquée",
+          "PENDING": "En attente"
+        },
+        "mergeable": {
+          "clean": "Prête à être fusionnée.",
+          "unstable": "Certaines vérifications ont échoué, mais GitHub autorise la fusion.",
+          "blocked": "Bloquée : des revues ou vérifications requises manquent.",
+          "behind": "La branche est en retard sur sa branche de base. Mettez-la d'abord à jour.",
+          "dirty": "Il y a des conflits de fusion à résoudre sur GitHub.",
+          "draft": "Les pull requests en brouillon ne peuvent pas être fusionnées.",
+          "has_hooks": "Prête à être fusionnée.",
+          "unknown": "GitHub vérifie encore si la fusion est possible."
+        },
+        "acting_as": "Les actions sont effectuées avec votre compte GitHub {login}.",
+        "request_review_label": "Demander une revue à (noms d'utilisateur GitHub, séparés par des virgules)",
+        "request_review": "Demander une revue",
+        "review_requested": "Revue demandée.",
+        "comment": "Commenter",
+        "approve": "Approuver",
+        "request_changes": "Demander des modifications",
+        "review_sent": "Revue envoyée.",
+        "merge_method": {
+          "merge": "Créer un commit de fusion",
+          "squash": "Squasher et fusionner",
+          "rebase": "Rebaser et fusionner"
+        },
+        "merge": "Fusionner",
+        "merged": "Pull request fusionnée.",
+        "connect_account": "Connectez votre propre compte GitHub pour relire et fusionner depuis Plane.",
+        "connect_account_link": "Connecter le compte GitHub"
+      },
+      "copy_branch": {
+        "button": "Copier le nom de la branche",
+        "copied": "Nom de la branche copié"
       }
     }
   }

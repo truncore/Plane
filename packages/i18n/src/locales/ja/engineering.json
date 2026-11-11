@@ -66,6 +66,8 @@
         "no_commits": "このブランチには、ベースブランチにまだ含まれていないコミットがありません。先に作業をプッシュしてください。",
         "pr_exists": "このブランチにはすでにオープンなプルリクエストがあります。",
         "protected_branch": "ブランチの保護ルールにより、GitHubが拒否しました。",
+        "no_personal_account": "これを自分として実行するには、プロフィール設定で自分のGitHubアカウントを接続してください。",
+        "not_mergeable": "GitHubによると、このプルリクエストは現在マージできません。",
         "github_error": "GitHubから予期しないエラーが返されました。もう一度お試しください。"
       },
       "webhook": {
@@ -106,6 +108,61 @@
         "body_opened_by": "{name}がPlaneから作成しました。",
         "create": "プルリクエストを作成",
         "created": "プルリクエスト#{number}を作成しました。"
+      },
+      "account": {
+        "title": "GitHubアカウント",
+        "description": "自分のGitHubアカウントを接続すると、Planeから開始したレビュー、マージ、プルリクエストがGitHub上であなたのものとして表示されます。トークンは暗号化して保存され、再表示されることはありません。",
+        "token": "個人用アクセストークン",
+        "token_hint": "作業するリポジトリ用のfine-grainedトークンで、Pull requests（読み取りと書き込み）とContents（読み取り）の権限を持つものです。",
+        "connect": "接続",
+        "connected_as": "{login}として接続済み"
+      },
+      "pull_request": {
+        "show": "詳細",
+        "hide": "非表示",
+        "review_on_github": "GitHubで変更をレビュー",
+        "reviewers": "レビュアー",
+        "no_reviewers": "まだレビューはありません。",
+        "checks": "チェック",
+        "no_checks": "実行されたチェックはありません。",
+        "verdict": {
+          "APPROVED": "承認済み",
+          "CHANGES_REQUESTED": "変更リクエスト済み",
+          "COMMENTED": "コメント済み",
+          "DISMISSED": "却下",
+          "PENDING": "待機中"
+        },
+        "mergeable": {
+          "clean": "マージできます。",
+          "unstable": "一部のチェックが失敗しましたが、GitHubはマージを許可しています。",
+          "blocked": "ブロック中：必須のレビューまたはチェックが不足しています。",
+          "behind": "ブランチがベースブランチより遅れています。先に更新してください。",
+          "dirty": "GitHubで解決が必要なマージコンフリクトがあります。",
+          "draft": "ドラフトのプルリクエストはマージできません。",
+          "has_hooks": "マージできます。",
+          "unknown": "GitHubがマージ可能かどうかをまだ確認しています。"
+        },
+        "acting_as": "操作はあなたのGitHubアカウント{login}で実行されます。",
+        "request_review_label": "レビューを依頼する相手（GitHubユーザー名、カンマ区切り）",
+        "request_review": "レビューを依頼",
+        "review_requested": "レビューを依頼しました。",
+        "comment": "コメント",
+        "approve": "承認",
+        "request_changes": "変更をリクエスト",
+        "review_sent": "レビューを送信しました。",
+        "merge_method": {
+          "merge": "マージコミットを作成",
+          "squash": "スカッシュしてマージ",
+          "rebase": "リベースしてマージ"
+        },
+        "merge": "マージ",
+        "merged": "プルリクエストをマージしました。",
+        "connect_account": "Planeからレビューやマージを行うには、自分のGitHubアカウントを接続してください。",
+        "connect_account_link": "GitHubアカウントを接続"
+      },
+      "copy_branch": {
+        "button": "ブランチ名をコピー",
+        "copied": "ブランチ名をコピーしました"
       }
     }
   }

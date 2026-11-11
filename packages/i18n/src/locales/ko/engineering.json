@@ -66,6 +66,8 @@
         "no_commits": "이 브랜치에는 베이스 브랜치에 아직 없는 커밋이 없습니다. 먼저 작업을 푸시하십시오.",
         "pr_exists": "이 브랜치에 대한 풀 리퀘스트가 이미 열려 있습니다.",
         "protected_branch": "브랜치 보호 규칙으로 인해 GitHub에서 거부했습니다.",
+        "no_personal_account": "본인 이름으로 이 작업을 하려면 프로필 설정에서 본인의 GitHub 계정을 연결하십시오.",
+        "not_mergeable": "GitHub에 따르면 이 풀 리퀘스트는 지금 병합할 수 없습니다.",
         "github_error": "GitHub에서 예기치 않은 오류를 반환했습니다. 다시 시도하십시오."
       },
       "webhook": {
@@ -106,6 +108,61 @@
         "body_opened_by": "{name}님이 Plane에서 열었습니다.",
         "create": "풀 리퀘스트 생성",
         "created": "풀 리퀘스트 #{number}이(가) 열렸습니다."
+      },
+      "account": {
+        "title": "GitHub 계정",
+        "description": "본인의 GitHub 계정을 연결하면 Plane에서 시작한 리뷰, 병합, 풀 리퀘스트가 GitHub에 본인 이름으로 표시됩니다. 토큰은 암호화되어 저장되며 다시 표시되지 않습니다.",
+        "token": "개인 액세스 토큰",
+        "token_hint": "작업하는 리포지토리에 대한 세분화된(fine-grained) 토큰으로, Pull requests(읽기 및 쓰기) 및 Contents(읽기) 권한이 있어야 합니다.",
+        "connect": "연결",
+        "connected_as": "{login}(으)로 연결됨"
+      },
+      "pull_request": {
+        "show": "세부 정보",
+        "hide": "숨기기",
+        "review_on_github": "GitHub에서 변경 사항 리뷰",
+        "reviewers": "리뷰어",
+        "no_reviewers": "아직 리뷰가 없습니다.",
+        "checks": "검사",
+        "no_checks": "실행된 검사가 없습니다.",
+        "verdict": {
+          "APPROVED": "승인됨",
+          "CHANGES_REQUESTED": "변경 요청됨",
+          "COMMENTED": "댓글 작성됨",
+          "DISMISSED": "기각됨",
+          "PENDING": "대기 중"
+        },
+        "mergeable": {
+          "clean": "병합할 준비가 되었습니다.",
+          "unstable": "일부 검사가 실패했지만 GitHub에서 병합을 허용합니다.",
+          "blocked": "차단됨: 필수 리뷰 또는 검사가 누락되었습니다.",
+          "behind": "브랜치가 베이스 브랜치보다 뒤처져 있습니다. 먼저 업데이트하십시오.",
+          "dirty": "GitHub에서 해결해야 할 병합 충돌이 있습니다.",
+          "draft": "초안 풀 리퀘스트는 병합할 수 없습니다.",
+          "has_hooks": "병합할 준비가 되었습니다.",
+          "unknown": "GitHub에서 병합 가능 여부를 아직 확인하고 있습니다."
+        },
+        "acting_as": "작업은 GitHub 계정 {login}(으)로 실행됩니다.",
+        "request_review_label": "리뷰를 요청할 사용자(GitHub 사용자 이름, 쉼표로 구분)",
+        "request_review": "리뷰 요청",
+        "review_requested": "리뷰를 요청했습니다.",
+        "comment": "댓글",
+        "approve": "승인",
+        "request_changes": "변경 요청",
+        "review_sent": "리뷰를 보냈습니다.",
+        "merge_method": {
+          "merge": "병합 커밋 만들기",
+          "squash": "스쿼시 및 병합",
+          "rebase": "리베이스 및 병합"
+        },
+        "merge": "병합",
+        "merged": "풀 리퀘스트가 병합되었습니다.",
+        "connect_account": "Plane에서 리뷰하고 병합하려면 본인의 GitHub 계정을 연결하십시오.",
+        "connect_account_link": "GitHub 계정 연결"
+      },
+      "copy_branch": {
+        "button": "브랜치 이름 복사",
+        "copied": "브랜치 이름이 복사되었습니다"
       }
     }
   }

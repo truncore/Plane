@@ -11,6 +11,7 @@ import { useTranslation } from "@plane/i18n";
 import { EIssueServiceType } from "@plane/types";
 import type { TIssueServiceType, TWorkItemWidgets } from "@plane/types";
 // components
+import { CopyBranchNameButton } from "@/components/engineering/github/copy-branch-name-button";
 import { CreatePullRequestButton } from "@/components/engineering/github/create-pull-request-button";
 // local imports
 import { IssueAttachmentActionButton } from "./attachments";
@@ -93,12 +94,15 @@ export function IssueDetailWidgetActionButtons(props: Props) {
         />
       )}
       {issueServiceType === EIssueServiceType.ISSUES && (
-        <CreatePullRequestButton
-          workspaceSlug={workspaceSlug}
-          projectId={projectId}
-          workItemId={issueId}
-          disabled={disabled}
-        />
+        <>
+          <CopyBranchNameButton projectId={projectId} workItemId={issueId} />
+          <CreatePullRequestButton
+            workspaceSlug={workspaceSlug}
+            projectId={projectId}
+            workItemId={issueId}
+            disabled={disabled}
+          />
+        </>
       )}
     </div>
   );

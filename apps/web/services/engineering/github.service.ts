@@ -7,6 +7,10 @@
 import { API_BASE_URL } from "@plane/constants";
 import type {
   TCreatePullRequest,
+  TGitHubAccount,
+  TMergeMethod,
+  TPullRequestDetails,
+  TReviewEvent,
   TGitHubConnectionCheck,
   TGitHubConnectionPayload,
   TGitHubSettings,
@@ -104,6 +108,91 @@ export class GitHubService extends APIService {
   ): Promise<TPullRequest> {
     return this.post(`${this.workItemUrl(workspaceSlug, projectId, workItemId)}pull-requests/`, data)
       .then((response) => response?.data)
+      .catch((error) => {
+        throw error?.response?.data;
+      });
+  }
+
+  private pullRequestUrl(workspaceSlug: string, projectId: string, workItemId: string, pullRequestId: string) {
+    return `${this.workItemUrl(workspaceSlug, projectId, workItemId)}pull-requests/${pullRequestId}/`;
+  }
+
+  async getPullRequestDetails(
+    workspaceSlug: string,
+    projectId: string,
+    workItemId: string,
+    pullRequestId: string
+  ): Promise<TPullRequestDetails> {
+    return this.get(this.pullRequestUrl(workspaceSlug, projectId, workItemId, pullRequestId))
+      .then((response) => response?.data)
+      .catch((error) => {
+        throw error?.response?.data;
+      });
+  }
+
+  async reviewPullRequest(
+    workspaceSlug: string,
+    projectId: string,
+    workItemId: string,
+    pullRequestId: string,
+    review: { event: TReviewEvent; body: string }
+  ): Promise<void> {
+    return this.post(`${this.pullRequestUrl(workspaceSlug, projectId, workItemId, pullRequestId)}reviews/`, review)
+      .then(() => undefined)
+      .catch((error) => {
+        throw error?.response?.data;
+      });
+  }
+
+  async requestReviewers(
+    workspaceSlug: string,
+    projectId: string,
+    workItemId: string,
+    pullRequestId: string,
+    reviewers: string[]
+  ): Promise<void> {
+    return this.post(`${this.pullRequestUrl(workspaceSlug, projectId, workItemId, pullRequestId)}reviewers/`, {
+      reviewers,
+    })
+      .then(() => undefined)
+      .catch((error) => {
+        throw error?.response?.data;
+      });
+  }
+
+  async mergePullRequest(
+    workspaceSlug: string,
+    projectId: string,
+    workItemId: string,
+    pullRequestId: string,
+    method: TMergeMethod
+  ): Promise<void> {
+    return this.post(`${this.pullRequestUrl(workspaceSlug, projectId, workItemId, pullRequestId)}merge/`, { method })
+      .then(() => undefined)
+      .catch((error) => {
+        throw error?.response?.data;
+      });
+  }
+
+  async getAccount(): Promise<TGitHubAccount> {
+    return this.get("/api/users/me/github/")
+      .then((response) => response?.data)
+      .catch((error) => {
+        throw error?.response?.data;
+      });
+  }
+
+  async connectAccount(token: string): Promise<TGitHubAccount> {
+    return this.put("/api/users/me/github/", { token })
+      .then((response) => response?.data)
+      .catch((error) => {
+        throw error?.response?.data;
+      });
+  }
+
+  async disconnectAccount(): Promise<void> {
+    return this.delete("/api/users/me/github/")
+      .then(() => undefined)
       .catch((error) => {
         throw error?.response?.data;
       });
