@@ -55,7 +55,7 @@
         "success": "Terhubung ke {repository}. Plane dapat melihat repositori dan branch {branch}."
       },
       "errors": {
-        "not_connected": "Simpan pengaturan GitHub terlebih dahulu.",
+        "not_connected": "Proyek ini belum terhubung ke GitHub. Admin proyek dapat menghubungkannya di Pengaturan proyek → GitHub.",
         "bad_token": "GitHub menolak token. Token mungkin salah, kedaluwarsa, atau dicabut.",
         "forbidden": "Token tidak diizinkan melakukan ini. Periksa akses repositori dan izin token tersebut.",
         "rate_limited": "Batas laju GitHub telah tercapai. Coba lagi dalam beberapa menit.",
@@ -63,6 +63,9 @@
         "repository_not_found": "GitHub tidak dapat menemukan repositori, atau token tidak memiliki akses ke repositori tersebut.",
         "branch_not_found": "Branch tidak ada di repositori.",
         "no_push_permission": "Token dapat membaca repositori tetapi tidak dapat melakukan push ke repositori tersebut, sehingga tidak dapat membuka pull request.",
+        "no_commits": "Branch ini tidak memiliki commit yang belum ada di branch dasar. Push pekerjaan Anda terlebih dahulu.",
+        "pr_exists": "Pull request untuk branch ini sudah dibuka.",
+        "protected_branch": "GitHub menolak karena aturan perlindungan branch.",
         "github_error": "GitHub mengembalikan kesalahan yang tidak terduga. Coba lagi."
       },
       "webhook": {
@@ -82,6 +85,27 @@
           "merged": "Digabungkan",
           "closed": "Ditutup"
         }
+      },
+      "create_pr": {
+        "button": "Buat PR",
+        "title": "Buat pull request",
+        "branch": "Branch",
+        "branch_placeholder": "Pilih branch yang telah Anda push",
+        "no_branches": "Tidak ada branch yang ditemukan. Push branch Anda ke GitHub terlebih dahulu.",
+        "last_commit": "commit terakhir {time}",
+        "suggested": "disarankan",
+        "stale": "lebih lama dari batas usia branch",
+        "base": "Branch dasar",
+        "summary": "{commits, plural, one {# commit} other {# commit}} di depan · {lines, plural, one {# baris} other {# baris}} diubah di {files, plural, one {# file} other {# file}}",
+        "view_existing": "Lihat di GitHub",
+        "old_branch": "Branch ini dimulai {days, plural, one {# hari} other {# hari}} yang lalu, melewati batas {limit} hari untuk kerja berbasis trunk. Segera gabungkan atau bagi pekerjaannya.",
+        "large": "Pull request ini mengubah {lines, plural, one {# baris} other {# baris}}, lebih dari batas {limit} baris. Pertimbangkan untuk membaginya menjadi pull request yang lebih kecil.",
+        "title_label": "Judul",
+        "description": "Deskripsi",
+        "body_work_item": "Item kerja",
+        "body_opened_by": "Dibuka dari Plane oleh {name}.",
+        "create": "Buat pull request",
+        "created": "Pull request #{number} dibuka."
       }
     }
   }

@@ -88,28 +88,41 @@ def handle_pull_request(connection, payload, delivery_id):
         return
 
     bot = github_bot(project.workspace)
-    github_updated_at = parse_datetime(pull_request["updated_at"])
     for issue in work_items.select_related("state", "workspace"):
-        record = PullRequest.objects.filter(issue=issue, repository_full_name__iexact=repository, number=number).first()
-        if record and record.github_updated_at and record.github_updated_at > github_updated_at:
+        record = record_pull_request(issue, repository, pull_request)
+        if record is None:
             continue  # GitHub delivered an older event after a newer one
-        record = record or PullRequest(issue=issue, project=project, repository_full_name=repository, number=number)
-        record.title = pull_request["title"]
-        record.url = pull_request["html_url"]
-        record.head_branch = pull_request["head"]["ref"]
-        record.base_branch = pull_request["base"]["ref"]
-        record.state = pull_request_state(pull_request)
-        record.author_login = (pull_request.get("user") or {}).get("login", "")
-        record.additions = pull_request.get("additions")
-        record.deletions = pull_request.get("deletions")
-        record.changed_files = pull_request.get("changed_files")
-        record.merged_at = parse_datetime(pull_request["merged_at"]) if pull_request.get("merged_at") else None
-        record.closed_at = parse_datetime(pull_request["closed_at"]) if pull_request.get("closed_at") else None
-        record.github_updated_at = github_updated_at
-        record.save()
-
         add_link(issue, record.url, f"PR #{number}: {record.title}", bot)
         apply_pull_request_event(issue, record, payload["action"], connection, bot, delivery_id)
+
+
+def record_pull_request(issue, repository, pull_request):
+    """Create or update a work item's record of a GitHub pull request.
+
+    Returns None, changing nothing, when the record already reflects a newer change on GitHub.
+    """
+    github_updated_at = parse_datetime(pull_request["updated_at"])
+    number = pull_request["number"]
+    record = PullRequest.objects.filter(issue=issue, repository_full_name__iexact=repository, number=number).first()
+    if record and record.github_updated_at and record.github_updated_at > github_updated_at:
+        return None
+    record = record or PullRequest(
+        issue=issue, project_id=issue.project_id, repository_full_name=repository, number=number
+    )
+    record.title = pull_request["title"]
+    record.url = pull_request["html_url"]
+    record.head_branch = pull_request["head"]["ref"]
+    record.base_branch = pull_request["base"]["ref"]
+    record.state = pull_request_state(pull_request)
+    record.author_login = (pull_request.get("user") or {}).get("login", "")
+    record.additions = pull_request.get("additions")
+    record.deletions = pull_request.get("deletions")
+    record.changed_files = pull_request.get("changed_files")
+    record.merged_at = parse_datetime(pull_request["merged_at"]) if pull_request.get("merged_at") else None
+    record.closed_at = parse_datetime(pull_request["closed_at"]) if pull_request.get("closed_at") else None
+    record.github_updated_at = github_updated_at
+    record.save()
+    return record
 
 
 def apply_pull_request_event(issue, record, action, connection, bot, delivery_id):

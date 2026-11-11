@@ -137,3 +137,21 @@ class LinkedCommitSerializer(BaseSerializer):
             "committed_at",
         ]
         read_only_fields = fields
+
+
+class PullRequestBranchesSerializer(serializers.Serializer):
+    base = serializers.CharField(max_length=255)
+    head = serializers.CharField(max_length=255)
+
+    def validate(self, attrs):
+        for field in ("base", "head"):
+            if not is_valid_branch(attrs[field]):
+                raise serializers.ValidationError({field: "This isn't a valid branch name."})
+        if attrs["base"] == attrs["head"]:
+            raise serializers.ValidationError({"head": "Pick a branch other than the base branch."})
+        return attrs
+
+
+class CreatePullRequestSerializer(PullRequestBranchesSerializer):
+    title = serializers.CharField(max_length=256)
+    body = serializers.CharField(max_length=65536, allow_blank=True, required=False, default="")

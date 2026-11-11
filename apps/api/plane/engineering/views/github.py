@@ -21,6 +21,17 @@ def get_connection(slug, project_id):
     return GitHubConnection.objects.filter(workspace__slug=slug, project_id=project_id).first()
 
 
+def github_error_response(error):
+    return Response({"code": error.code, "error": error.message}, status=status.HTTP_400_BAD_REQUEST)
+
+
+def not_connected_response():
+    return Response(
+        {"code": "not_connected", "error": "Connect this project to GitHub in its settings first."},
+        status=status.HTTP_400_BAD_REQUEST,
+    )
+
+
 class GitHubConnectionEndpoint(BaseAPIView):
     """A project's GitHub settings. Members can see whether GitHub is connected; admins change it."""
 
@@ -60,11 +71,8 @@ class GitHubConnectionTestEndpoint(BaseAPIView):
     def post(self, request, slug, project_id):
         connection = get_connection(slug, project_id)
         if connection is None:
-            return Response(
-                {"code": "not_connected", "error": "Save the GitHub settings first."},
-                status=status.HTTP_400_BAD_REQUEST,
-            )
+            return not_connected_response()
         try:
             return Response(check_connection(connection), status=status.HTTP_200_OK)
         except GitHubError as error:
-            return Response({"code": error.code, "error": error.message}, status=status.HTTP_400_BAD_REQUEST)
+            return github_error_response(error)

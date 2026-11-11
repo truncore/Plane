@@ -55,7 +55,7 @@
         "success": "{repository}에 연결되었습니다. Plane에서 리포지토리와 {branch} 브랜치를 확인할 수 있습니다."
       },
       "errors": {
-        "not_connected": "먼저 GitHub 설정을 저장하십시오.",
+        "not_connected": "이 프로젝트는 아직 GitHub에 연결되지 않았습니다. 프로젝트 관리자가 프로젝트 설정 → GitHub에서 연결할 수 있습니다.",
         "bad_token": "GitHub에서 토큰을 거부했습니다. 토큰이 잘못되었거나 만료되었거나 취소되었을 수 있습니다.",
         "forbidden": "이 토큰에는 이 작업을 수행할 권한이 없습니다. 토큰의 리포지토리 액세스 권한과 권한 설정을 확인하십시오.",
         "rate_limited": "GitHub 요청 한도에 도달했습니다. 몇 분 후에 다시 시도하십시오.",
@@ -63,6 +63,9 @@
         "repository_not_found": "GitHub에서 리포지토리를 찾을 수 없거나 토큰에 해당 리포지토리에 대한 액세스 권한이 없습니다.",
         "branch_not_found": "리포지토리에 해당 브랜치가 없습니다.",
         "no_push_permission": "토큰으로 리포지토리를 읽을 수는 있지만 푸시할 수 없으므로 풀 리퀘스트를 열 수 없습니다.",
+        "no_commits": "이 브랜치에는 베이스 브랜치에 아직 없는 커밋이 없습니다. 먼저 작업을 푸시하십시오.",
+        "pr_exists": "이 브랜치에 대한 풀 리퀘스트가 이미 열려 있습니다.",
+        "protected_branch": "브랜치 보호 규칙으로 인해 GitHub에서 거부했습니다.",
         "github_error": "GitHub에서 예기치 않은 오류를 반환했습니다. 다시 시도하십시오."
       },
       "webhook": {
@@ -82,6 +85,27 @@
           "merged": "병합됨",
           "closed": "닫힘"
         }
+      },
+      "create_pr": {
+        "button": "PR 생성",
+        "title": "풀 리퀘스트 생성",
+        "branch": "브랜치",
+        "branch_placeholder": "푸시한 브랜치를 선택하십시오",
+        "no_branches": "브랜치를 찾을 수 없습니다. 먼저 브랜치를 GitHub에 푸시하십시오.",
+        "last_commit": "마지막 커밋 {time}",
+        "suggested": "추천",
+        "stale": "브랜치 기간 한도 초과",
+        "base": "베이스 브랜치",
+        "summary": "{commits, plural, one {커밋 #개} other {커밋 #개}} 앞섬 · {files, plural, one {파일 #개} other {파일 #개}}에서 {lines, plural, one {#줄} other {#줄}} 변경",
+        "view_existing": "GitHub에서 보기",
+        "old_branch": "이 브랜치는 {days, plural, one {#일} other {#일}} 전에 시작되어 트렁크 기반 작업의 한도인 {limit}일을 넘었습니다. 곧 병합하거나 작업을 나누십시오.",
+        "large": "이 풀 리퀘스트는 {lines, plural, one {#줄} other {#줄}}을 변경하며, 한도인 {limit}줄보다 많습니다. 더 작은 풀 리퀘스트로 나누는 것을 고려하십시오.",
+        "title_label": "제목",
+        "description": "설명",
+        "body_work_item": "작업 항목",
+        "body_opened_by": "{name}님이 Plane에서 열었습니다.",
+        "create": "풀 리퀘스트 생성",
+        "created": "풀 리퀘스트 #{number}이(가) 열렸습니다."
       }
     }
   }

@@ -5,7 +5,16 @@
  */
 
 import { API_BASE_URL } from "@plane/constants";
-import type { TGitHubConnectionCheck, TGitHubConnectionPayload, TGitHubSettings, TWorkItemGitHub } from "@plane/types";
+import type {
+  TCreatePullRequest,
+  TGitHubConnectionCheck,
+  TGitHubConnectionPayload,
+  TGitHubSettings,
+  TPullRequest,
+  TPullRequestPreview,
+  TWorkItemBranches,
+  TWorkItemGitHub,
+} from "@plane/types";
 // services
 import { APIService } from "@/services/api.service";
 
@@ -54,8 +63,46 @@ export class GitHubService extends APIService {
       });
   }
 
+  private workItemUrl(workspaceSlug: string, projectId: string, workItemId: string) {
+    return `/api/workspaces/${workspaceSlug}/projects/${projectId}/issues/${workItemId}/github/`;
+  }
+
   async getWorkItemGitHub(workspaceSlug: string, projectId: string, workItemId: string): Promise<TWorkItemGitHub> {
-    return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/issues/${workItemId}/github/`)
+    return this.get(this.workItemUrl(workspaceSlug, projectId, workItemId))
+      .then((response) => response?.data)
+      .catch((error) => {
+        throw error?.response?.data;
+      });
+  }
+
+  async getBranches(workspaceSlug: string, projectId: string, workItemId: string): Promise<TWorkItemBranches> {
+    return this.get(`${this.workItemUrl(workspaceSlug, projectId, workItemId)}branches/`)
+      .then((response) => response?.data)
+      .catch((error) => {
+        throw error?.response?.data;
+      });
+  }
+
+  async previewPullRequest(
+    workspaceSlug: string,
+    projectId: string,
+    workItemId: string,
+    branches: Pick<TCreatePullRequest, "base" | "head">
+  ): Promise<TPullRequestPreview> {
+    return this.get(`${this.workItemUrl(workspaceSlug, projectId, workItemId)}preview/`, branches)
+      .then((response) => response?.data)
+      .catch((error) => {
+        throw error?.response?.data;
+      });
+  }
+
+  async createPullRequest(
+    workspaceSlug: string,
+    projectId: string,
+    workItemId: string,
+    data: TCreatePullRequest
+  ): Promise<TPullRequest> {
+    return this.post(`${this.workItemUrl(workspaceSlug, projectId, workItemId)}pull-requests/`, data)
       .then((response) => response?.data)
       .catch((error) => {
         throw error?.response?.data;

@@ -8,7 +8,10 @@ import React from "react";
 import { AttachOutline, LinkOutline, RelationsOutline, ViewsOutline } from "@makeplane/propel/icons";
 import { useTranslation } from "@plane/i18n";
 // plane imports
+import { EIssueServiceType } from "@plane/types";
 import type { TIssueServiceType, TWorkItemWidgets } from "@plane/types";
+// components
+import { CreatePullRequestButton } from "@/components/engineering/github/create-pull-request-button";
 // local imports
 import { IssueAttachmentActionButton } from "./attachments";
 import { IssueLinksActionButton } from "./links";
@@ -87,6 +90,14 @@ export function IssueDetailWidgetActionButtons(props: Props) {
           }
           disabled={disabled}
           issueServiceType={issueServiceType}
+        />
+      )}
+      {issueServiceType === EIssueServiceType.ISSUES && (
+        <CreatePullRequestButton
+          workspaceSlug={workspaceSlug}
+          projectId={projectId}
+          workItemId={issueId}
+          disabled={disabled}
         />
       )}
     </div>

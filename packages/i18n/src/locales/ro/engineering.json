@@ -55,7 +55,7 @@
         "success": "Conectat la {repository}. Plane poate vedea depozitul și ramura {branch}."
       },
       "errors": {
-        "not_connected": "Salvați mai întâi setările GitHub.",
+        "not_connected": "Acest proiect nu este încă conectat la GitHub. Un administrator al proiectului îl poate conecta din Setările proiectului → GitHub.",
         "bad_token": "GitHub a respins tokenul. Este posibil să fie greșit, expirat sau revocat.",
         "forbidden": "Tokenul nu are permisiunea de a face acest lucru. Verificați accesul său la depozit și permisiunile.",
         "rate_limited": "S-a atins limita de solicitări GitHub. Încercați din nou peste câteva minute.",
@@ -63,6 +63,9 @@
         "repository_not_found": "GitHub nu a găsit depozitul sau tokenul nu are acces la acesta.",
         "branch_not_found": "Ramura nu există în depozit.",
         "no_push_permission": "Tokenul poate citi depozitul, dar nu poate face push în el, așa că nu poate deschide pull request-uri.",
+        "no_commits": "Această ramură nu are commit-uri care să nu fie deja în ramura de bază. Faceți mai întâi push la modificări.",
+        "pr_exists": "Există deja un pull request deschis pentru această ramură.",
+        "protected_branch": "GitHub a refuzat din cauza regulilor de protecție ale ramurii.",
         "github_error": "GitHub a returnat o eroare neașteptată. Încercați din nou."
       },
       "webhook": {
@@ -82,6 +85,27 @@
           "merged": "Îmbinat",
           "closed": "Închis"
         }
+      },
+      "create_pr": {
+        "button": "Creează PR",
+        "title": "Creează pull request",
+        "branch": "Ramură",
+        "branch_placeholder": "Alegeți ramura la care ați făcut push",
+        "no_branches": "Nu s-au găsit ramuri. Faceți mai întâi push la ramură în GitHub.",
+        "last_commit": "ultimul commit {time}",
+        "suggested": "sugerată",
+        "stale": "mai veche decât limita de vechime a ramurilor",
+        "base": "Ramura de bază",
+        "summary": "{commits, plural, one {# commit} few {# commit-uri} other {# de commit-uri}} înainte · {lines, plural, one {# linie modificată} few {# linii modificate} other {# de linii modificate}} în {files, plural, one {# fișier} few {# fișiere} other {# de fișiere}}",
+        "view_existing": "Vedeți-l pe GitHub",
+        "old_branch": "Această ramură a fost creată acum {days, plural, one {# zi} few {# zile} other {# de zile}}, peste limita de {limit} zile pentru lucrul bazat pe trunk. Îmbinați-o curând sau împărțiți lucrul.",
+        "large": "Acest pull request modifică {lines, plural, one {# linie} few {# linii} other {# de linii}}, mai mult decât limita de {limit} linii. Luați în considerare împărțirea lui în pull request-uri mai mici.",
+        "title_label": "Titlu",
+        "description": "Descriere",
+        "body_work_item": "Element de lucru",
+        "body_opened_by": "Deschis din Plane de {name}.",
+        "create": "Creează pull request",
+        "created": "Pull request-ul #{number} a fost deschis."
       }
     }
   }

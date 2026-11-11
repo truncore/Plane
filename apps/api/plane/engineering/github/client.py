@@ -34,8 +34,28 @@ ERROR_MESSAGES = {
     "repository_not_found": "GitHub couldn't find the repository, or the token has no access to it.",
     "branch_not_found": "The branch doesn't exist in the repository.",
     "no_push_permission": "The token can read the repository but can't push to it, so it can't open pull requests.",
+    "no_commits": "The branch has no commits that aren't already in the base branch.",
+    "pr_exists": "An open pull request already exists for this branch.",
+    "protected_branch": "GitHub refused because of the branch's protection rules.",
     "github_error": "GitHub returned an unexpected error.",
 }
+
+# GitHub's validation messages (status 422) that have a clearer meaning
+VALIDATION_ERRORS = {
+    "no commits between": "no_commits",
+    "pull request already exists": "pr_exists",
+    "protected": "protected_branch",
+}
+
+BRANCHES_QUERY = """
+query($owner: String!, $name: String!) {
+  repository(owner: $owner, name: $name) {
+    refs(refPrefix: "refs/heads/", first: 100, orderBy: {field: TAG_COMMIT_DATE, direction: DESC}) {
+      nodes { name target { ... on Commit { committedDate } } }
+    }
+  }
+}
+"""
 
 
 class GitHubError(Exception):
@@ -61,6 +81,8 @@ class GitHubClient:
     def __init__(self, token, owner, repository):
         if not is_valid_repository(owner, repository):
             raise ValueError("Invalid repository")
+        self.owner = owner
+        self.repository = repository
         self.repository_path = f"/repos/{owner}/{repository}"
         self.headers = {
             "Accept": "application/vnd.github+json",
@@ -90,9 +112,15 @@ class GitHubClient:
         if response.status_code == 404:
             return GitHubError(not_found)
         try:
-            detail = response.json().get("message")
+            body = response.json()
         except ValueError:
-            detail = None
+            body = {}
+        detail = body.get("message")
+        if response.status_code == 422:
+            messages = " ".join([detail or ""] + [error.get("message", "") for error in body.get("errors", [])]).lower()
+            for phrase, code in VALIDATION_ERRORS.items():
+                if phrase in messages:
+                    return GitHubError(code)
         return GitHubError("github_error", f"{ERROR_MESSAGES['github_error']} ({response.status_code}: {detail})")
 
     def get_repository(self):
@@ -101,6 +129,40 @@ class GitHubClient:
     def get_branch(self, branch):
         if not is_valid_branch(branch):
             raise GitHubError("branch_not_found")
+        return self.request("GET", f"{self.repository_path}/branches/{quote(branch)}", not_found="branch_not_found")
+
+    def list_branches(self):
+        """The 100 most recently changed branches, newest first, with the time of their last commit."""
+        data = self.request(
+            "POST",
+            "/graphql",
+            json={"query": BRANCHES_QUERY, "variables": {"owner": self.owner, "name": self.repository}},
+        )
+        if data.get("errors"):
+            not_found = any(error.get("type") == "NOT_FOUND" for error in data["errors"])
+            raise GitHubError("repository_not_found" if not_found else "github_error")
+        return [
+            {"name": node["name"], "last_commit_at": node["target"].get("committedDate")}
+            for node in data["data"]["repository"]["refs"]["nodes"]
+        ]
+
+    def compare(self, base, head):
+        """Commits and changed files on `head` that aren't on `base`."""
+        if not (is_valid_branch(base) and is_valid_branch(head)):
+            raise GitHubError("branch_not_found")
         return self.request(
-            "GET", f"{self.repository_path}/branches/{quote(branch, safe='')}", not_found="branch_not_found"
+            "GET", f"{self.repository_path}/compare/{quote(base)}...{quote(head)}", not_found="branch_not_found"
+        )
+
+    def find_open_pull_request(self, base, head):
+        pulls = self.request(
+            "GET",
+            f"{self.repository_path}/pulls",
+            params={"state": "open", "base": base, "head": f"{self.owner}:{head}"},
+        )
+        return pulls[0] if pulls else None
+
+    def create_pull_request(self, base, head, title, body):
+        return self.request(
+            "POST", f"{self.repository_path}/pulls", json={"base": base, "head": head, "title": title, "body": body}
         )

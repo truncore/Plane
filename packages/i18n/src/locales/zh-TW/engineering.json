@@ -55,7 +55,7 @@
         "success": "已連接至 {repository}。Plane 可以存取該儲存庫和 {branch} 分支。"
       },
       "errors": {
-        "not_connected": "請先儲存 GitHub 設定。",
+        "not_connected": "此專案尚未連接至 GitHub。專案管理員可以在「專案設定 → GitHub」中進行連接。",
         "bad_token": "GitHub 拒絕了此權杖。權杖可能有誤、已過期或已被撤銷。",
         "forbidden": "此權杖無權執行此操作。請檢查其儲存庫存取權和權限。",
         "rate_limited": "已達到 GitHub 的速率限制。請幾分鐘後再試一次。",
@@ -63,6 +63,9 @@
         "repository_not_found": "GitHub 找不到該儲存庫，或權杖沒有該儲存庫的存取權。",
         "branch_not_found": "儲存庫中不存在此分支。",
         "no_push_permission": "此權杖可以讀取儲存庫，但無法推送至儲存庫，因此無法建立拉取請求。",
+        "no_commits": "此分支沒有基礎分支中尚未包含的提交。請先推送您的工作。",
+        "pr_exists": "此分支已有一個開啟中的拉取請求。",
+        "protected_branch": "由於分支保護規則，GitHub 拒絕了此操作。",
         "github_error": "GitHub 傳回了非預期的錯誤。請再試一次。"
       },
       "webhook": {
@@ -82,6 +85,27 @@
           "merged": "已合併",
           "closed": "已關閉"
         }
+      },
+      "create_pr": {
+        "button": "建立 PR",
+        "title": "建立拉取請求",
+        "branch": "分支",
+        "branch_placeholder": "選擇您推送的分支",
+        "no_branches": "找不到分支。請先將您的分支推送至 GitHub。",
+        "last_commit": "最後提交於 {time}",
+        "suggested": "建議",
+        "stale": "超過分支存續期限",
+        "base": "基礎分支",
+        "summary": "領先 {commits, plural, one {# 個提交} other {# 個提交}} · 在 {files, plural, one {# 個檔案} other {# 個檔案}}中變更了 {lines, plural, one {# 行} other {# 行}}",
+        "view_existing": "在 GitHub 上檢視",
+        "old_branch": "此分支建立於 {days, plural, one {# 天} other {# 天}}前，已超過以主幹為基礎開發的 {limit} 天期限。請盡快合併或拆分工作。",
+        "large": "此拉取請求變更了 {lines, plural, one {# 行} other {# 行}}，超過 {limit} 行的限制。請考慮將其拆分為較小的拉取請求。",
+        "title_label": "標題",
+        "description": "描述",
+        "body_work_item": "工作事項",
+        "body_opened_by": "由 {name} 從 Plane 建立。",
+        "create": "建立拉取請求",
+        "created": "已建立拉取請求 #{number}。"
       }
     }
   }

@@ -4,6 +4,11 @@
 
 from .github import GitHubConnectionEndpoint, GitHubConnectionTestEndpoint
 from .github_webhook import GitHubWebhookEndpoint
+from .pull_requests import (
+    WorkItemBranchesEndpoint,
+    WorkItemPullRequestCreateEndpoint,
+    WorkItemPullRequestPreviewEndpoint,
+)
 from .story_progress import StoryProgressEndpoint
 from .work_item_github import WorkItemGitHubEndpoint
 
@@ -12,5 +17,8 @@ __all__ = [
     "GitHubConnectionTestEndpoint",
     "GitHubWebhookEndpoint",
     "StoryProgressEndpoint",
+    "WorkItemBranchesEndpoint",
     "WorkItemGitHubEndpoint",
+    "WorkItemPullRequestCreateEndpoint",
+    "WorkItemPullRequestPreviewEndpoint",
 ]

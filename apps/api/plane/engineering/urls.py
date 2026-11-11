@@ -9,7 +9,10 @@ from plane.engineering.views import (
     GitHubConnectionTestEndpoint,
     GitHubWebhookEndpoint,
     StoryProgressEndpoint,
+    WorkItemBranchesEndpoint,
     WorkItemGitHubEndpoint,
+    WorkItemPullRequestCreateEndpoint,
+    WorkItemPullRequestPreviewEndpoint,
 )
 
 urlpatterns = [
@@ -32,6 +35,21 @@ urlpatterns = [
         "workspaces/<str:slug>/projects/<uuid:project_id>/issues/<uuid:issue_id>/github/",
         WorkItemGitHubEndpoint.as_view(),
         name="work-item-github",
+    ),
+    path(
+        "workspaces/<str:slug>/projects/<uuid:project_id>/issues/<uuid:issue_id>/github/branches/",
+        WorkItemBranchesEndpoint.as_view(),
+        name="work-item-github-branches",
+    ),
+    path(
+        "workspaces/<str:slug>/projects/<uuid:project_id>/issues/<uuid:issue_id>/github/preview/",
+        WorkItemPullRequestPreviewEndpoint.as_view(),
+        name="work-item-github-preview",
+    ),
+    path(
+        "workspaces/<str:slug>/projects/<uuid:project_id>/issues/<uuid:issue_id>/github/pull-requests/",
+        WorkItemPullRequestCreateEndpoint.as_view(),
+        name="work-item-github-pull-requests",
     ),
     path("github/webhook/", GitHubWebhookEndpoint.as_view(), name="github-webhook"),
 ]

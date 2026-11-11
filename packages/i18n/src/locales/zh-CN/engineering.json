@@ -55,7 +55,7 @@
         "success": "已连接到 {repository}。Plane 可以访问该仓库和 {branch} 分支。"
       },
       "errors": {
-        "not_connected": "请先保存 GitHub 设置。",
+        "not_connected": "此项目尚未连接到 GitHub。项目管理员可以在“项目设置 → GitHub”中进行连接。",
         "bad_token": "GitHub 拒绝了该令牌。令牌可能有误、已过期或已被撤销。",
         "forbidden": "该令牌无权执行此操作。请检查其仓库访问权限和权限设置。",
         "rate_limited": "已达到 GitHub 的速率限制。请几分钟后重试。",
@@ -63,6 +63,9 @@
         "repository_not_found": "GitHub 找不到该仓库，或者令牌无权访问该仓库。",
         "branch_not_found": "仓库中不存在该分支。",
         "no_push_permission": "该令牌可以读取仓库，但无法推送到仓库，因此无法创建拉取请求。",
+        "no_commits": "此分支没有基础分支中尚不存在的提交。请先推送您的工作。",
+        "pr_exists": "此分支已有一个打开的拉取请求。",
+        "protected_branch": "由于分支保护规则，GitHub 拒绝了此操作。",
         "github_error": "GitHub 返回了意外错误。请重试。"
       },
       "webhook": {
@@ -82,6 +85,27 @@
           "merged": "已合并",
           "closed": "已关闭"
         }
+      },
+      "create_pr": {
+        "button": "创建 PR",
+        "title": "创建拉取请求",
+        "branch": "分支",
+        "branch_placeholder": "选择您推送的分支",
+        "no_branches": "未找到分支。请先将您的分支推送到 GitHub。",
+        "last_commit": "最后提交于 {time}",
+        "suggested": "推荐",
+        "stale": "超过分支存续期限",
+        "base": "基础分支",
+        "summary": "领先 {commits, plural, one {# 个提交} other {# 个提交}} · 在 {files, plural, one {# 个文件} other {# 个文件}}中更改了 {lines, plural, one {# 行} other {# 行}}",
+        "view_existing": "在 GitHub 上查看",
+        "old_branch": "此分支创建于 {days, plural, one {# 天} other {# 天}}前，已超过基于主干开发的 {limit} 天期限。请尽快合并或拆分工作。",
+        "large": "此拉取请求更改了 {lines, plural, one {# 行} other {# 行}}，超过了 {limit} 行的限制。请考虑将其拆分为更小的拉取请求。",
+        "title_label": "标题",
+        "description": "描述",
+        "body_work_item": "工作项",
+        "body_opened_by": "由 {name} 从 Plane 创建。",
+        "create": "创建拉取请求",
+        "created": "已创建拉取请求 #{number}。"
       }
     }
   }

@@ -55,7 +55,7 @@
         "success": "Połączono z {repository}. Plane widzi repozytorium i gałąź {branch}."
       },
       "errors": {
-        "not_connected": "Najpierw zapisz ustawienia GitHub.",
+        "not_connected": "Ten projekt nie jest jeszcze połączony z GitHub. Administrator projektu może go połączyć w Ustawieniach projektu → GitHub.",
         "bad_token": "GitHub odrzucił token. Może być nieprawidłowy, wygasły lub unieważniony.",
         "forbidden": "Token nie ma uprawnień do tej operacji. Sprawdź jego dostęp do repozytorium i uprawnienia.",
         "rate_limited": "Osiągnięto limit żądań GitHub. Spróbuj ponownie za kilka minut.",
@@ -63,6 +63,9 @@
         "repository_not_found": "GitHub nie znalazł repozytorium lub token nie ma do niego dostępu.",
         "branch_not_found": "Gałąź nie istnieje w repozytorium.",
         "no_push_permission": "Token może odczytywać repozytorium, ale nie może do niego wypychać zmian, więc nie może otwierać pull requestów.",
+        "no_commits": "Ta gałąź nie ma commitów, których nie ma już w gałęzi bazowej. Najpierw wypchnij swoje zmiany.",
+        "pr_exists": "Dla tej gałęzi jest już otwarty pull request.",
+        "protected_branch": "GitHub odmówił z powodu reguł ochrony gałęzi.",
         "github_error": "GitHub zwrócił nieoczekiwany błąd. Spróbuj ponownie."
       },
       "webhook": {
@@ -82,6 +85,27 @@
           "merged": "Scalony",
           "closed": "Zamknięty"
         }
+      },
+      "create_pr": {
+        "button": "Utwórz PR",
+        "title": "Utwórz pull request",
+        "branch": "Gałąź",
+        "branch_placeholder": "Wybierz wypchniętą gałąź",
+        "no_branches": "Nie znaleziono gałęzi. Najpierw wypchnij gałąź do GitHub.",
+        "last_commit": "ostatni commit {time}",
+        "suggested": "sugerowana",
+        "stale": "starsza niż limit wieku gałęzi",
+        "base": "Gałąź bazowa",
+        "summary": "{commits, plural, one {# commit} few {# commity} many {# commitów} other {# commita}} do przodu · zmieniono {lines, plural, one {# wiersz} few {# wiersze} many {# wierszy} other {# wiersza}} w {files, plural, one {# pliku} few {# plikach} many {# plikach} other {# pliku}}",
+        "view_existing": "Zobacz na GitHub",
+        "old_branch": "Ta gałąź powstała {days, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}} temu, co przekracza limit {limit} dni dla pracy opartej na trunku. Scal ją wkrótce lub podziel pracę.",
+        "large": "Ten pull request zmienia {lines, plural, one {# wiersz} few {# wiersze} many {# wierszy} other {# wiersza}}, czyli więcej niż limit {limit} wierszy. Rozważ podzielenie go na mniejsze pull requesty.",
+        "title_label": "Tytuł",
+        "description": "Opis",
+        "body_work_item": "Element pracy",
+        "body_opened_by": "Otwarty z Plane przez {name}.",
+        "create": "Utwórz pull request",
+        "created": "Otwarto pull request #{number}."
       }
     }
   }

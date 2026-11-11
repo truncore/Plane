@@ -51,6 +51,9 @@ export type TGitHubErrorCode =
   | "repository_not_found"
   | "branch_not_found"
   | "no_push_permission"
+  | "no_commits"
+  | "pr_exists"
+  | "protected_branch"
   | "github_error";
 
 export type TGitHubError = {
@@ -95,4 +98,37 @@ export type TLinkedCommit = {
 export type TWorkItemGitHub = {
   pull_requests: TPullRequest[];
   commits: TLinkedCommit[];
+};
+
+export type TGitHubBranch = {
+  name: string;
+  last_commit_at: string | null;
+  /** The branch name mentions the work item, e.g. feat/PAY-12-reset-password */
+  suggested: boolean;
+};
+
+export type TWorkItemBranches = {
+  branches: TGitHubBranch[];
+  base_branch: string;
+  workflow_mode: TWorkflowMode;
+  branch_age_limit_days: number;
+  large_pr_lines: number;
+};
+
+/** What a pull request from a branch would contain, with the trunk-based warnings. */
+export type TPullRequestPreview = {
+  ahead_by: number;
+  changed_files: number;
+  changed_lines: number;
+  branch_age_days: number;
+  is_old_branch: boolean;
+  is_large: boolean;
+  existing_pull_request_url: string | null;
+};
+
+export type TCreatePullRequest = {
+  base: string;
+  head: string;
+  title: string;
+  body: string;
 };

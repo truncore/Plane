@@ -55,7 +55,7 @@
         "success": "Conectado a {repository}. Plane puede ver el repositorio y la rama {branch}."
       },
       "errors": {
-        "not_connected": "Guarde primero la configuración de GitHub.",
+        "not_connected": "Este proyecto aún no está conectado a GitHub. Un administrador del proyecto puede conectarlo en Configuración del proyecto → GitHub.",
         "bad_token": "GitHub rechazó el token. Puede ser incorrecto, haber caducado o haber sido revocado.",
         "forbidden": "El token no tiene permiso para hacer esto. Revise su acceso al repositorio y sus permisos.",
         "rate_limited": "Se alcanzó el límite de solicitudes de GitHub. Inténtelo de nuevo en unos minutos.",
@@ -63,6 +63,9 @@
         "repository_not_found": "GitHub no encontró el repositorio o el token no tiene acceso a él.",
         "branch_not_found": "La rama no existe en el repositorio.",
         "no_push_permission": "El token puede leer el repositorio pero no puede hacer push en él, por lo que no puede abrir pull requests.",
+        "no_commits": "Esta rama no tiene commits que no estén ya en la rama base. Primero haga push de su trabajo.",
+        "pr_exists": "Ya hay un pull request abierto para esta rama.",
+        "protected_branch": "GitHub lo rechazó debido a las reglas de protección de la rama.",
         "github_error": "GitHub devolvió un error inesperado. Inténtelo de nuevo."
       },
       "webhook": {
@@ -82,6 +85,27 @@
           "merged": "Fusionado",
           "closed": "Cerrado"
         }
+      },
+      "create_pr": {
+        "button": "Crear PR",
+        "title": "Crear pull request",
+        "branch": "Rama",
+        "branch_placeholder": "Elija la rama que subió",
+        "no_branches": "No se encontraron ramas. Primero suba su rama a GitHub.",
+        "last_commit": "último commit {time}",
+        "suggested": "sugerida",
+        "stale": "más antigua que el límite de antigüedad de ramas",
+        "base": "Rama base",
+        "summary": "{commits, plural, one {# commit} other {# commits}} por delante · {lines, plural, one {# línea cambiada} other {# líneas cambiadas}} en {files, plural, one {# archivo} other {# archivos}}",
+        "view_existing": "Verlo en GitHub",
+        "old_branch": "Esta rama se creó hace {days, plural, one {# día} other {# días}}, más allá del límite de {limit} días para el trabajo basado en trunk. Fusiónela pronto o divida el trabajo.",
+        "large": "Este pull request cambia {lines, plural, one {# línea} other {# líneas}}, más que el límite de {limit} líneas. Considere dividirlo en pull requests más pequeños.",
+        "title_label": "Título",
+        "description": "Descripción",
+        "body_work_item": "Elemento de trabajo",
+        "body_opened_by": "Abierto desde Plane por {name}.",
+        "create": "Crear pull request",
+        "created": "Pull request #{number} abierto."
       }
     }
   }

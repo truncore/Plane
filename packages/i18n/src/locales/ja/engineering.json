@@ -55,7 +55,7 @@
         "success": "{repository}に接続しました。Planeはリポジトリと{branch}ブランチを参照できます。"
       },
       "errors": {
-        "not_connected": "先にGitHub設定を保存してください。",
+        "not_connected": "このプロジェクトはまだGitHubに接続されていません。プロジェクト管理者が「プロジェクト設定 → GitHub」で接続できます。",
         "bad_token": "GitHubがトークンを拒否しました。トークンが間違っているか、期限切れか、取り消されている可能性があります。",
         "forbidden": "このトークンにはこの操作の権限がありません。トークンのリポジトリへのアクセス権と権限を確認してください。",
         "rate_limited": "GitHubのレート制限に達しました。数分後にもう一度お試しください。",
@@ -63,6 +63,9 @@
         "repository_not_found": "GitHubでリポジトリが見つからないか、トークンにそのリポジトリへのアクセス権がありません。",
         "branch_not_found": "このブランチはリポジトリに存在しません。",
         "no_push_permission": "このトークンはリポジトリを読み取れますが、プッシュできないため、プルリクエストを作成できません。",
+        "no_commits": "このブランチには、ベースブランチにまだ含まれていないコミットがありません。先に作業をプッシュしてください。",
+        "pr_exists": "このブランチにはすでにオープンなプルリクエストがあります。",
+        "protected_branch": "ブランチの保護ルールにより、GitHubが拒否しました。",
         "github_error": "GitHubから予期しないエラーが返されました。もう一度お試しください。"
       },
       "webhook": {
@@ -82,6 +85,27 @@
           "merged": "マージ済み",
           "closed": "クローズ"
         }
+      },
+      "create_pr": {
+        "button": "PRを作成",
+        "title": "プルリクエストを作成",
+        "branch": "ブランチ",
+        "branch_placeholder": "プッシュしたブランチを選択",
+        "no_branches": "ブランチが見つかりません。先にブランチをGitHubにプッシュしてください。",
+        "last_commit": "最終コミット：{time}",
+        "suggested": "推奨",
+        "stale": "ブランチの経過日数の上限を超過",
+        "base": "ベースブランチ",
+        "summary": "{commits, plural, one {#件のコミット} other {#件のコミット}}が先行 · {files, plural, one {#個のファイル} other {#個のファイル}}で{lines, plural, one {#行} other {#行}}を変更",
+        "view_existing": "GitHubで表示",
+        "old_branch": "このブランチは{days, plural, one {#日} other {#日}}前に作成されており、トランクベースの作業の上限である{limit}日を超えています。早めにマージするか、作業を分割してください。",
+        "large": "このプルリクエストは{lines, plural, one {#行} other {#行}}を変更しており、上限の{limit}行を超えています。より小さなプルリクエストに分割することを検討してください。",
+        "title_label": "タイトル",
+        "description": "説明",
+        "body_work_item": "作業項目",
+        "body_opened_by": "{name}がPlaneから作成しました。",
+        "create": "プルリクエストを作成",
+        "created": "プルリクエスト#{number}を作成しました。"
       }
     }
   }

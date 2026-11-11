@@ -55,7 +55,7 @@
         "success": "Verbunden mit {repository}. Plane kann das Repository und den Branch {branch} sehen."
       },
       "errors": {
-        "not_connected": "Speichern Sie zuerst die GitHub-Einstellungen.",
+        "not_connected": "Dieses Projekt ist noch nicht mit GitHub verbunden. Ein Projektadministrator kann es unter Projekteinstellungen → GitHub verbinden.",
         "bad_token": "GitHub hat das Token abgelehnt. Es ist möglicherweise falsch, abgelaufen oder widerrufen.",
         "forbidden": "Das Token ist dazu nicht berechtigt. Prüfen Sie seinen Repository-Zugriff und seine Berechtigungen.",
         "rate_limited": "Das Ratenlimit von GitHub wurde erreicht. Versuchen Sie es in ein paar Minuten erneut.",
@@ -63,6 +63,9 @@
         "repository_not_found": "GitHub konnte das Repository nicht finden, oder das Token hat keinen Zugriff darauf.",
         "branch_not_found": "Der Branch existiert im Repository nicht.",
         "no_push_permission": "Das Token kann das Repository lesen, aber nicht dorthin pushen, und kann daher keine Pull Requests öffnen.",
+        "no_commits": "Dieser Branch enthält keine Commits, die nicht bereits im Basis-Branch sind. Pushen Sie zuerst Ihre Arbeit.",
+        "pr_exists": "Für diesen Branch ist bereits ein Pull Request geöffnet.",
+        "protected_branch": "GitHub hat die Aktion aufgrund der Schutzregeln des Branches abgelehnt.",
         "github_error": "GitHub hat einen unerwarteten Fehler zurückgegeben. Versuchen Sie es erneut."
       },
       "webhook": {
@@ -82,6 +85,27 @@
           "merged": "Zusammengeführt",
           "closed": "Geschlossen"
         }
+      },
+      "create_pr": {
+        "button": "PR erstellen",
+        "title": "Pull Request erstellen",
+        "branch": "Branch",
+        "branch_placeholder": "Wählen Sie den Branch aus, den Sie gepusht haben",
+        "no_branches": "Keine Branches gefunden. Pushen Sie Ihren Branch zuerst zu GitHub.",
+        "last_commit": "letzter Commit {time}",
+        "suggested": "vorgeschlagen",
+        "stale": "älter als das Branch-Alterslimit",
+        "base": "Basis-Branch",
+        "summary": "{commits, plural, one {# Commit} other {# Commits}} voraus · {lines, plural, one {# Zeile} other {# Zeilen}} geändert in {files, plural, one {# Datei} other {# Dateien}}",
+        "view_existing": "Auf GitHub ansehen",
+        "old_branch": "Dieser Branch wurde vor {days, plural, one {# Tag} other {# Tagen}} begonnen und überschreitet damit das Limit von {limit} Tagen für Trunk-basierte Arbeit. Mergen Sie ihn bald oder teilen Sie die Arbeit auf.",
+        "large": "Dieser Pull Request ändert {lines, plural, one {# Zeile} other {# Zeilen}} und damit mehr als das Limit von {limit} Zeilen. Teilen Sie ihn am besten in kleinere Pull Requests auf.",
+        "title_label": "Titel",
+        "description": "Beschreibung",
+        "body_work_item": "Arbeitselement",
+        "body_opened_by": "Aus Plane geöffnet von {name}.",
+        "create": "Pull Request erstellen",
+        "created": "Pull Request #{number} geöffnet."
       }
     }
   }

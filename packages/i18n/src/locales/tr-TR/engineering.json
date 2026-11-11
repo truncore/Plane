@@ -55,7 +55,7 @@
         "success": "Bağlı depo: {repository}. Plane depoyu ve {branch} dalını görebiliyor."
       },
       "errors": {
-        "not_connected": "Önce GitHub ayarlarını kaydedin.",
+        "not_connected": "Bu proje henüz GitHub'a bağlı değil. Bir proje yöneticisi bunu Proje ayarları → GitHub bölümünden bağlayabilir.",
         "bad_token": "GitHub token'ı reddetti. Token yanlış, süresi dolmuş veya iptal edilmiş olabilir.",
         "forbidden": "Token'ın bunu yapma izni yok. Depo erişimini ve izinlerini kontrol edin.",
         "rate_limited": "GitHub istek sınırına ulaşıldı. Birkaç dakika sonra tekrar deneyin.",
@@ -63,6 +63,9 @@
         "repository_not_found": "GitHub depoyu bulamadı veya token'ın depoya erişimi yok.",
         "branch_not_found": "Dal depoda mevcut değil.",
         "no_push_permission": "Token depoyu okuyabiliyor ancak depoya push yapamıyor, bu nedenle pull request açamaz.",
+        "no_commits": "Bu dalda temel dalda olmayan hiçbir commit yok. Önce çalışmanızı push edin.",
+        "pr_exists": "Bu dal için zaten açık bir pull request var.",
+        "protected_branch": "GitHub, dalın koruma kuralları nedeniyle isteği reddetti.",
         "github_error": "GitHub beklenmeyen bir hata döndürdü. Tekrar deneyin."
       },
       "webhook": {
@@ -82,6 +85,27 @@
           "merged": "Birleştirildi",
           "closed": "Kapalı"
         }
+      },
+      "create_pr": {
+        "button": "PR oluştur",
+        "title": "Pull request oluştur",
+        "branch": "Dal",
+        "branch_placeholder": "Push ettiğiniz dalı seçin",
+        "no_branches": "Dal bulunamadı. Önce dalınızı GitHub'a push edin.",
+        "last_commit": "son commit {time}",
+        "suggested": "önerilen",
+        "stale": "dal yaşı sınırından eski",
+        "base": "Temel dal",
+        "summary": "{commits, plural, one {# commit} other {# commit}} önde · {files, plural, one {# dosyada} other {# dosyada}} {lines, plural, one {# satır} other {# satır}} değişti",
+        "view_existing": "GitHub'da görüntüle",
+        "old_branch": "Bu dal {days, plural, one {# gün} other {# gün}} önce başladı ve trunk tabanlı çalışma için {limit} günlük sınırı aştı. Yakında birleştirin veya çalışmayı bölün.",
+        "large": "Bu pull request {lines, plural, one {# satır} other {# satır}} değiştiriyor; bu, {limit} satırlık sınırdan fazla. Daha küçük pull request'lere bölmeyi düşünün.",
+        "title_label": "Başlık",
+        "description": "Açıklama",
+        "body_work_item": "İş öğesi",
+        "body_opened_by": "{name} tarafından Plane üzerinden açıldı.",
+        "create": "Pull request oluştur",
+        "created": "Pull request #{number} açıldı."
       }
     }
   }

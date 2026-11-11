@@ -55,7 +55,7 @@
         "success": "Propojeno s {repository}. Plane vidí repozitář a větev {branch}."
       },
       "errors": {
-        "not_connected": "Nejprve uložte nastavení GitHub.",
+        "not_connected": "Tento projekt zatím není propojen se službou GitHub. Správce projektu ho může propojit v Nastavení projektu → GitHub.",
         "bad_token": "GitHub token odmítl. Může být nesprávný, s prošlou platností nebo odvolaný.",
         "forbidden": "Token k této akci nemá oprávnění. Zkontrolujte jeho přístup k repozitáři a oprávnění.",
         "rate_limited": "Byl dosažen limit požadavků služby GitHub. Zkuste to znovu za několik minut.",
@@ -63,6 +63,9 @@
         "repository_not_found": "GitHub repozitář nenašel, nebo k němu token nemá přístup.",
         "branch_not_found": "Větev v repozitáři neexistuje.",
         "no_push_permission": "Token může repozitář číst, ale nemůže do něj pushovat, takže nemůže otevírat pull requesty.",
+        "no_commits": "Tato větev nemá žádné commity, které by už nebyly v základní větvi. Nejprve pushněte svou práci.",
+        "pr_exists": "Pro tuto větev už je otevřený pull request.",
+        "protected_branch": "GitHub požadavek odmítl kvůli pravidlům ochrany větve.",
         "github_error": "GitHub vrátil neočekávanou chybu. Zkuste to znovu."
       },
       "webhook": {
@@ -82,6 +85,27 @@
           "merged": "Sloučený",
           "closed": "Uzavřený"
         }
+      },
+      "create_pr": {
+        "button": "Vytvořit PR",
+        "title": "Vytvořit pull request",
+        "branch": "Větev",
+        "branch_placeholder": "Vyberte větev, kterou jste pushnuli",
+        "no_branches": "Nebyly nalezeny žádné větve. Nejprve pushněte svou větev do služby GitHub.",
+        "last_commit": "poslední commit {time}",
+        "suggested": "doporučená",
+        "stale": "starší než limit stáří větví",
+        "base": "Základní větev",
+        "summary": "{commits, plural, one {# commit} few {# commity} many {# commitu} other {# commitů}} napřed · {lines, plural, one {# změněný řádek} few {# změněné řádky} many {# změněného řádku} other {# změněných řádků}} v {files, plural, one {# souboru} few {# souborech} many {# souboru} other {# souborech}}",
+        "view_existing": "Zobrazit ve službě GitHub",
+        "old_branch": "Tato větev vznikla před {days, plural, one {# dnem} few {# dny} many {# dne} other {# dny}}, což překračuje limit {limit} dní pro práci založenou na trunku. Brzy ji slučte, nebo práci rozdělte.",
+        "large": "Tento pull request mění {lines, plural, one {# řádek} few {# řádky} many {# řádku} other {# řádků}}, což je víc než limit {limit} řádků. Zvažte jeho rozdělení na menší pull requesty.",
+        "title_label": "Název",
+        "description": "Popis",
+        "body_work_item": "Pracovní položka",
+        "body_opened_by": "Otevřeno z Plane uživatelem {name}.",
+        "create": "Vytvořit pull request",
+        "created": "Pull request #{number} byl otevřen."
       }
     }
   }

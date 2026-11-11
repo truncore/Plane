@@ -55,7 +55,7 @@
         "success": "Connecté à {repository}. Plane peut voir le dépôt et la branche {branch}."
       },
       "errors": {
-        "not_connected": "Enregistrez d'abord les paramètres GitHub.",
+        "not_connected": "Ce projet n'est pas encore connecté à GitHub. Un administrateur du projet peut le connecter dans Paramètres du projet → GitHub.",
         "bad_token": "GitHub a refusé le jeton. Il est peut-être incorrect, expiré ou révoqué.",
         "forbidden": "Le jeton n'est pas autorisé à effectuer cette action. Vérifiez son accès au dépôt et ses autorisations.",
         "rate_limited": "La limite de débit de GitHub a été atteinte. Réessayez dans quelques minutes.",
@@ -63,6 +63,9 @@
         "repository_not_found": "GitHub n'a pas trouvé le dépôt, ou le jeton n'y a pas accès.",
         "branch_not_found": "La branche n'existe pas dans le dépôt.",
         "no_push_permission": "Le jeton peut lire le dépôt mais ne peut pas y pousser, il ne peut donc pas ouvrir de pull requests.",
+        "no_commits": "Cette branche ne contient aucun commit qui ne soit pas déjà dans la branche de base. Poussez d'abord votre travail.",
+        "pr_exists": "Une pull request est déjà ouverte pour cette branche.",
+        "protected_branch": "GitHub a refusé en raison des règles de protection de la branche.",
         "github_error": "GitHub a renvoyé une erreur inattendue. Réessayez."
       },
       "webhook": {
@@ -82,6 +85,27 @@
           "merged": "Fusionnée",
           "closed": "Fermée"
         }
+      },
+      "create_pr": {
+        "button": "Créer une PR",
+        "title": "Créer une pull request",
+        "branch": "Branche",
+        "branch_placeholder": "Choisissez la branche que vous avez poussée",
+        "no_branches": "Aucune branche trouvée. Poussez d'abord votre branche sur GitHub.",
+        "last_commit": "dernier commit {time}",
+        "suggested": "suggérée",
+        "stale": "plus ancienne que la limite d'âge des branches",
+        "base": "Branche de base",
+        "summary": "{commits, plural, one {# commit} many {# de commits} other {# commits}} d'avance · {lines, plural, one {# ligne modifiée} many {# de lignes modifiées} other {# lignes modifiées}} dans {files, plural, one {# fichier} many {# de fichiers} other {# fichiers}}",
+        "view_existing": "Voir sur GitHub",
+        "old_branch": "Cette branche a été créée il y a {days, plural, one {# jour} many {# de jours} other {# jours}}, au-delà de la limite de {limit} jours pour le travail basé sur le trunk. Fusionnez-la bientôt ou divisez le travail.",
+        "large": "Cette pull request modifie {lines, plural, one {# ligne} many {# de lignes} other {# lignes}}, soit plus que la limite de {limit} lignes. Envisagez de la diviser en pull requests plus petites.",
+        "title_label": "Titre",
+        "description": "Description",
+        "body_work_item": "Élément de travail",
+        "body_opened_by": "Ouverte depuis Plane par {name}.",
+        "create": "Créer la pull request",
+        "created": "Pull request #{number} ouverte."
       }
     }
   }
