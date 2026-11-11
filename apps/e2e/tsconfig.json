@@ -1,0 +1,5 @@
+{
+  "extends": "@plane/typescript-config/node-library.json",
+  "include": ["playwright.config.ts", "tests/**/*"],
+  "exclude": ["node_modules"]
+}

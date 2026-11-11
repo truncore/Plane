@@ -26,6 +26,7 @@ catalog:
   "@hocuspocus/server": "3.4.4"
   "@hypermod/utils": "^0.7.1"
   "@makeplane/propel": "0.7.3"
+  "@playwright/test": "1.64.1"
   "@radix-ui/react-scroll-area": "^1.2.3"
   "@react-pdf/renderer": "^4.8.1"
   "@react-pdf/types": "^2.13.1"

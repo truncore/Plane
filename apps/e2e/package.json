@@ -1,0 +1,23 @@
+{
+  "name": "e2e",
+  "version": "1.5.0",
+  "private": true,
+  "description": "Browser tests that click through the running app with Playwright",
+  "license": "AGPL-3.0",
+  "type": "module",
+  "scripts": {
+    "test:e2e": "playwright test",
+    "check:lint": "oxlint --max-warnings=0 .",
+    "check:types": "tsc --noEmit",
+    "check:format": "oxfmt --check .",
+    "fix:lint": "oxlint --fix .",
+    "fix:format": "oxfmt .",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf test-results"
+  },
+  "devDependencies": {
+    "@plane/typescript-config": "workspace:*",
+    "@playwright/test": "catalog:",
+    "@types/node": "catalog:",
+    "typescript": "catalog:"
+  }
+}
