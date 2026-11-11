@@ -66,6 +66,7 @@
         "no_commits": "Este branch não tem commits que ainda não estejam no branch base. Faça push do seu trabalho primeiro.",
         "pr_exists": "Já existe um pull request aberto para este branch.",
         "protected_branch": "O GitHub recusou por causa das regras de proteção do branch.",
+        "reconnect_github": "Seu login no GitHub expirou. Conecte sua conta do GitHub novamente nas configurações do perfil.",
         "no_personal_account": "Conecte sua própria conta do GitHub nas configurações do seu perfil para fazer isso em seu nome.",
         "not_mergeable": "Segundo o GitHub, este pull request não pode ser mesclado agora.",
         "github_error": "O GitHub retornou um erro inesperado. Tente novamente."
@@ -115,7 +116,14 @@
         "token": "Token de acesso pessoal",
         "token_hint": "Um token refinado para os repositórios em que você trabalha, com Pull requests (leitura e gravação) e Contents (leitura).",
         "connect": "Conectar",
-        "connected_as": "Conectado como {login}"
+        "connect_with_github": "Conectar com o GitHub",
+        "connected_as": "Conectado como {login}",
+        "install_more": "Adicionar o GitHub App a mais repositórios",
+        "return": {
+          "connected": "Conectado. Agora o Plane age em seu nome no GitHub.",
+          "denied": "Você cancelou no GitHub, então nada foi conectado.",
+          "error": "Não foi possível conectar ao GitHub. Tente novamente; se continuar falhando, peça a um administrador para verificar as configurações do GitHub App."
+        }
       },
       "pull_request": {
         "show": "Detalhes",

@@ -66,6 +66,7 @@
         "no_commits": "Ta gałąź nie ma commitów, których nie ma już w gałęzi bazowej. Najpierw wypchnij swoje zmiany.",
         "pr_exists": "Dla tej gałęzi jest już otwarty pull request.",
         "protected_branch": "GitHub odmówił z powodu reguł ochrony gałęzi.",
+        "reconnect_github": "Logowanie do GitHub wygasło. Połącz ponownie konto GitHub w ustawieniach profilu.",
         "no_personal_account": "Połącz własne konto GitHub w ustawieniach profilu, aby wykonać tę czynność we własnym imieniu.",
         "not_mergeable": "Według GitHub tego pull requesta nie można teraz scalić.",
         "github_error": "GitHub zwrócił nieoczekiwany błąd. Spróbuj ponownie."
@@ -115,7 +116,14 @@
         "token": "Osobisty token dostępu",
         "token_hint": "Token fine-grained dla repozytoriów, nad którymi pracujesz, z uprawnieniami Pull requests (odczyt i zapis) oraz Contents (odczyt).",
         "connect": "Połącz",
-        "connected_as": "Połączono jako {login}"
+        "connect_with_github": "Połącz z GitHub",
+        "connected_as": "Połączono jako {login}",
+        "install_more": "Dodaj GitHub App do kolejnych repozytoriów",
+        "return": {
+          "connected": "Połączono. Plane działa teraz w GitHub w Twoim imieniu.",
+          "denied": "Anulowano w GitHub, więc nic nie zostało połączone.",
+          "error": "Nie udało się połączyć z GitHub. Spróbuj ponownie; jeśli nadal się nie udaje, poproś administratora o sprawdzenie ustawień GitHub App."
+        }
       },
       "pull_request": {
         "show": "Szczegóły",

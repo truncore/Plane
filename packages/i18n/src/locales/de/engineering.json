@@ -66,6 +66,7 @@
         "no_commits": "Dieser Branch enthält keine Commits, die nicht bereits im Basis-Branch sind. Pushen Sie zuerst Ihre Arbeit.",
         "pr_exists": "Für diesen Branch ist bereits ein Pull Request geöffnet.",
         "protected_branch": "GitHub hat die Aktion aufgrund der Schutzregeln des Branches abgelehnt.",
+        "reconnect_github": "Ihre GitHub-Anmeldung ist abgelaufen. Verbinden Sie Ihr GitHub-Konto in den Profileinstellungen erneut.",
         "no_personal_account": "Verbinden Sie in Ihren Profileinstellungen Ihr eigenes GitHub-Konto, um dies in Ihrem Namen zu tun.",
         "not_mergeable": "Laut GitHub kann dieser Pull Request derzeit nicht gemergt werden.",
         "github_error": "GitHub hat einen unerwarteten Fehler zurückgegeben. Versuchen Sie es erneut."
@@ -115,7 +116,14 @@
         "token": "Persönliches Zugriffstoken",
         "token_hint": "Ein Fine-grained Token für die Repositorys, an denen Sie arbeiten, mit Pull requests (Lesen und Schreiben) und Contents (Lesen).",
         "connect": "Verbinden",
-        "connected_as": "Verbunden als {login}"
+        "connect_with_github": "Mit GitHub verbinden",
+        "connected_as": "Verbunden als {login}",
+        "install_more": "GitHub App zu weiteren Repositorys hinzufügen",
+        "return": {
+          "connected": "Verbunden. Plane handelt auf GitHub jetzt in Ihrem Namen.",
+          "denied": "Sie haben auf GitHub abgebrochen, daher wurde nichts verbunden.",
+          "error": "Die Verbindung mit GitHub hat nicht funktioniert. Versuchen Sie es erneut; wenn es weiterhin fehlschlägt, lassen Sie einen Administrator die Einstellungen der GitHub App prüfen."
+        }
       },
       "pull_request": {
         "show": "Details",

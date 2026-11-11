@@ -66,6 +66,7 @@
         "no_commits": "此分支沒有基礎分支中尚未包含的提交。請先推送您的工作。",
         "pr_exists": "此分支已有一個開啟中的拉取請求。",
         "protected_branch": "由於分支保護規則，GitHub 拒絕了此操作。",
+        "reconnect_github": "您的 GitHub 登入已過期。請在個人資料設定中重新連結 GitHub 帳號。",
         "no_personal_account": "請在個人資料設定中連接您自己的 GitHub 帳戶，以您本人的身分執行此操作。",
         "not_mergeable": "GitHub 表示此拉取請求目前無法合併。",
         "github_error": "GitHub 傳回了非預期的錯誤。請再試一次。"
@@ -115,7 +116,14 @@
         "token": "個人存取權杖",
         "token_hint": "適用於您參與之儲存庫的細粒度權杖，需具備 Pull requests（讀取和寫入）和 Contents（讀取）權限。",
         "connect": "連接",
-        "connected_as": "已以 {login} 身分連接"
+        "connect_with_github": "使用 GitHub 連結",
+        "connected_as": "已以 {login} 身分連接",
+        "install_more": "將 GitHub App 加入更多儲存庫",
+        "return": {
+          "connected": "已連結。Plane 現在會以您的身分在 GitHub 上操作。",
+          "denied": "您在 GitHub 上取消了授權，因此未連結任何內容。",
+          "error": "連結 GitHub 失敗。請重試；如果仍然失敗，請管理員檢查 GitHub App 設定。"
+        }
       },
       "pull_request": {
         "show": "詳細資料",

@@ -66,6 +66,7 @@
         "no_commits": "Esta rama no tiene commits que no estén ya en la rama base. Primero haga push de su trabajo.",
         "pr_exists": "Ya hay un pull request abierto para esta rama.",
         "protected_branch": "GitHub lo rechazó debido a las reglas de protección de la rama.",
+        "reconnect_github": "Su inicio de sesión en GitHub ha caducado. Vuelva a conectar su cuenta de GitHub en la configuración del perfil.",
         "no_personal_account": "Conecte su propia cuenta de GitHub en la configuración de su perfil para hacerlo en su nombre.",
         "not_mergeable": "Según GitHub, este pull request no se puede fusionar en este momento.",
         "github_error": "GitHub devolvió un error inesperado. Inténtelo de nuevo."
@@ -115,7 +116,14 @@
         "token": "Token de acceso personal",
         "token_hint": "Un token de granularidad fina para los repositorios en los que trabaja, con Pull requests (lectura y escritura) y Contents (lectura).",
         "connect": "Conectar",
-        "connected_as": "Conectado como {login}"
+        "connect_with_github": "Conectar con GitHub",
+        "connected_as": "Conectado como {login}",
+        "install_more": "Añadir la GitHub App a más repositorios",
+        "return": {
+          "connected": "Conectado. Plane ahora actúa en su nombre en GitHub.",
+          "denied": "Canceló en GitHub, así que no se conectó nada.",
+          "error": "No se pudo conectar con GitHub. Inténtelo de nuevo; si sigue fallando, pida a un administrador que revise la configuración de la GitHub App."
+        }
       },
       "pull_request": {
         "show": "Detalles",

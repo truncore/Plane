@@ -66,6 +66,7 @@
         "no_commits": "Nhánh này không có commit nào chưa có trong nhánh cơ sở. Hãy push công việc của bạn trước.",
         "pr_exists": "Đã có một pull request đang mở cho nhánh này.",
         "protected_branch": "GitHub đã từ chối do quy tắc bảo vệ của nhánh.",
+        "reconnect_github": "Phiên đăng nhập GitHub của bạn đã hết hạn. Hãy kết nối lại tài khoản GitHub trong cài đặt hồ sơ.",
         "no_personal_account": "Hãy kết nối tài khoản GitHub của riêng bạn trong cài đặt hồ sơ để thực hiện việc này với tư cách của bạn.",
         "not_mergeable": "GitHub cho biết pull request này hiện không thể hợp nhất.",
         "github_error": "GitHub trả về lỗi không mong muốn. Hãy thử lại."
@@ -115,7 +116,14 @@
         "token": "Token truy cập cá nhân",
         "token_hint": "Một token fine-grained cho các kho lưu trữ bạn làm việc, với quyền Pull requests (đọc và ghi) và Contents (đọc).",
         "connect": "Kết nối",
-        "connected_as": "Đã kết nối với tên {login}"
+        "connect_with_github": "Kết nối với GitHub",
+        "connected_as": "Đã kết nối với tên {login}",
+        "install_more": "Thêm GitHub App vào các kho lưu trữ khác",
+        "return": {
+          "connected": "Đã kết nối. Giờ đây Plane thay mặt bạn thao tác trên GitHub.",
+          "denied": "Bạn đã hủy trên GitHub nên không có gì được kết nối.",
+          "error": "Không thể kết nối với GitHub. Hãy thử lại; nếu vẫn lỗi, hãy nhờ quản trị viên kiểm tra cài đặt GitHub App."
+        }
       },
       "pull_request": {
         "show": "Chi tiết",

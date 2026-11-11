@@ -66,6 +66,7 @@
         "no_commits": "Deze branch heeft geen commits die nog niet in de basisbranch staan. Push eerst je werk.",
         "pr_exists": "Er is al een pull request geopend voor deze branch.",
         "protected_branch": "GitHub heeft dit geweigerd vanwege de beveiligingsregels van de branch.",
+        "reconnect_github": "Je GitHub-aanmelding is verlopen. Koppel je GitHub-account opnieuw in je profielinstellingen.",
         "no_personal_account": "Koppel je eigen GitHub-account in je profielinstellingen om dit namens jezelf te doen.",
         "not_mergeable": "Volgens GitHub kan deze pull request nu niet worden gemerged.",
         "github_error": "GitHub gaf een onverwachte fout. Probeer het opnieuw."
@@ -115,7 +116,14 @@
         "token": "Persoonlijk toegangstoken",
         "token_hint": "Een fine-grained token voor de repository's waaraan je werkt, met Pull requests (lezen en schrijven) en Contents (lezen).",
         "connect": "Koppelen",
-        "connected_as": "Gekoppeld als {login}"
+        "connect_with_github": "Koppelen met GitHub",
+        "connected_as": "Gekoppeld als {login}",
+        "install_more": "De GitHub App aan meer repository's toevoegen",
+        "return": {
+          "connected": "Gekoppeld. Plane handelt nu namens jou op GitHub.",
+          "denied": "Je hebt geannuleerd op GitHub, dus er is niets gekoppeld.",
+          "error": "Koppelen met GitHub is mislukt. Probeer het opnieuw; als het blijft mislukken, vraag een beheerder de instellingen van de GitHub App te controleren."
+        }
       },
       "pull_request": {
         "show": "Details",

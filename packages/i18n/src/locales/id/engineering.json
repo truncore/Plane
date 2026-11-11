@@ -66,6 +66,7 @@
         "no_commits": "Branch ini tidak memiliki commit yang belum ada di branch dasar. Push pekerjaan Anda terlebih dahulu.",
         "pr_exists": "Pull request untuk branch ini sudah dibuka.",
         "protected_branch": "GitHub menolak karena aturan perlindungan branch.",
+        "reconnect_github": "Masuk GitHub Anda telah kedaluwarsa. Hubungkan kembali akun GitHub Anda di pengaturan profil.",
         "no_personal_account": "Hubungkan akun GitHub Anda sendiri di pengaturan profil untuk melakukan ini atas nama Anda.",
         "not_mergeable": "Menurut GitHub, pull request ini tidak dapat digabungkan saat ini.",
         "github_error": "GitHub mengembalikan kesalahan yang tidak terduga. Coba lagi."
@@ -115,7 +116,14 @@
         "token": "Token akses pribadi",
         "token_hint": "Token fine-grained untuk repositori yang Anda kerjakan, dengan Pull requests (baca dan tulis) dan Contents (baca).",
         "connect": "Hubungkan",
-        "connected_as": "Terhubung sebagai {login}"
+        "connect_with_github": "Hubungkan dengan GitHub",
+        "connected_as": "Terhubung sebagai {login}",
+        "install_more": "Tambahkan GitHub App ke repositori lain",
+        "return": {
+          "connected": "Terhubung. Plane kini bertindak atas nama Anda di GitHub.",
+          "denied": "Anda membatalkan di GitHub, jadi tidak ada yang terhubung.",
+          "error": "Gagal terhubung ke GitHub. Coba lagi; jika terus gagal, minta admin memeriksa pengaturan GitHub App."
+        }
       },
       "pull_request": {
         "show": "Detail",

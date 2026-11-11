@@ -54,6 +54,7 @@ export type TGitHubErrorCode =
   | "no_commits"
   | "pr_exists"
   | "protected_branch"
+  | "reconnect_github"
   | "no_personal_account"
   | "not_mergeable"
   | "github_error";
@@ -138,6 +139,10 @@ export type TCreatePullRequest = {
 /** The signed-in person's own GitHub account; null login when not connected. */
 export type TGitHubAccount = {
   login: string | null;
+  /** The GitHub App is configured, so people connect with "Connect with GitHub" instead of pasting a token */
+  oauth_available: boolean;
+  /** Where to add the GitHub App to more repositories, when it is configured */
+  install_url: string | null;
 };
 
 export type TReviewVerdict = "APPROVED" | "CHANGES_REQUESTED" | "COMMENTED" | "DISMISSED" | "PENDING";

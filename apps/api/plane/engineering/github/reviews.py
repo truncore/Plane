@@ -6,6 +6,7 @@
 
 # Module imports
 from plane.engineering.github.client import GitHubClient, GitHubError
+from plane.engineering.github.oauth import usable_token
 from plane.engineering.github.pull_requests import client_for
 from plane.engineering.github.sync import apply_pull_request_event, pull_request_state, record_pull_request
 from plane.engineering.models import GitHubAccount
@@ -20,7 +21,7 @@ def personal_client(connection, user):
     account = GitHubAccount.objects.filter(user=user).first()
     if account is None:
         raise GitHubError("no_personal_account")
-    return GitHubClient(account.token, connection.repository_owner, connection.repository_name)
+    return GitHubClient(usable_token(account), connection.repository_owner, connection.repository_name)
 
 
 def latest_verdicts(reviews, requested_reviewers):

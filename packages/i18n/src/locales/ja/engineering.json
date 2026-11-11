@@ -66,6 +66,7 @@
         "no_commits": "このブランチには、ベースブランチにまだ含まれていないコミットがありません。先に作業をプッシュしてください。",
         "pr_exists": "このブランチにはすでにオープンなプルリクエストがあります。",
         "protected_branch": "ブランチの保護ルールにより、GitHubが拒否しました。",
+        "reconnect_github": "GitHubへのサインインの有効期限が切れました。プロフィール設定でGitHubアカウントを再度接続してください。",
         "no_personal_account": "これを自分として実行するには、プロフィール設定で自分のGitHubアカウントを接続してください。",
         "not_mergeable": "GitHubによると、このプルリクエストは現在マージできません。",
         "github_error": "GitHubから予期しないエラーが返されました。もう一度お試しください。"
@@ -115,7 +116,14 @@
         "token": "個人用アクセストークン",
         "token_hint": "作業するリポジトリ用のfine-grainedトークンで、Pull requests（読み取りと書き込み）とContents（読み取り）の権限を持つものです。",
         "connect": "接続",
-        "connected_as": "{login}として接続済み"
+        "connect_with_github": "GitHubで接続",
+        "connected_as": "{login}として接続済み",
+        "install_more": "GitHub Appを他のリポジトリに追加",
+        "return": {
+          "connected": "接続しました。PlaneはGitHub上であなたとして操作します。",
+          "denied": "GitHubでキャンセルされたため、何も接続されませんでした。",
+          "error": "GitHubへの接続に失敗しました。もう一度お試しください。失敗が続く場合は、管理者にGitHub Appの設定を確認してもらってください。"
+        }
       },
       "pull_request": {
         "show": "詳細",

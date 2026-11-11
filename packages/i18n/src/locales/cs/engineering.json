@@ -66,6 +66,7 @@
         "no_commits": "Tato větev nemá žádné commity, které by už nebyly v základní větvi. Nejprve pushněte svou práci.",
         "pr_exists": "Pro tuto větev už je otevřený pull request.",
         "protected_branch": "GitHub požadavek odmítl kvůli pravidlům ochrany větve.",
+        "reconnect_github": "Vaše přihlášení ke službě GitHub vypršelo. Znovu připojte svůj účet GitHub v nastavení profilu.",
         "no_personal_account": "Chcete-li to provést svým jménem, propojte v nastavení profilu svůj vlastní účet GitHub.",
         "not_mergeable": "Podle služby GitHub nelze tento pull request nyní sloučit.",
         "github_error": "GitHub vrátil neočekávanou chybu. Zkuste to znovu."
@@ -115,7 +116,14 @@
         "token": "Osobní přístupový token",
         "token_hint": "Token typu fine-grained pro repozitáře, na kterých pracujete, s oprávněními Pull requests (čtení a zápis) a Contents (čtení).",
         "connect": "Propojit",
-        "connected_as": "Propojeno jako {login}"
+        "connect_with_github": "Připojit přes GitHub",
+        "connected_as": "Propojeno jako {login}",
+        "install_more": "Přidat GitHub App do dalších repozitářů",
+        "return": {
+          "connected": "Připojeno. Plane nyní ve službě GitHub jedná vaším jménem.",
+          "denied": "Na GitHubu jste akci zrušili, takže nic nebylo připojeno.",
+          "error": "Připojení ke službě GitHub se nezdařilo. Zkuste to znovu; pokud to stále selhává, požádejte správce o kontrolu nastavení GitHub App."
+        }
       },
       "pull_request": {
         "show": "Podrobnosti",

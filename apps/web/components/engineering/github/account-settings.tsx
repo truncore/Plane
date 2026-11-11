@@ -5,10 +5,14 @@
  */
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import useSWR from "swr";
+import { AnchorButton } from "@makeplane/propel/components/anchor-button";
+import { Banner } from "@makeplane/propel/components/banner";
 import { Button } from "@makeplane/propel/components/button";
 import { InputField } from "@makeplane/propel/components/input-field";
 // plane imports
+import { API_BASE_URL } from "@plane/constants";
 import { useTranslation } from "@plane/i18n";
 import type { TGitHubError } from "@plane/types";
 // components
@@ -20,6 +24,13 @@ const githubService = new GitHubService();
 
 export const GITHUB_ACCOUNT_KEY = "GITHUB_ACCOUNT";
 
+// What GitHub's sign-in sends people back with (?github=...), and the banner it shows
+const RETURN_BANNERS = {
+  connected: { variant: "info", key: "engineering.github.account.return.connected" },
+  denied: { variant: "warning", key: "engineering.github.account.return.denied" },
+  error: { variant: "danger", key: "engineering.github.account.return.error" },
+} as const;
+
 /** Profile settings: connect your own GitHub account, so reviews, merges and new pull requests are yours. */
 export function GitHubAccountSettings() {
   // states
@@ -28,6 +39,8 @@ export function GitHubAccountSettings() {
   const [isSaving, setIsSaving] = useState(false);
   // hooks
   const { t } = useTranslation();
+  const searchParams = useSearchParams();
+  const returnBanner = RETURN_BANNERS[searchParams.get("github") as keyof typeof RETURN_BANNERS];
   const { data: account, mutate } = useSWR(GITHUB_ACCOUNT_KEY, () => githubService.getAccount());
 
   const handleConnect = async () => {
@@ -46,7 +59,7 @@ export function GitHubAccountSettings() {
 
   const handleDisconnect = async () => {
     await githubService.disconnectAccount();
-    await mutate({ login: null }, { revalidate: false });
+    await mutate({ ...account, login: null } as typeof account, { revalidate: false });
   };
 
   if (!account) return null;
@@ -57,6 +70,7 @@ export function GitHubAccountSettings() {
         title={t("engineering.github.account.title")}
         description={t("engineering.github.account.description")}
       />
+      {returnBanner && <Banner placement="inline" variant={returnBanner.variant} title={t(returnBanner.key)} />}
       {account.login ? (
         <div className="flex items-center gap-3">
           <span className="text-body-sm-regular" data-testid="github-account-login">
@@ -68,6 +82,26 @@ export function GitHubAccountSettings() {
             stretch="auto"
             label={t("engineering.github.settings.disconnect")}
             onClick={handleDisconnect}
+          />
+          {account.install_url && (
+            <a
+              href={account.install_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-body-xs-regular text-accent-primary hover:underline"
+            >
+              {t("engineering.github.account.install_more")}
+            </a>
+          )}
+        </div>
+      ) : account.oauth_available ? (
+        <div>
+          {/* A full-page visit: the API sends the person on to GitHub and back */}
+          <AnchorButton
+            href={`${API_BASE_URL}/api/github/oauth/start/`}
+            variant="primary"
+            size="md"
+            label={t("engineering.github.account.connect_with_github")}
           />
         </div>
       ) : (

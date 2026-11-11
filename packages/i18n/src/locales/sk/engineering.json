@@ -66,6 +66,7 @@
         "no_commits": "Táto vetva nemá žiadne commity, ktoré by už neboli v základnej vetve. Najprv pushnite svoju prácu.",
         "pr_exists": "Pre túto vetvu je už otvorený pull request.",
         "protected_branch": "GitHub požiadavku odmietol pre pravidlá ochrany vetvy.",
+        "reconnect_github": "Vaše prihlásenie do služby GitHub vypršalo. Znova pripojte svoj účet GitHub v nastaveniach profilu.",
         "no_personal_account": "Ak to chcete urobiť vo vlastnom mene, prepojte v nastaveniach profilu svoj vlastný účet GitHub.",
         "not_mergeable": "Podľa služby GitHub tento pull request teraz nemožno zlúčiť.",
         "github_error": "GitHub vrátil neočakávanú chybu. Skúste to znova."
@@ -115,7 +116,14 @@
         "token": "Osobný prístupový token",
         "token_hint": "Token typu fine-grained pre repozitáre, na ktorých pracujete, s oprávneniami Pull requests (čítanie a zápis) a Contents (čítanie).",
         "connect": "Prepojiť",
-        "connected_as": "Prepojené ako {login}"
+        "connect_with_github": "Pripojiť cez GitHub",
+        "connected_as": "Prepojené ako {login}",
+        "install_more": "Pridať GitHub App do ďalších repozitárov",
+        "return": {
+          "connected": "Pripojené. Plane teraz v službe GitHub koná vaším menom.",
+          "denied": "Na GitHube ste akciu zrušili, takže nič nebolo pripojené.",
+          "error": "Pripojenie k službe GitHub zlyhalo. Skúste to znova; ak to stále zlyháva, požiadajte správcu o kontrolu nastavení GitHub App."
+        }
       },
       "pull_request": {
         "show": "Podrobnosti",

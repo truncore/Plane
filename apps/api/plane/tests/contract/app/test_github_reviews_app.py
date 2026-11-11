@@ -108,11 +108,11 @@ class TestPersonalAccount:
             result = session_client.put(ACCOUNT_URL, {"token": "personal-token"}, format="json")
 
         assert result.status_code == status.HTTP_200_OK
-        assert result.data == {"login": "mariam-h"}
+        assert result.data["login"] == "mariam-h"
         account = GitHubAccount.objects.get(user=create_user)
         assert account.token == "personal-token" and "personal-token" not in account.encrypted_token
         assert github.calls[0][2]["headers"]["Authorization"] == "Bearer personal-token"
-        assert session_client.get(ACCOUNT_URL).data == {"login": "mariam-h"}
+        assert session_client.get(ACCOUNT_URL).data["login"] == "mariam-h"
 
     def test_rejected_token_is_not_saved(self, session_client, create_user):
         with mock.patch(REQUEST_PATH, side_effect=FakeGitHub({("GET", "/user"): response(401)})):
@@ -123,7 +123,7 @@ class TestPersonalAccount:
 
     def test_disconnect(self, session_client, my_account):
         assert session_client.delete(ACCOUNT_URL).status_code == status.HTTP_204_NO_CONTENT
-        assert session_client.get(ACCOUNT_URL).data == {"login": None}
+        assert session_client.get(ACCOUNT_URL).data["login"] is None
 
 
 @pytest.mark.contract

@@ -66,6 +66,7 @@
         "no_commits": "Această ramură nu are commit-uri care să nu fie deja în ramura de bază. Faceți mai întâi push la modificări.",
         "pr_exists": "Există deja un pull request deschis pentru această ramură.",
         "protected_branch": "GitHub a refuzat din cauza regulilor de protecție ale ramurii.",
+        "reconnect_github": "Autentificarea dumneavoastră în GitHub a expirat. Conectați din nou contul GitHub din setările profilului.",
         "no_personal_account": "Conectați-vă propriul cont GitHub în setările profilului pentru a face acest lucru în nume propriu.",
         "not_mergeable": "Potrivit GitHub, acest pull request nu poate fi îmbinat acum.",
         "github_error": "GitHub a returnat o eroare neașteptată. Încercați din nou."
@@ -115,7 +116,14 @@
         "token": "Token de acces personal",
         "token_hint": "Un token fine-grained pentru depozitele la care lucrați, cu Pull requests (citire și scriere) și Contents (citire).",
         "connect": "Conectează",
-        "connected_as": "Conectat ca {login}"
+        "connect_with_github": "Conectare cu GitHub",
+        "connected_as": "Conectat ca {login}",
+        "install_more": "Adăugați GitHub App la mai multe depozite",
+        "return": {
+          "connected": "Conectat. Plane acționează acum în numele dumneavoastră pe GitHub.",
+          "denied": "Ați anulat pe GitHub, așa că nu s-a conectat nimic.",
+          "error": "Conectarea la GitHub nu a reușit. Încercați din nou; dacă eșuează în continuare, rugați un administrator să verifice setările GitHub App."
+        }
       },
       "pull_request": {
         "show": "Detalii",

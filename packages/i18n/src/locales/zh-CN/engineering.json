@@ -66,6 +66,7 @@
         "no_commits": "此分支没有基础分支中尚不存在的提交。请先推送您的工作。",
         "pr_exists": "此分支已有一个打开的拉取请求。",
         "protected_branch": "由于分支保护规则，GitHub 拒绝了此操作。",
+        "reconnect_github": "您的 GitHub 登录已过期。请在个人资料设置中重新连接 GitHub 账号。",
         "no_personal_account": "请在个人资料设置中连接您自己的 GitHub 账户，以您本人的身份执行此操作。",
         "not_mergeable": "GitHub 表示此拉取请求目前无法合并。",
         "github_error": "GitHub 返回了意外错误。请重试。"
@@ -115,7 +116,14 @@
         "token": "个人访问令牌",
         "token_hint": "适用于您所参与仓库的细粒度令牌，需具备 Pull requests（读取和写入）和 Contents（读取）权限。",
         "connect": "连接",
-        "connected_as": "已作为 {login} 连接"
+        "connect_with_github": "使用 GitHub 连接",
+        "connected_as": "已作为 {login} 连接",
+        "install_more": "将 GitHub App 添加到更多仓库",
+        "return": {
+          "connected": "已连接。Plane 现在会以您的身份在 GitHub 上操作。",
+          "denied": "您在 GitHub 上取消了授权，因此未连接任何内容。",
+          "error": "连接 GitHub 失败。请重试；如果仍然失败，请让管理员检查 GitHub App 设置。"
+        }
       },
       "pull_request": {
         "show": "详情",

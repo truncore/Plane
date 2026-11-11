@@ -9,6 +9,7 @@ from rest_framework.response import Response
 # Module imports
 from plane.app.permissions import ROLE, allow_permission
 from plane.app.views.base import BaseAPIView
+from plane.engineering.github import oauth
 from plane.engineering.github.client import GitHubClient, GitHubError
 from plane.engineering.github.reviews import (
     merge_pull_request,
@@ -28,10 +29,20 @@ from .github import get_connection, github_error_response, not_connected_respons
 
 
 class GitHubAccountEndpoint(BaseAPIView):
-    """The signed-in person's own GitHub account. The token is checked with GitHub, stored encrypted, never returned."""
+    """The signed-in person's own GitHub account. Tokens are checked with GitHub, stored encrypted, never returned.
+
+    Connecting normally goes through the GitHub App (see github_oauth.py); a pasted personal token is the fallback.
+    """
 
     def account_response(self, account, status_code=status.HTTP_200_OK):
-        return Response({"login": account.login if account else None}, status=status_code)
+        return Response(
+            {
+                "login": account.login if account else None,
+                "oauth_available": oauth.is_available(),
+                "install_url": oauth.install_url(),
+            },
+            status=status_code,
+        )
 
     def get(self, request):
         return self.account_response(GitHubAccount.objects.filter(user=request.user).first())
@@ -52,7 +63,10 @@ class GitHubAccountEndpoint(BaseAPIView):
         return self.account_response(account)
 
     def delete(self, request):
-        GitHubAccount.objects.filter(user=request.user).delete()
+        account = GitHubAccount.objects.filter(user=request.user).first()
+        if account:
+            oauth.revoke(account)
+            account.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 

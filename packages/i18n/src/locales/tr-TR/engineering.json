@@ -66,6 +66,7 @@
         "no_commits": "Bu dalda temel dalda olmayan hiçbir commit yok. Önce çalışmanızı push edin.",
         "pr_exists": "Bu dal için zaten açık bir pull request var.",
         "protected_branch": "GitHub, dalın koruma kuralları nedeniyle isteği reddetti.",
+        "reconnect_github": "GitHub oturumunuzun süresi doldu. GitHub hesabınızı profil ayarlarından yeniden bağlayın.",
         "no_personal_account": "Bunu kendi adınıza yapmak için profil ayarlarınızdan kendi GitHub hesabınızı bağlayın.",
         "not_mergeable": "GitHub'a göre bu pull request şu anda birleştirilemiyor.",
         "github_error": "GitHub beklenmeyen bir hata döndürdü. Tekrar deneyin."
@@ -115,7 +116,14 @@
         "token": "Kişisel erişim token'ı",
         "token_hint": "Çalıştığınız depolar için Pull requests (okuma ve yazma) ve Contents (okuma) izinlerine sahip ayrıntılı (fine-grained) bir token.",
         "connect": "Bağla",
-        "connected_as": "{login} olarak bağlı"
+        "connect_with_github": "GitHub ile bağlan",
+        "connected_as": "{login} olarak bağlı",
+        "install_more": "GitHub App'i daha fazla depoya ekleyin",
+        "return": {
+          "connected": "Bağlandı. Plane artık GitHub'da sizin adınıza işlem yapıyor.",
+          "denied": "GitHub'da iptal ettiniz, bu yüzden hiçbir şey bağlanmadı.",
+          "error": "GitHub'a bağlanılamadı. Yeniden deneyin; sorun sürerse bir yöneticiden GitHub App ayarlarını kontrol etmesini isteyin."
+        }
       },
       "pull_request": {
         "show": "Ayrıntılar",

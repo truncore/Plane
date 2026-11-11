@@ -66,6 +66,7 @@
         "no_commits": "This branch has no commits that aren't already in the base branch. Push your work first.",
         "pr_exists": "A pull request is already open for this branch.",
         "protected_branch": "GitHub refused because of the branch's protection rules.",
+        "reconnect_github": "Your GitHub sign-in has expired. Connect your GitHub account again in your profile settings.",
         "no_personal_account": "Connect your own GitHub account in your profile settings to do this as yourself.",
         "not_mergeable": "GitHub says this pull request can't be merged right now.",
         "github_error": "GitHub returned an unexpected error. Try again."
@@ -115,7 +116,14 @@
         "token": "Personal access token",
         "token_hint": "A fine-grained token for the repositories you work on, with Pull requests (read and write) and Contents (read).",
         "connect": "Connect",
-        "connected_as": "Connected as {login}"
+        "connect_with_github": "Connect with GitHub",
+        "connected_as": "Connected as {login}",
+        "install_more": "Add the GitHub App to more repositories",
+        "return": {
+          "connected": "Connected. Plane now acts as you on GitHub.",
+          "denied": "You cancelled on GitHub, so nothing was connected.",
+          "error": "Connecting to GitHub didn't work. Try again; if it keeps failing, ask an admin to check the GitHub App settings."
+        }
       },
       "pull_request": {
         "show": "Details",

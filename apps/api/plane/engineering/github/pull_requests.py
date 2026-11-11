@@ -10,6 +10,7 @@ from django.utils.dateparse import parse_datetime
 
 # Module imports
 from plane.engineering.github.client import GitHubClient
+from plane.engineering.github.oauth import usable_token
 from plane.engineering.github.sync import mentioned_sequence_ids, move_forward, record_pull_request
 from plane.engineering.models import GitHubAccount, WorkflowMode
 from plane.engineering.work_items import add_link
@@ -18,7 +19,7 @@ from plane.engineering.work_items import add_link
 def client_for(connection, user):
     """A client for the project's repository that acts as the user when they have connected their own GitHub account."""
     account = GitHubAccount.objects.filter(user=user).first()
-    token = account.token if account else connection.token
+    token = usable_token(account) if account else connection.token
     return GitHubClient(token, connection.repository_owner, connection.repository_name)
 
 

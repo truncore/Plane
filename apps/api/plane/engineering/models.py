@@ -172,12 +172,17 @@ class GitHubWebhookDelivery(TimeAuditModel):
 
 
 class GitHubAccount(TimeAuditModel):
-    """A person's own GitHub token, so reviews, merges and new pull requests happen as them."""
+    """A person's own GitHub access, so reviews, merges and new pull requests happen as them.
+
+    Either a GitHub App user token (expires, has a refresh token) or a pasted personal token (no expiry).
+    """
 
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="github_account")
     login = models.CharField(max_length=100)
     encrypted_token = models.TextField()
+    encrypted_refresh_token = models.TextField(blank=True, default="")
+    expires_at = models.DateTimeField(null=True)
 
     class Meta:
         db_table = "engineering_github_accounts"
@@ -192,3 +197,11 @@ class GitHubAccount(TimeAuditModel):
     @token.setter
     def token(self, value):
         self.encrypted_token = encrypt_data(value)
+
+    @property
+    def refresh_token(self):
+        return decrypt_data(self.encrypted_refresh_token)
+
+    @refresh_token.setter
+    def refresh_token(self, value):
+        self.encrypted_refresh_token = encrypt_data(value)

@@ -5,6 +5,8 @@
 from django.urls import path
 
 from plane.engineering.views import (
+    GitHubOAuthCallbackEndpoint,
+    GitHubOAuthStartEndpoint,
     GitHubAccountEndpoint,
     WorkItemPullRequestDetailsEndpoint,
     WorkItemPullRequestMergeEndpoint,
@@ -77,5 +79,7 @@ urlpatterns = [
         name="work-item-pull-request-merge",
     ),
     path("users/me/github/", GitHubAccountEndpoint.as_view(), name="user-github-account"),
+    path("github/oauth/start/", GitHubOAuthStartEndpoint.as_view(), name="github-oauth-start"),
+    path("github/oauth/callback/", GitHubOAuthCallbackEndpoint.as_view(), name="github-oauth-callback"),
     path("github/webhook/", GitHubWebhookEndpoint.as_view(), name="github-webhook"),
 ]

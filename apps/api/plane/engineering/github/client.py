@@ -37,6 +37,7 @@ ERROR_MESSAGES = {
     "no_commits": "The branch has no commits that aren't already in the base branch.",
     "pr_exists": "An open pull request already exists for this branch.",
     "protected_branch": "GitHub refused because of the branch's protection rules.",
+    "reconnect_github": "Your GitHub sign-in has expired. Connect your GitHub account again in your profile settings.",
     "no_personal_account": "Connect your own GitHub account in your profile settings to do this as yourself.",
     "not_mergeable": "GitHub says the pull request can't be merged right now.",
     "github_error": "GitHub returned an unexpected error.",

@@ -66,6 +66,7 @@
         "no_commits": "Questo branch non ha commit che non siano già nel branch di base. Esegua prima il push del suo lavoro.",
         "pr_exists": "Per questo branch è già aperta una pull request.",
         "protected_branch": "GitHub ha rifiutato l'operazione a causa delle regole di protezione del branch.",
+        "reconnect_github": "L'accesso a GitHub è scaduto. Ricolleghi il suo account GitHub nelle impostazioni del profilo.",
         "no_personal_account": "Colleghi il suo account GitHub personale nelle impostazioni del profilo per eseguire questa operazione a suo nome.",
         "not_mergeable": "Secondo GitHub, questa pull request non può essere unita al momento.",
         "github_error": "GitHub ha restituito un errore imprevisto. Riprovi."
@@ -115,7 +116,14 @@
         "token": "Token di accesso personale",
         "token_hint": "Un token a granularità fine per i repository su cui lavora, con Pull requests (lettura e scrittura) e Contents (lettura).",
         "connect": "Collega",
-        "connected_as": "Collegato come {login}"
+        "connect_with_github": "Collega con GitHub",
+        "connected_as": "Collegato come {login}",
+        "install_more": "Aggiungere la GitHub App ad altri repository",
+        "return": {
+          "connected": "Collegato. Plane ora agisce a suo nome su GitHub.",
+          "denied": "Ha annullato su GitHub, quindi non è stato collegato nulla.",
+          "error": "Il collegamento a GitHub non è riuscito. Riprovi; se continua a non funzionare, chieda a un amministratore di controllare le impostazioni della GitHub App."
+        }
       },
       "pull_request": {
         "show": "Dettagli",
