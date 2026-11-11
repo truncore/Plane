@@ -1,0 +1,79 @@
+{
+  "engineering": {
+    "github": {
+      "settings": {
+        "title": "GitHub",
+        "description": "Propojte tento projekt s repozitářem GitHub. Pull requesty a commity pak posouvají pracovní položky vpřed a pull requesty můžete otevírat přímo z pracovní položky.",
+        "connected_to": "Propojeno s {repository}",
+        "saved": "Nastavení GitHub bylo uloženo.",
+        "save_failed": "Nastavení GitHub se nepodařilo uložit. Zkontrolujte zvýrazněná pole.",
+        "save": "Uložit změny",
+        "connect": "Propojit repozitář",
+        "disconnect": "Odpojit",
+        "saved_placeholder": "Uloženo. Chcete-li hodnotu zachovat, ponechte pole prázdné.",
+        "default_state": "Výchozí",
+        "repository": {
+          "label": "Repozitář",
+          "hint": "Vlastník a název, jako v URL repozitáře.",
+          "required": "Zadejte repozitář.",
+          "invalid": "Použijte tvar owner/name, například truncore/plane."
+        },
+        "token": {
+          "label": "Přístupový token",
+          "hint": "Token typu fine-grained s přístupem k tomuto repozitáři: Contents (čtení), Pull requests (čtení a zápis) a Metadata (čtení).",
+          "required": "Zadejte přístupový token."
+        },
+        "webhook_secret": {
+          "label": "Tajný klíč webhooku",
+          "hint": "Vložte stejný tajný klíč do webhooku ve službě GitHub. Plane uložený tajný klíč už nikdy znovu nezobrazí.",
+          "required": "Zadejte nebo vygenerujte tajný klíč webhooku.",
+          "generate": "Vygenerovat"
+        },
+        "workflow_mode": {
+          "label": "Režim pracovního postupu",
+          "trunk_based": "Založený na trunku",
+          "trunk_based_description": "Všichni často slučují malé změny do trunku. Commity v trunku, které zmiňují pracovní položku, ji aktualizují a u starých větví a velkých pull requestů se zobrazí upozornění.",
+          "feature_branches": "Větve funkcí",
+          "feature_branches_description": "Práce probíhá na déle existujících větvích a do základní větve se dostává přes pull requesty."
+        },
+        "base_branch": {
+          "label": "Výchozí základní větev",
+          "trunk": "Větev trunk",
+          "required": "Zadejte název větve."
+        },
+        "branch_age_limit_days": "Upozornit, když je větev starší než (dní)",
+        "large_pr_lines": "Upozornit, když pull request mění více řádků než",
+        "mapping": {
+          "title": "Stavy pracovních položek",
+          "opened": "Pull request otevřen nebo znovu otevřen",
+          "merged": "Všechny pull requesty sloučeny",
+          "fixed_rules": "Koncepty pull requestů pracovní položku neposouvají. Pull request uzavřený bez sloučení zachová stav a přidá komentář. Pull requesty posouvají pracovní položky pouze vpřed."
+        }
+      },
+      "test": {
+        "button": "Otestovat připojení",
+        "success": "Propojeno s {repository}. Plane vidí repozitář a větev {branch}."
+      },
+      "errors": {
+        "not_connected": "Nejprve uložte nastavení GitHub.",
+        "bad_token": "GitHub token odmítl. Může být nesprávný, s prošlou platností nebo odvolaný.",
+        "forbidden": "Token k této akci nemá oprávnění. Zkontrolujte jeho přístup k repozitáři a oprávnění.",
+        "rate_limited": "Byl dosažen limit požadavků služby GitHub. Zkuste to znovu za několik minut.",
+        "unreachable": "Plane se nepodařilo spojit se službou GitHub. Zkontrolujte připojení serveru k internetu a zkuste to znovu.",
+        "repository_not_found": "GitHub repozitář nenašel, nebo k němu token nemá přístup.",
+        "branch_not_found": "Větev v repozitáři neexistuje.",
+        "no_push_permission": "Token může repozitář číst, ale nemůže do něj pushovat, takže nemůže otevírat pull requesty.",
+        "github_error": "GitHub vrátil neočekávanou chybu. Zkuste to znovu."
+      },
+      "webhook": {
+        "title": "Webhook",
+        "copy": "Kopírovat",
+        "copied": "URL webhooku zkopírována",
+        "step_open": "Ve službě GitHub otevřete v repozitáři Settings → Webhooks → Add webhook.",
+        "step_fill": "Vložte tuto URL jako „Payload URL“, zvolte „application/json“ a vložte tajný klíč webhooku.",
+        "step_events": "Zvolte „Let me select individual events“ a zaškrtněte „Pull requests“ a „Pushes“.",
+        "public_url_note": "GitHub musí mít k této adrese přístup přes internet. Na lokálním počítači místo toho použijte příkaz replay."
+      }
+    }
+  }
+}

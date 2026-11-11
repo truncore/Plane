@@ -1,0 +1,79 @@
+{
+  "engineering": {
+    "github": {
+      "settings": {
+        "title": "GitHub",
+        "description": "Verbinden Sie dieses Projekt mit einem GitHub-Repository. Pull Requests und Commits bringen Arbeitselemente dann voran, und Sie können Pull Requests direkt aus einem Arbeitselement öffnen.",
+        "connected_to": "Verbunden mit {repository}",
+        "saved": "GitHub-Einstellungen gespeichert.",
+        "save_failed": "Die GitHub-Einstellungen konnten nicht gespeichert werden. Prüfen Sie die markierten Felder.",
+        "save": "Änderungen speichern",
+        "connect": "Repository verbinden",
+        "disconnect": "Trennen",
+        "saved_placeholder": "Gespeichert. Leer lassen, um den Wert beizubehalten.",
+        "default_state": "Standard",
+        "repository": {
+          "label": "Repository",
+          "hint": "Besitzer und Name, wie in der URL des Repositorys.",
+          "required": "Geben Sie das Repository ein.",
+          "invalid": "Verwenden Sie das Format owner/name, zum Beispiel truncore/plane."
+        },
+        "token": {
+          "label": "Zugriffstoken",
+          "hint": "Ein Fine-grained Token mit Zugriff auf dieses Repository: Contents (Lesen), Pull requests (Lesen und Schreiben) und Metadata (Lesen).",
+          "required": "Geben Sie ein Zugriffstoken ein."
+        },
+        "webhook_secret": {
+          "label": "Webhook-Secret",
+          "hint": "Fügen Sie dasselbe Secret in den GitHub-Webhook ein. Plane zeigt ein gespeichertes Secret nie wieder an.",
+          "required": "Geben Sie ein Webhook-Secret ein oder generieren Sie eines.",
+          "generate": "Generieren"
+        },
+        "workflow_mode": {
+          "label": "Workflow-Modus",
+          "trunk_based": "Trunk-basiert",
+          "trunk_based_description": "Alle mergen kleine Änderungen häufig in den Trunk. Commits im Trunk, die ein Arbeitselement erwähnen, aktualisieren es, und für alte Branches und große Pull Requests wird eine Warnung angezeigt.",
+          "feature_branches": "Feature-Branches",
+          "feature_branches_description": "Die Arbeit findet auf länger bestehenden Branches statt und gelangt über Pull Requests in den Basis-Branch."
+        },
+        "base_branch": {
+          "label": "Standard-Basis-Branch",
+          "trunk": "Trunk-Branch",
+          "required": "Geben Sie einen Branch-Namen ein."
+        },
+        "branch_age_limit_days": "Warnen, wenn ein Branch älter ist als (Tage)",
+        "large_pr_lines": "Warnen, wenn ein Pull Request mehr Zeilen ändert als",
+        "mapping": {
+          "title": "Status der Arbeitselemente",
+          "opened": "Pull Request geöffnet oder erneut geöffnet",
+          "merged": "Alle Pull Requests gemergt",
+          "fixed_rules": "Pull-Request-Entwürfe verschieben kein Arbeitselement. Ein ohne Merge geschlossener Pull Request behält den Status bei und fügt einen Kommentar hinzu. Pull Requests verschieben Arbeitselemente nur vorwärts."
+        }
+      },
+      "test": {
+        "button": "Verbindung testen",
+        "success": "Verbunden mit {repository}. Plane kann das Repository und den Branch {branch} sehen."
+      },
+      "errors": {
+        "not_connected": "Speichern Sie zuerst die GitHub-Einstellungen.",
+        "bad_token": "GitHub hat das Token abgelehnt. Es ist möglicherweise falsch, abgelaufen oder widerrufen.",
+        "forbidden": "Das Token ist dazu nicht berechtigt. Prüfen Sie seinen Repository-Zugriff und seine Berechtigungen.",
+        "rate_limited": "Das Ratenlimit von GitHub wurde erreicht. Versuchen Sie es in ein paar Minuten erneut.",
+        "unreachable": "Plane konnte GitHub nicht erreichen. Prüfen Sie die Internetverbindung des Servers und versuchen Sie es erneut.",
+        "repository_not_found": "GitHub konnte das Repository nicht finden, oder das Token hat keinen Zugriff darauf.",
+        "branch_not_found": "Der Branch existiert im Repository nicht.",
+        "no_push_permission": "Das Token kann das Repository lesen, aber nicht dorthin pushen, und kann daher keine Pull Requests öffnen.",
+        "github_error": "GitHub hat einen unerwarteten Fehler zurückgegeben. Versuchen Sie es erneut."
+      },
+      "webhook": {
+        "title": "Webhook",
+        "copy": "Kopieren",
+        "copied": "Webhook-URL kopiert",
+        "step_open": "Öffnen Sie in GitHub im Repository Settings → Webhooks → Add webhook.",
+        "step_fill": "Fügen Sie diese URL als „Payload URL“ ein, wählen Sie „application/json“ und fügen Sie das Webhook-Secret ein.",
+        "step_events": "Wählen Sie „Let me select individual events“ und aktivieren Sie „Pull requests“ und „Pushes“.",
+        "public_url_note": "GitHub muss diese Adresse über das Internet erreichen können. Verwenden Sie auf einem lokalen Rechner stattdessen den Replay-Befehl."
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "engineering": {
+    "github": {
+      "settings": {
+        "title": "GitHub",
+        "description": "将此项目连接到 GitHub 仓库。连接后，拉取请求和提交会推动工作项向前推进，您也可以从工作项创建拉取请求。",
+        "connected_to": "已连接到 {repository}",
+        "saved": "GitHub 设置已保存。",
+        "save_failed": "无法保存 GitHub 设置。请检查突出显示的字段。",
+        "save": "保存更改",
+        "connect": "连接仓库",
+        "disconnect": "断开连接",
+        "saved_placeholder": "已保存。留空即可保持不变。",
+        "default_state": "默认",
+        "repository": {
+          "label": "仓库",
+          "hint": "所有者和名称，与仓库 URL 中的一致。",
+          "required": "请输入仓库。",
+          "invalid": "请使用 owner/name 格式，例如 truncore/plane。"
+        },
+        "token": {
+          "label": "访问令牌",
+          "hint": "具有此仓库访问权限的细粒度令牌：Contents（读取）、Pull requests（读取和写入）和 Metadata（读取）。",
+          "required": "请输入访问令牌。"
+        },
+        "webhook_secret": {
+          "label": "Webhook 密钥",
+          "hint": "请将相同的密钥粘贴到 GitHub Webhook 中。Plane 不会再次显示已保存的密钥。",
+          "required": "请输入或生成 Webhook 密钥。",
+          "generate": "生成"
+        },
+        "workflow_mode": {
+          "label": "工作流模式",
+          "trunk_based": "基于主干",
+          "trunk_based_description": "所有人都经常将小的更改合并到主干。主干上提及工作项的提交会更新该工作项，旧分支和大型拉取请求会收到警告。",
+          "feature_branches": "功能分支",
+          "feature_branches_description": "工作在存续时间较长的分支上进行，并通过拉取请求合入基础分支。"
+        },
+        "base_branch": {
+          "label": "默认基础分支",
+          "trunk": "主干分支",
+          "required": "请输入分支名称。"
+        },
+        "branch_age_limit_days": "分支超过以下天数时发出警告（天）",
+        "large_pr_lines": "拉取请求更改的行数超过以下值时发出警告",
+        "mapping": {
+          "title": "工作项状态",
+          "opened": "拉取请求已打开或重新打开",
+          "merged": "所有拉取请求均已合并",
+          "fixed_rules": "草稿拉取请求不会移动工作项。未合并就关闭的拉取请求会保持状态不变并添加一条评论。拉取请求只会让工作项向前推进。"
+        }
+      },
+      "test": {
+        "button": "测试连接",
+        "success": "已连接到 {repository}。Plane 可以访问该仓库和 {branch} 分支。"
+      },
+      "errors": {
+        "not_connected": "请先保存 GitHub 设置。",
+        "bad_token": "GitHub 拒绝了该令牌。令牌可能有误、已过期或已被撤销。",
+        "forbidden": "该令牌无权执行此操作。请检查其仓库访问权限和权限设置。",
+        "rate_limited": "已达到 GitHub 的速率限制。请几分钟后重试。",
+        "unreachable": "Plane 无法连接到 GitHub。请检查服务器的互联网连接，然后重试。",
+        "repository_not_found": "GitHub 找不到该仓库，或者令牌无权访问该仓库。",
+        "branch_not_found": "仓库中不存在该分支。",
+        "no_push_permission": "该令牌可以读取仓库，但无法推送到仓库，因此无法创建拉取请求。",
+        "github_error": "GitHub 返回了意外错误。请重试。"
+      },
+      "webhook": {
+        "title": "Webhook",
+        "copy": "复制",
+        "copied": "已复制 Webhook URL",
+        "step_open": "在 GitHub 中，打开仓库的 Settings → Webhooks → Add webhook。",
+        "step_fill": "将此 URL 粘贴为“Payload URL”，选择“application/json”，然后粘贴 Webhook 密钥。",
+        "step_events": "选择“Let me select individual events”，并勾选“Pull requests”和“Pushes”。",
+        "public_url_note": "GitHub 必须能够通过互联网访问此地址。在本地计算机上，请改用 replay 命令。"
+      }
+    }
+  }
+}

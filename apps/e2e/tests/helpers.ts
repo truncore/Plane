@@ -15,6 +15,13 @@ export const DEMO = {
   workspaceSlug: "truncore-demo",
   projectName: "Payments",
   projectIdentifier: "PAY",
+  // The placeholder GitHub connection the seed gives the demo project
+  github: {
+    repository_owner: "truncore",
+    repository_name: "plane-demo",
+    token: "demo-token-replace-me",
+    webhook_secret: "demo-webhook-secret",
+  },
 };
 
 const API_URL = process.env.E2E_API_URL ?? "http://localhost:8000";
@@ -23,17 +30,25 @@ const TEST_ITEM_PREFIX = "[e2e]";
 /** Name for a work item a test creates. Such items are deleted before and after every test. */
 export const testItemName = (label: string) => `${TEST_ITEM_PREFIX} ${label}`;
 
-/**
- * Put the demo project back as the seed left it, through the same API the app uses:
- * delete the test work items and clear the work item filters the demo admin has saved.
- */
-async function resetDemoProject(request: APIRequestContext) {
-  const workspaceUrl = `${API_URL}/api/workspaces/${DEMO.workspaceSlug}`;
+const workspaceUrl = `${API_URL}/api/workspaces/${DEMO.workspaceSlug}`;
+
+export async function getDemoProjectId(request: APIRequestContext) {
   const projects: { id: string; identifier: string }[] = await (await request.get(`${workspaceUrl}/projects/`)).json();
   const projectId = projects.find((project) => project.identifier === DEMO.projectIdentifier)?.id;
   if (!projectId) throw new Error("Demo project not found. Run `python manage.py seed_engineering_demo` first.");
+  return projectId;
+}
+
+/**
+ * Put the demo project back as the seed left it, through the same API the app uses: delete the test
+ * work items, clear the work item filters the demo admin has saved, and restore the GitHub connection.
+ */
+async function resetDemoProject(request: APIRequestContext) {
+  const projectId = await getDemoProjectId(request);
 
   await request.patch(`${workspaceUrl}/projects/${projectId}/user-properties/`, { data: { rich_filters: {} } });
+  await request.delete(`${workspaceUrl}/projects/${projectId}/github/`);
+  await request.put(`${workspaceUrl}/projects/${projectId}/github/`, { data: DEMO.github });
 
   const search = await request.get(`${workspaceUrl}/projects/${projectId}/search-issues/`, {
     params: { search: TEST_ITEM_PREFIX },

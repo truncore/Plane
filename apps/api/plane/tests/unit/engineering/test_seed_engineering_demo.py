@@ -10,6 +10,7 @@ import pytest
 from django.core.management import call_command
 
 from plane.db.models import Cycle, CycleIssue, Issue, Project, User, Workspace
+from plane.engineering.models import GitHubConnection
 from plane.engineering.management.commands.seed_engineering_demo import DEMO_PASSWORD, DEMO_STORIES, DEMO_USERS
 
 
@@ -54,6 +55,14 @@ class TestSeedEngineeringDemo:
         assert sorted(int(point.value) for point in project.estimate.points.all()) == [1, 2, 3, 5, 8, 13]
         cycle = Cycle.objects.get(project=project)
         assert CycleIssue.objects.filter(cycle=cycle).count() == len(DEMO_STORIES)
+
+    def test_project_is_connected_to_a_placeholder_repository(self):
+        project = seed()
+
+        connection = GitHubConnection.objects.get(project=project)
+        assert connection.repository_full_name == "truncore/plane-demo"
+        assert connection.workflow_mode == "trunk_based"
+        assert (connection.review_state.name, connection.review_state.group) == ("In Review", "started")
 
     def test_running_twice_creates_nothing_new(self):
         seed()

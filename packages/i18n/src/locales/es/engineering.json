@@ -1,0 +1,79 @@
+{
+  "engineering": {
+    "github": {
+      "settings": {
+        "title": "GitHub",
+        "description": "Conecte este proyecto a un repositorio de GitHub. Así, los pull requests y los commits hacen avanzar los elementos de trabajo, y puede abrir pull requests desde un elemento de trabajo.",
+        "connected_to": "Conectado a {repository}",
+        "saved": "Configuración de GitHub guardada.",
+        "save_failed": "No se pudo guardar la configuración de GitHub. Revise los campos resaltados.",
+        "save": "Guardar cambios",
+        "connect": "Conectar repositorio",
+        "disconnect": "Desconectar",
+        "saved_placeholder": "Guardado. Déjelo vacío para conservarlo.",
+        "default_state": "Predeterminado",
+        "repository": {
+          "label": "Repositorio",
+          "hint": "Propietario y nombre, como en la URL del repositorio.",
+          "required": "Introduzca el repositorio.",
+          "invalid": "Use el formato owner/name, por ejemplo truncore/plane."
+        },
+        "token": {
+          "label": "Token de acceso",
+          "hint": "Un token de granularidad fina con acceso a este repositorio: Contents (lectura), Pull requests (lectura y escritura) y Metadata (lectura).",
+          "required": "Introduzca un token de acceso."
+        },
+        "webhook_secret": {
+          "label": "Secreto del webhook",
+          "hint": "Pegue el mismo secreto en el webhook de GitHub. Plane nunca vuelve a mostrar un secreto guardado.",
+          "required": "Introduzca o genere un secreto de webhook.",
+          "generate": "Generar"
+        },
+        "workflow_mode": {
+          "label": "Modo de flujo de trabajo",
+          "trunk_based": "Basado en trunk",
+          "trunk_based_description": "Todos integran cambios pequeños en el trunk con frecuencia. Los commits en el trunk que mencionan un elemento de trabajo lo actualizan, y las ramas antiguas y los pull requests grandes reciben una advertencia.",
+          "feature_branches": "Ramas de funcionalidad",
+          "feature_branches_description": "El trabajo se realiza en ramas de mayor duración y llega a la rama base mediante pull requests."
+        },
+        "base_branch": {
+          "label": "Rama base predeterminada",
+          "trunk": "Rama trunk",
+          "required": "Introduzca un nombre de rama."
+        },
+        "branch_age_limit_days": "Advertir cuando una rama tenga más de (días)",
+        "large_pr_lines": "Advertir cuando un pull request cambie más líneas que",
+        "mapping": {
+          "title": "Estados de los elementos de trabajo",
+          "opened": "Pull request abierto o reabierto",
+          "merged": "Todos los pull requests fusionados",
+          "fixed_rules": "Los pull requests en borrador no mueven ningún elemento de trabajo. Un pull request cerrado sin fusionar mantiene el estado y añade un comentario. Los pull requests solo hacen avanzar los elementos de trabajo."
+        }
+      },
+      "test": {
+        "button": "Probar conexión",
+        "success": "Conectado a {repository}. Plane puede ver el repositorio y la rama {branch}."
+      },
+      "errors": {
+        "not_connected": "Guarde primero la configuración de GitHub.",
+        "bad_token": "GitHub rechazó el token. Puede ser incorrecto, haber caducado o haber sido revocado.",
+        "forbidden": "El token no tiene permiso para hacer esto. Revise su acceso al repositorio y sus permisos.",
+        "rate_limited": "Se alcanzó el límite de solicitudes de GitHub. Inténtelo de nuevo en unos minutos.",
+        "unreachable": "Plane no pudo conectarse con GitHub. Revise la conexión a internet del servidor e inténtelo de nuevo.",
+        "repository_not_found": "GitHub no encontró el repositorio o el token no tiene acceso a él.",
+        "branch_not_found": "La rama no existe en el repositorio.",
+        "no_push_permission": "El token puede leer el repositorio pero no puede hacer push en él, por lo que no puede abrir pull requests.",
+        "github_error": "GitHub devolvió un error inesperado. Inténtelo de nuevo."
+      },
+      "webhook": {
+        "title": "Webhook",
+        "copy": "Copiar",
+        "copied": "URL del webhook copiada",
+        "step_open": "En GitHub, abra Settings → Webhooks → Add webhook del repositorio.",
+        "step_fill": "Pegue esta URL como «Payload URL», elija «application/json» y pegue el secreto del webhook.",
+        "step_events": "Elija «Let me select individual events» y marque «Pull requests» y «Pushes».",
+        "public_url_note": "GitHub debe poder acceder a esta dirección a través de internet. En un equipo local, use en su lugar el comando de reenvío."
+      }
+    }
+  }
+}

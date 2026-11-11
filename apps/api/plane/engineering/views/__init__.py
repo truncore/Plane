@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # See the LICENSE file for details.
 
+from .github import GitHubConnectionEndpoint, GitHubConnectionTestEndpoint
 from .story_progress import StoryProgressEndpoint
 
-__all__ = ["StoryProgressEndpoint"]
+__all__ = ["GitHubConnectionEndpoint", "GitHubConnectionTestEndpoint", "StoryProgressEndpoint"]

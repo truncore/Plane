@@ -1,0 +1,79 @@
+{
+  "engineering": {
+    "github": {
+      "settings": {
+        "title": "GitHub",
+        "description": "Conecte este projeto a um repositório do GitHub. Assim, pull requests e commits fazem os itens de trabalho avançarem, e você pode abrir pull requests a partir de um item de trabalho.",
+        "connected_to": "Conectado a {repository}",
+        "saved": "Configurações do GitHub salvas.",
+        "save_failed": "Não foi possível salvar as configurações do GitHub. Verifique os campos destacados.",
+        "save": "Salvar alterações",
+        "connect": "Conectar repositório",
+        "disconnect": "Desconectar",
+        "saved_placeholder": "Salvo. Deixe em branco para manter.",
+        "default_state": "Padrão",
+        "repository": {
+          "label": "Repositório",
+          "hint": "Proprietário e nome, como na URL do repositório.",
+          "required": "Informe o repositório.",
+          "invalid": "Use o formato owner/name, por exemplo truncore/plane."
+        },
+        "token": {
+          "label": "Token de acesso",
+          "hint": "Um token refinado com acesso a este repositório: Contents (leitura), Pull requests (leitura e gravação) e Metadata (leitura).",
+          "required": "Informe um token de acesso."
+        },
+        "webhook_secret": {
+          "label": "Segredo do webhook",
+          "hint": "Cole o mesmo segredo no webhook do GitHub. O Plane nunca mais mostra um segredo salvo.",
+          "required": "Informe ou gere um segredo do webhook.",
+          "generate": "Gerar"
+        },
+        "workflow_mode": {
+          "label": "Modo de fluxo de trabalho",
+          "trunk_based": "Baseado em trunk",
+          "trunk_based_description": "Todos integram pequenas alterações no trunk com frequência. Commits no trunk que mencionam um item de trabalho o atualizam, e branches antigos e pull requests grandes recebem um aviso.",
+          "feature_branches": "Branches de funcionalidade",
+          "feature_branches_description": "O trabalho acontece em branches de vida mais longa e chega ao branch base por meio de pull requests."
+        },
+        "base_branch": {
+          "label": "Branch base padrão",
+          "trunk": "Branch trunk",
+          "required": "Informe o nome de um branch."
+        },
+        "branch_age_limit_days": "Avisar quando um branch tiver mais de (dias)",
+        "large_pr_lines": "Avisar quando um pull request alterar mais linhas que",
+        "mapping": {
+          "title": "Estados dos itens de trabalho",
+          "opened": "Pull request aberto ou reaberto",
+          "merged": "Todos os pull requests mesclados",
+          "fixed_rules": "Pull requests em rascunho não movem um item de trabalho. Um pull request fechado sem mesclagem mantém o estado e adiciona um comentário. Pull requests só fazem os itens de trabalho avançarem."
+        }
+      },
+      "test": {
+        "button": "Testar conexão",
+        "success": "Conectado a {repository}. O Plane consegue ver o repositório e o branch {branch}."
+      },
+      "errors": {
+        "not_connected": "Salve as configurações do GitHub primeiro.",
+        "bad_token": "O GitHub rejeitou o token. Ele pode estar incorreto, expirado ou revogado.",
+        "forbidden": "O token não tem permissão para fazer isso. Verifique o acesso dele ao repositório e as permissões.",
+        "rate_limited": "O limite de requisições do GitHub foi atingido. Tente novamente em alguns minutos.",
+        "unreachable": "O Plane não conseguiu acessar o GitHub. Verifique a conexão com a internet do servidor e tente novamente.",
+        "repository_not_found": "O GitHub não encontrou o repositório, ou o token não tem acesso a ele.",
+        "branch_not_found": "O branch não existe no repositório.",
+        "no_push_permission": "O token consegue ler o repositório, mas não consegue fazer push nele, então não pode abrir pull requests.",
+        "github_error": "O GitHub retornou um erro inesperado. Tente novamente."
+      },
+      "webhook": {
+        "title": "Webhook",
+        "copy": "Copiar",
+        "copied": "URL do webhook copiada",
+        "step_open": "No GitHub, abra Settings → Webhooks → Add webhook do repositório.",
+        "step_fill": "Cole esta URL como \"Payload URL\", escolha \"application/json\" e cole o segredo do webhook.",
+        "step_events": "Escolha \"Let me select individual events\" e marque \"Pull requests\" e \"Pushes\".",
+        "public_url_note": "O GitHub precisa conseguir acessar este endereço pela internet. Em uma máquina local, use o comando de replay."
+      }
+    }
+  }
+}

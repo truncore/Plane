@@ -1,0 +1,79 @@
+{
+  "engineering": {
+    "github": {
+      "settings": {
+        "title": "GitHub",
+        "description": "Conectați acest proiect la un depozit GitHub. Pull request-urile și commit-urile vor face apoi elementele de lucru să avanseze, iar pull request-urile pot fi deschise direct dintr-un element de lucru.",
+        "connected_to": "Conectat la {repository}",
+        "saved": "Setările GitHub au fost salvate.",
+        "save_failed": "Setările GitHub nu au putut fi salvate. Verificați câmpurile evidențiate.",
+        "save": "Salvează modificările",
+        "connect": "Conectează depozitul",
+        "disconnect": "Deconectează",
+        "saved_placeholder": "Salvat. Lăsați câmpul gol pentru a-l păstra.",
+        "default_state": "Implicit",
+        "repository": {
+          "label": "Depozit",
+          "hint": "Proprietarul și numele, ca în URL-ul depozitului.",
+          "required": "Introduceți depozitul.",
+          "invalid": "Folosiți formatul owner/name, de exemplu truncore/plane."
+        },
+        "token": {
+          "label": "Token de acces",
+          "hint": "Un token fine-grained cu acces la acest depozit: Contents (citire), Pull requests (citire și scriere) și Metadata (citire).",
+          "required": "Introduceți un token de acces."
+        },
+        "webhook_secret": {
+          "label": "Secretul webhook-ului",
+          "hint": "Lipiți același secret în webhook-ul GitHub. Plane nu mai afișează niciodată un secret salvat.",
+          "required": "Introduceți sau generați un secret pentru webhook.",
+          "generate": "Generează"
+        },
+        "workflow_mode": {
+          "label": "Mod flux de lucru",
+          "trunk_based": "Bazat pe trunk",
+          "trunk_based_description": "Toată lumea integrează des modificări mici în trunk. Commit-urile din trunk care menționează un element de lucru îl actualizează, iar ramurile vechi și pull request-urile mari primesc un avertisment.",
+          "feature_branches": "Ramuri de funcționalitate",
+          "feature_branches_description": "Lucrul se desfășoară pe ramuri de durată mai lungă și ajunge în ramura de bază prin pull request-uri."
+        },
+        "base_branch": {
+          "label": "Ramura de bază implicită",
+          "trunk": "Ramura trunk",
+          "required": "Introduceți numele unei ramuri."
+        },
+        "branch_age_limit_days": "Avertizează când o ramură este mai veche de (zile)",
+        "large_pr_lines": "Avertizează când un pull request modifică mai multe linii decât",
+        "mapping": {
+          "title": "Stările elementelor de lucru",
+          "opened": "Pull request deschis sau redeschis",
+          "merged": "Toate pull request-urile îmbinate",
+          "fixed_rules": "Pull request-urile ciornă nu mută un element de lucru. Un pull request închis fără îmbinare păstrează starea și adaugă un comentariu. Pull request-urile mută elementele de lucru doar înainte."
+        }
+      },
+      "test": {
+        "button": "Testează conexiunea",
+        "success": "Conectat la {repository}. Plane poate vedea depozitul și ramura {branch}."
+      },
+      "errors": {
+        "not_connected": "Salvați mai întâi setările GitHub.",
+        "bad_token": "GitHub a respins tokenul. Este posibil să fie greșit, expirat sau revocat.",
+        "forbidden": "Tokenul nu are permisiunea de a face acest lucru. Verificați accesul său la depozit și permisiunile.",
+        "rate_limited": "S-a atins limita de solicitări GitHub. Încercați din nou peste câteva minute.",
+        "unreachable": "Plane nu a putut accesa GitHub. Verificați conexiunea la internet a serverului și încercați din nou.",
+        "repository_not_found": "GitHub nu a găsit depozitul sau tokenul nu are acces la acesta.",
+        "branch_not_found": "Ramura nu există în depozit.",
+        "no_push_permission": "Tokenul poate citi depozitul, dar nu poate face push în el, așa că nu poate deschide pull request-uri.",
+        "github_error": "GitHub a returnat o eroare neașteptată. Încercați din nou."
+      },
+      "webhook": {
+        "title": "Webhook",
+        "copy": "Copiază",
+        "copied": "URL-ul webhook-ului a fost copiat",
+        "step_open": "În GitHub, deschideți în depozit Settings → Webhooks → Add webhook.",
+        "step_fill": "Lipiți acest URL ca „Payload URL”, alegeți „application/json” și lipiți secretul webhook-ului.",
+        "step_events": "Alegeți „Let me select individual events” și bifați „Pull requests” și „Pushes”.",
+        "public_url_note": "GitHub trebuie să poată accesa această adresă prin internet. Pe un calculator local, folosiți în schimb comanda replay."
+      }
+    }
+  }
+}

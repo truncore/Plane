@@ -1,0 +1,79 @@
+{
+  "engineering": {
+    "github": {
+      "settings": {
+        "title": "GitHub",
+        "description": "Kết nối dự án này với một kho lưu trữ GitHub. Khi đó, pull request và commit sẽ đưa các mục công việc tiến lên, và bạn có thể mở pull request từ một mục công việc.",
+        "connected_to": "Đã kết nối với {repository}",
+        "saved": "Đã lưu cài đặt GitHub.",
+        "save_failed": "Không thể lưu cài đặt GitHub. Hãy kiểm tra các trường được đánh dấu.",
+        "save": "Lưu thay đổi",
+        "connect": "Kết nối kho lưu trữ",
+        "disconnect": "Ngắt kết nối",
+        "saved_placeholder": "Đã lưu. Để trống để giữ nguyên.",
+        "default_state": "Mặc định",
+        "repository": {
+          "label": "Kho lưu trữ",
+          "hint": "Chủ sở hữu và tên, như trong URL của kho lưu trữ.",
+          "required": "Nhập kho lưu trữ.",
+          "invalid": "Sử dụng định dạng owner/name, ví dụ truncore/plane."
+        },
+        "token": {
+          "label": "Token truy cập",
+          "hint": "Một token fine-grained có quyền truy cập kho lưu trữ này: Contents (đọc), Pull requests (đọc và ghi) và Metadata (đọc).",
+          "required": "Nhập token truy cập."
+        },
+        "webhook_secret": {
+          "label": "Khóa bí mật webhook",
+          "hint": "Dán cùng khóa bí mật này vào webhook GitHub. Plane sẽ không bao giờ hiển thị lại khóa bí mật đã lưu.",
+          "required": "Nhập hoặc tạo khóa bí mật webhook.",
+          "generate": "Tạo"
+        },
+        "workflow_mode": {
+          "label": "Chế độ quy trình làm việc",
+          "trunk_based": "Dựa trên trunk",
+          "trunk_based_description": "Mọi người thường xuyên hợp nhất các thay đổi nhỏ vào trunk. Các commit trên trunk có nhắc đến một mục công việc sẽ cập nhật mục đó, và các nhánh cũ cũng như các pull request lớn sẽ nhận cảnh báo.",
+          "feature_branches": "Nhánh tính năng",
+          "feature_branches_description": "Công việc diễn ra trên các nhánh tồn tại lâu hơn và được đưa vào nhánh cơ sở thông qua pull request."
+        },
+        "base_branch": {
+          "label": "Nhánh cơ sở mặc định",
+          "trunk": "Nhánh trunk",
+          "required": "Nhập tên nhánh."
+        },
+        "branch_age_limit_days": "Cảnh báo khi nhánh cũ hơn (ngày)",
+        "large_pr_lines": "Cảnh báo khi pull request thay đổi nhiều dòng hơn",
+        "mapping": {
+          "title": "Trạng thái mục công việc",
+          "opened": "Pull request được mở hoặc mở lại",
+          "merged": "Tất cả pull request đã được hợp nhất",
+          "fixed_rules": "Pull request nháp không di chuyển mục công việc. Pull request bị đóng mà không hợp nhất sẽ giữ nguyên trạng thái và thêm một bình luận. Pull request chỉ đưa các mục công việc tiến lên."
+        }
+      },
+      "test": {
+        "button": "Kiểm tra kết nối",
+        "success": "Đã kết nối với {repository}. Plane có thể thấy kho lưu trữ và nhánh {branch}."
+      },
+      "errors": {
+        "not_connected": "Hãy lưu cài đặt GitHub trước.",
+        "bad_token": "GitHub đã từ chối token. Token có thể sai, đã hết hạn hoặc đã bị thu hồi.",
+        "forbidden": "Token không được phép thực hiện thao tác này. Hãy kiểm tra quyền truy cập kho lưu trữ và các quyền của token.",
+        "rate_limited": "Đã đạt giới hạn tần suất của GitHub. Hãy thử lại sau vài phút.",
+        "unreachable": "Plane không thể kết nối tới GitHub. Hãy kiểm tra kết nối internet của máy chủ và thử lại.",
+        "repository_not_found": "GitHub không tìm thấy kho lưu trữ, hoặc token không có quyền truy cập vào kho đó.",
+        "branch_not_found": "Nhánh không tồn tại trong kho lưu trữ.",
+        "no_push_permission": "Token có thể đọc kho lưu trữ nhưng không thể push lên đó, nên không thể mở pull request.",
+        "github_error": "GitHub trả về lỗi không mong muốn. Hãy thử lại."
+      },
+      "webhook": {
+        "title": "Webhook",
+        "copy": "Sao chép",
+        "copied": "Đã sao chép URL webhook",
+        "step_open": "Trong GitHub, mở Settings → Webhooks → Add webhook của kho lưu trữ.",
+        "step_fill": "Dán URL này vào \"Payload URL\", chọn \"application/json\" và dán khóa bí mật webhook.",
+        "step_events": "Chọn \"Let me select individual events\" và đánh dấu \"Pull requests\" và \"Pushes\".",
+        "public_url_note": "GitHub phải truy cập được địa chỉ này qua internet. Trên máy cục bộ, hãy dùng lệnh replay thay thế."
+      }
+    }
+  }
+}

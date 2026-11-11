@@ -1,0 +1,79 @@
+{
+  "engineering": {
+    "github": {
+      "settings": {
+        "title": "GitHub",
+        "description": "Hubungkan proyek ini ke repositori GitHub. Pull request dan commit kemudian akan memajukan item kerja, dan Anda dapat membuka pull request dari item kerja.",
+        "connected_to": "Terhubung ke {repository}",
+        "saved": "Pengaturan GitHub disimpan.",
+        "save_failed": "Pengaturan GitHub tidak dapat disimpan. Periksa kolom yang ditandai.",
+        "save": "Simpan perubahan",
+        "connect": "Hubungkan repositori",
+        "disconnect": "Putuskan",
+        "saved_placeholder": "Tersimpan. Biarkan kosong untuk mempertahankannya.",
+        "default_state": "Bawaan",
+        "repository": {
+          "label": "Repositori",
+          "hint": "Pemilik dan nama, seperti pada URL repositori.",
+          "required": "Masukkan repositori.",
+          "invalid": "Gunakan format owner/name, misalnya truncore/plane."
+        },
+        "token": {
+          "label": "Token akses",
+          "hint": "Token fine-grained dengan akses ke repositori ini: Contents (baca), Pull requests (baca dan tulis), dan Metadata (baca).",
+          "required": "Masukkan token akses."
+        },
+        "webhook_secret": {
+          "label": "Rahasia webhook",
+          "hint": "Tempelkan rahasia yang sama ke webhook GitHub. Plane tidak akan pernah menampilkan rahasia yang tersimpan lagi.",
+          "required": "Masukkan atau buat rahasia webhook.",
+          "generate": "Buat"
+        },
+        "workflow_mode": {
+          "label": "Mode alur kerja",
+          "trunk_based": "Berbasis trunk",
+          "trunk_based_description": "Semua orang sering menggabungkan perubahan kecil ke trunk. Commit di trunk yang menyebut item kerja akan memperbaruinya, dan branch lama serta pull request besar akan mendapat peringatan.",
+          "feature_branches": "Branch fitur",
+          "feature_branches_description": "Pekerjaan dilakukan di branch yang berumur lebih panjang dan masuk ke branch dasar melalui pull request."
+        },
+        "base_branch": {
+          "label": "Branch dasar bawaan",
+          "trunk": "Branch trunk",
+          "required": "Masukkan nama branch."
+        },
+        "branch_age_limit_days": "Peringatkan jika branch lebih lama dari (hari)",
+        "large_pr_lines": "Peringatkan jika pull request mengubah lebih banyak baris dari",
+        "mapping": {
+          "title": "Status item kerja",
+          "opened": "Pull request dibuka atau dibuka kembali",
+          "merged": "Semua pull request digabungkan",
+          "fixed_rules": "Pull request draf tidak memindahkan item kerja. Pull request yang ditutup tanpa digabungkan mempertahankan statusnya dan menambahkan komentar. Pull request hanya memajukan item kerja."
+        }
+      },
+      "test": {
+        "button": "Uji koneksi",
+        "success": "Terhubung ke {repository}. Plane dapat melihat repositori dan branch {branch}."
+      },
+      "errors": {
+        "not_connected": "Simpan pengaturan GitHub terlebih dahulu.",
+        "bad_token": "GitHub menolak token. Token mungkin salah, kedaluwarsa, atau dicabut.",
+        "forbidden": "Token tidak diizinkan melakukan ini. Periksa akses repositori dan izin token tersebut.",
+        "rate_limited": "Batas laju GitHub telah tercapai. Coba lagi dalam beberapa menit.",
+        "unreachable": "Plane tidak dapat menjangkau GitHub. Periksa koneksi internet server, lalu coba lagi.",
+        "repository_not_found": "GitHub tidak dapat menemukan repositori, atau token tidak memiliki akses ke repositori tersebut.",
+        "branch_not_found": "Branch tidak ada di repositori.",
+        "no_push_permission": "Token dapat membaca repositori tetapi tidak dapat melakukan push ke repositori tersebut, sehingga tidak dapat membuka pull request.",
+        "github_error": "GitHub mengembalikan kesalahan yang tidak terduga. Coba lagi."
+      },
+      "webhook": {
+        "title": "Webhook",
+        "copy": "Salin",
+        "copied": "URL webhook disalin",
+        "step_open": "Di GitHub, buka Settings → Webhooks → Add webhook pada repositori.",
+        "step_fill": "Tempelkan URL ini sebagai \"Payload URL\", pilih \"application/json\", lalu tempelkan rahasia webhook.",
+        "step_events": "Pilih \"Let me select individual events\" lalu centang \"Pull requests\" dan \"Pushes\".",
+        "public_url_note": "GitHub harus dapat menjangkau alamat ini melalui internet. Di mesin lokal, gunakan perintah replay sebagai gantinya."
+      }
+    }
+  }
+}

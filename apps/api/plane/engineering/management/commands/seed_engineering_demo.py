@@ -36,6 +36,8 @@ from plane.db.models import (
 )
 from plane.db.models.issue_type import BUILT_IN_WORK_ITEM_TYPE_SOURCE
 from plane.db.models.state import DEFAULT_STATES
+from plane.engineering.models import GitHubConnection
+from plane.engineering.serializers import GitHubConnectionSerializer
 
 DEMO_PASSWORD = "Truncore-Demo-2026"
 DEMO_WORKSPACE = {"slug": "truncore-demo", "name": "Truncore Demo"}
@@ -45,6 +47,13 @@ DEMO_USERS = [
     {"email": "omar@example.com", "first_name": "Omar", "last_name": "Farouk", "role": ROLE.MEMBER},
     {"email": "lina@example.com", "first_name": "Lina", "last_name": "Nasser", "role": ROLE.MEMBER},
 ]
+# A placeholder repository: Test connection fails until a real token is saved in Project settings → GitHub
+DEMO_GITHUB = {
+    "repository_owner": "truncore",
+    "repository_name": "plane-demo",
+    "token": "demo-token-replace-me",
+    "webhook_secret": "demo-webhook-secret",
+}
 FIBONACCI_POINTS = ["1", "2", "3", "5", "8", "13"]
 # Points go on stories only (team rule); tasks are sub-work items of their story.
 DEMO_STORIES = [
@@ -101,6 +110,7 @@ class Command(BaseCommand):
         project = self.get_project(workspace, admin, users)
         cycle = self.get_cycle(project, admin)
         self.create_stories(project, cycle, users)
+        self.connect_github(project)
 
         self.stdout.write(
             self.style.SUCCESS(
@@ -223,6 +233,13 @@ class Command(BaseCommand):
                 self.get_work_item(
                     project, task_name, assignee, state=states[task_state], type=types["task"], parent=story
                 )
+
+    def connect_github(self, project):
+        if GitHubConnection.objects.filter(project=project).exists():
+            return
+        serializer = GitHubConnectionSerializer(data=DEMO_GITHUB, context={"project_id": project.id})
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
 
     def get_work_item(self, project, name, assignee, **fields):
         work_item = Issue.objects.filter(project=project, name=name).first()
