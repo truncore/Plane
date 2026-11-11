@@ -73,6 +73,15 @@
         "step_fill": "Вставте цей URL у поле «Payload URL», виберіть «application/json» і вставте секрет вебхука.",
         "step_events": "Виберіть «Let me select individual events» і позначте «Pull requests» та «Pushes».",
         "public_url_note": "GitHub має мати доступ до цієї адреси через інтернет. На локальному комп’ютері натомість використовуйте команду replay."
+      },
+      "work_item": {
+        "title": "GitHub",
+        "pull_request_state": {
+          "open": "Відкритий",
+          "draft": "Чернетка",
+          "merged": "Злитий",
+          "closed": "Закритий"
+        }
       }
     }
   }

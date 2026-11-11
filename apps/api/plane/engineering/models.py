@@ -2,11 +2,15 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # See the LICENSE file for details.
 
+# Python imports
+import uuid
+
 # Django imports
 from django.db import models
 from django.db.models import Q
 
 # Module imports
+from plane.db.mixins import TimeAuditModel
 from plane.db.models import ProjectBaseModel
 from plane.license.utils.encryption import decrypt_data, encrypt_data
 
@@ -69,3 +73,98 @@ class GitHubConnection(ProjectBaseModel):
     @webhook_secret.setter
     def webhook_secret(self, value):
         self.encrypted_webhook_secret = encrypt_data(value)
+
+
+class PullRequestState(models.TextChoices):
+    OPEN = "open", "Open"
+    DRAFT = "draft", "Draft"
+    MERGED = "merged", "Merged"
+    CLOSED = "closed", "Closed"
+
+
+class PullRequest(ProjectBaseModel):
+    """A GitHub pull request linked to a work item, kept up to date from webhook events."""
+
+    issue = models.ForeignKey("db.Issue", on_delete=models.CASCADE, related_name="pull_requests")
+    repository_full_name = models.CharField(max_length=201)
+    number = models.PositiveIntegerField()
+    title = models.CharField(max_length=1024)
+    url = models.URLField(max_length=1024)
+    head_branch = models.CharField(max_length=255)
+    base_branch = models.CharField(max_length=255)
+    state = models.CharField(max_length=20, choices=PullRequestState.choices, default=PullRequestState.OPEN)
+    author_login = models.CharField(max_length=100, blank=True)
+    additions = models.PositiveIntegerField(null=True)
+    deletions = models.PositiveIntegerField(null=True)
+    changed_files = models.PositiveIntegerField(null=True)
+    merged_at = models.DateTimeField(null=True)
+    closed_at = models.DateTimeField(null=True)
+    # GitHub's own last-change time, to ignore events that arrive out of order
+    github_updated_at = models.DateTimeField(null=True)
+
+    class Meta:
+        db_table = "engineering_pull_requests"
+        ordering = ("-created_at",)
+        constraints = [
+            models.UniqueConstraint(
+                fields=["issue", "repository_full_name", "number"],
+                condition=Q(deleted_at__isnull=True),
+                name="pull_request_unique_issue_repository_number_when_deleted_at_null",
+            )
+        ]
+
+    def __str__(self):
+        return f"{self.repository_full_name}#{self.number}"
+
+
+class LinkedCommit(ProjectBaseModel):
+    """A commit on the trunk that mentions a work item."""
+
+    issue = models.ForeignKey("db.Issue", on_delete=models.CASCADE, related_name="linked_commits")
+    repository_full_name = models.CharField(max_length=201)
+    sha = models.CharField(max_length=40)
+    branch = models.CharField(max_length=255)
+    message = models.TextField()
+    url = models.URLField(max_length=1024)
+    author_name = models.CharField(max_length=255, blank=True)
+    author_login = models.CharField(max_length=100, blank=True)
+    committed_at = models.DateTimeField(null=True)
+
+    class Meta:
+        db_table = "engineering_linked_commits"
+        ordering = ("-committed_at",)
+        constraints = [
+            models.UniqueConstraint(
+                fields=["issue", "sha"],
+                condition=Q(deleted_at__isnull=True),
+                name="linked_commit_unique_issue_sha_when_deleted_at_null",
+            )
+        ]
+
+    def __str__(self):
+        return self.sha[:7]
+
+
+class DeliveryStatus(models.TextChoices):
+    RECEIVED = "received", "Received"
+    PROCESSED = "processed", "Processed"
+    FAILED = "failed", "Failed"
+
+
+class GitHubWebhookDelivery(TimeAuditModel):
+    """A verified webhook from GitHub. The unique delivery id stops a redelivered event from applying twice."""
+
+    id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
+    delivery_id = models.CharField(max_length=100, unique=True)
+    event = models.CharField(max_length=50)
+    payload = models.JSONField()
+    connection_ids = models.JSONField(default=list)
+    status = models.CharField(max_length=20, choices=DeliveryStatus.choices, default=DeliveryStatus.RECEIVED)
+    error = models.TextField(blank=True)
+    processed_at = models.DateTimeField(null=True)
+
+    class Meta:
+        db_table = "engineering_github_webhook_deliveries"
+
+    def __str__(self):
+        return f"{self.event} {self.delivery_id}"

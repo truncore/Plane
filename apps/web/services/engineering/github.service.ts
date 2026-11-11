@@ -5,7 +5,7 @@
  */
 
 import { API_BASE_URL } from "@plane/constants";
-import type { TGitHubConnectionCheck, TGitHubConnectionPayload, TGitHubSettings } from "@plane/types";
+import type { TGitHubConnectionCheck, TGitHubConnectionPayload, TGitHubSettings, TWorkItemGitHub } from "@plane/types";
 // services
 import { APIService } from "@/services/api.service";
 
@@ -48,6 +48,14 @@ export class GitHubService extends APIService {
 
   async testConnection(workspaceSlug: string, projectId: string): Promise<TGitHubConnectionCheck> {
     return this.post(`${this.settingsUrl(workspaceSlug, projectId)}test/`)
+      .then((response) => response?.data)
+      .catch((error) => {
+        throw error?.response?.data;
+      });
+  }
+
+  async getWorkItemGitHub(workspaceSlug: string, projectId: string, workItemId: string): Promise<TWorkItemGitHub> {
+    return this.get(`/api/workspaces/${workspaceSlug}/projects/${projectId}/issues/${workItemId}/github/`)
       .then((response) => response?.data)
       .catch((error) => {
         throw error?.response?.data;

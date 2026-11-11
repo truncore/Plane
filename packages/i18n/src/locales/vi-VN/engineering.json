@@ -73,6 +73,15 @@
         "step_fill": "Dán URL này vào \"Payload URL\", chọn \"application/json\" và dán khóa bí mật webhook.",
         "step_events": "Chọn \"Let me select individual events\" và đánh dấu \"Pull requests\" và \"Pushes\".",
         "public_url_note": "GitHub phải truy cập được địa chỉ này qua internet. Trên máy cục bộ, hãy dùng lệnh replay thay thế."
+      },
+      "work_item": {
+        "title": "GitHub",
+        "pull_request_state": {
+          "open": "Đang mở",
+          "draft": "Bản nháp",
+          "merged": "Đã hợp nhất",
+          "closed": "Đã đóng"
+        }
       }
     }
   }

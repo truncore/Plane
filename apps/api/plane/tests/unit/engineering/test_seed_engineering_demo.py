@@ -10,7 +10,7 @@ import pytest
 from django.core.management import call_command
 
 from plane.db.models import Cycle, CycleIssue, Issue, Project, User, Workspace
-from plane.engineering.models import GitHubConnection
+from plane.engineering.models import GitHubConnection, LinkedCommit, PullRequest
 from plane.engineering.management.commands.seed_engineering_demo import DEMO_PASSWORD, DEMO_STORIES, DEMO_USERS
 
 
@@ -63,6 +63,15 @@ class TestSeedEngineeringDemo:
         assert connection.repository_full_name == "truncore/plane-demo"
         assert connection.workflow_mode == "trunk_based"
         assert (connection.review_state.name, connection.review_state.group) == ("In Review", "started")
+
+    def test_stories_have_pull_requests_and_a_trunk_commit(self):
+        project = seed()
+
+        assert set(PullRequest.objects.filter(project=project).values_list("number", "state")) == {
+            (12, "open"),
+            (9, "merged"),
+        }
+        assert "fixes PAY-9" in LinkedCommit.objects.get(project=project).message
 
     def test_running_twice_creates_nothing_new(self):
         seed()

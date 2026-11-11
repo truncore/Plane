@@ -73,6 +73,15 @@
         "step_fill": "Vložte túto URL ako „Payload URL“, zvoľte „application/json“ a vložte tajný kľúč webhooku.",
         "step_events": "Zvoľte „Let me select individual events“ a začiarknite „Pull requests“ a „Pushes“.",
         "public_url_note": "GitHub musí mať k tejto adrese prístup cez internet. Na lokálnom počítači namiesto toho použite príkaz replay."
+      },
+      "work_item": {
+        "title": "GitHub",
+        "pull_request_state": {
+          "open": "Otvorený",
+          "draft": "Koncept",
+          "merged": "Zlúčený",
+          "closed": "Uzavretý"
+        }
       }
     }
   }

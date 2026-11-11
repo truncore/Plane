@@ -73,6 +73,15 @@
         "step_fill": "このURLを「Payload URL」に貼り付け、「application/json」を選択して、Webhookシークレットを貼り付けます。",
         "step_events": "「Let me select individual events」を選択し、「Pull requests」と「Pushes」にチェックを入れます。",
         "public_url_note": "GitHubがインターネット経由でこのアドレスにアクセスできる必要があります。ローカルマシンでは、代わりにreplayコマンドを使用してください。"
+      },
+      "work_item": {
+        "title": "GitHub",
+        "pull_request_state": {
+          "open": "オープン",
+          "draft": "下書き",
+          "merged": "マージ済み",
+          "closed": "クローズ"
+        }
       }
     }
   }

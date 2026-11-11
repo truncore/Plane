@@ -10,7 +10,7 @@ from plane.app.serializers.base import BaseSerializer
 from plane.db.models import Project, State, StateGroup
 from plane.engineering.github.client import is_valid_branch, is_valid_repository
 from plane.engineering.github.connection import default_review_state, first_state
-from plane.engineering.models import GitHubConnection
+from plane.engineering.models import GitHubConnection, LinkedCommit, PullRequest
 
 SECRET_FIELDS = ("token", "webhook_secret")
 
@@ -97,3 +97,43 @@ class GitHubConnectionSerializer(BaseSerializer):
             setattr(connection, field, value)
         connection.save()
         return connection
+
+
+class PullRequestSerializer(BaseSerializer):
+    class Meta:
+        model = PullRequest
+        fields = [
+            "id",
+            "repository_full_name",
+            "number",
+            "title",
+            "url",
+            "head_branch",
+            "base_branch",
+            "state",
+            "author_login",
+            "additions",
+            "deletions",
+            "changed_files",
+            "merged_at",
+            "closed_at",
+            "created_at",
+        ]
+        read_only_fields = fields
+
+
+class LinkedCommitSerializer(BaseSerializer):
+    class Meta:
+        model = LinkedCommit
+        fields = [
+            "id",
+            "repository_full_name",
+            "sha",
+            "branch",
+            "message",
+            "url",
+            "author_name",
+            "author_login",
+            "committed_at",
+        ]
+        read_only_fields = fields

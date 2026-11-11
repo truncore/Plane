@@ -1,0 +1,88 @@
+{
+  "engineering": {
+    "github": {
+      "settings": {
+        "title": "GitHub",
+        "description": "Bu projeyi bir GitHub deposuna bağlayın. Böylece pull request'ler ve commit'ler iş öğelerini ilerletir ve bir iş öğesinden pull request açabilirsiniz.",
+        "connected_to": "Bağlı depo: {repository}",
+        "saved": "GitHub ayarları kaydedildi.",
+        "save_failed": "GitHub ayarları kaydedilemedi. Vurgulanan alanları kontrol edin.",
+        "save": "Değişiklikleri kaydet",
+        "connect": "Depoyu bağla",
+        "disconnect": "Bağlantıyı kes",
+        "saved_placeholder": "Kaydedildi. Korumak için boş bırakın.",
+        "default_state": "Varsayılan",
+        "repository": {
+          "label": "Depo",
+          "hint": "Deponun URL'sindeki gibi sahip ve ad.",
+          "required": "Depoyu girin.",
+          "invalid": "owner/name biçimini kullanın, örneğin truncore/plane."
+        },
+        "token": {
+          "label": "Erişim token'ı",
+          "hint": "Bu depoya erişimi olan ayrıntılı (fine-grained) bir token: Contents (okuma), Pull requests (okuma ve yazma) ve Metadata (okuma).",
+          "required": "Bir erişim token'ı girin."
+        },
+        "webhook_secret": {
+          "label": "Webhook gizli anahtarı",
+          "hint": "Aynı gizli anahtarı GitHub webhook'una yapıştırın. Plane kaydedilmiş bir gizli anahtarı bir daha asla göstermez.",
+          "required": "Bir webhook gizli anahtarı girin veya oluşturun.",
+          "generate": "Oluştur"
+        },
+        "workflow_mode": {
+          "label": "İş akışı modu",
+          "trunk_based": "Trunk tabanlı",
+          "trunk_based_description": "Herkes küçük değişiklikleri sık sık trunk'a birleştirir. Trunk'taki bir iş öğesinden bahseden commit'ler o öğeyi günceller; eski dallar ve büyük pull request'ler için uyarı gösterilir.",
+          "feature_branches": "Özellik dalları",
+          "feature_branches_description": "Çalışma daha uzun ömürlü dallarda yapılır ve pull request'ler aracılığıyla temel dala ulaşır."
+        },
+        "base_branch": {
+          "label": "Varsayılan temel dal",
+          "trunk": "Trunk dalı",
+          "required": "Bir dal adı girin."
+        },
+        "branch_age_limit_days": "Bir dal şundan eskiyse uyar (gün)",
+        "large_pr_lines": "Bir pull request şundan fazla satır değiştirirse uyar",
+        "mapping": {
+          "title": "İş öğesi durumları",
+          "opened": "Pull request açıldı veya yeniden açıldı",
+          "merged": "Tüm pull request'ler birleştirildi",
+          "fixed_rules": "Taslak pull request'ler bir iş öğesini taşımaz. Birleştirilmeden kapatılan bir pull request durumu korur ve bir yorum ekler. Pull request'ler iş öğelerini yalnızca ileri taşır."
+        }
+      },
+      "test": {
+        "button": "Bağlantıyı test et",
+        "success": "Bağlı depo: {repository}. Plane depoyu ve {branch} dalını görebiliyor."
+      },
+      "errors": {
+        "not_connected": "Önce GitHub ayarlarını kaydedin.",
+        "bad_token": "GitHub token'ı reddetti. Token yanlış, süresi dolmuş veya iptal edilmiş olabilir.",
+        "forbidden": "Token'ın bunu yapma izni yok. Depo erişimini ve izinlerini kontrol edin.",
+        "rate_limited": "GitHub istek sınırına ulaşıldı. Birkaç dakika sonra tekrar deneyin.",
+        "unreachable": "Plane GitHub'a ulaşamadı. Sunucunun internet bağlantısını kontrol edip tekrar deneyin.",
+        "repository_not_found": "GitHub depoyu bulamadı veya token'ın depoya erişimi yok.",
+        "branch_not_found": "Dal depoda mevcut değil.",
+        "no_push_permission": "Token depoyu okuyabiliyor ancak depoya push yapamıyor, bu nedenle pull request açamaz.",
+        "github_error": "GitHub beklenmeyen bir hata döndürdü. Tekrar deneyin."
+      },
+      "webhook": {
+        "title": "Webhook",
+        "copy": "Kopyala",
+        "copied": "Webhook URL'si kopyalandı",
+        "step_open": "GitHub'da deponun Settings → Webhooks → Add webhook sayfasını açın.",
+        "step_fill": "Bu URL'yi \"Payload URL\" olarak yapıştırın, \"application/json\" seçin ve webhook gizli anahtarını yapıştırın.",
+        "step_events": "\"Let me select individual events\" seçeneğini seçin ve \"Pull requests\" ile \"Pushes\" kutularını işaretleyin.",
+        "public_url_note": "GitHub'ın bu adrese internet üzerinden ulaşabilmesi gerekir. Yerel bir makinede bunun yerine replay komutunu kullanın."
+      },
+      "work_item": {
+        "title": "GitHub",
+        "pull_request_state": {
+          "open": "Açık",
+          "draft": "Taslak",
+          "merged": "Birleştirildi",
+          "closed": "Kapalı"
+        }
+      }
+    }
+  }
+}

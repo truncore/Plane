@@ -73,6 +73,15 @@
         "step_fill": "Tempelkan URL ini sebagai \"Payload URL\", pilih \"application/json\", lalu tempelkan rahasia webhook.",
         "step_events": "Pilih \"Let me select individual events\" lalu centang \"Pull requests\" dan \"Pushes\".",
         "public_url_note": "GitHub harus dapat menjangkau alamat ini melalui internet. Di mesin lokal, gunakan perintah replay sebagai gantinya."
+      },
+      "work_item": {
+        "title": "GitHub",
+        "pull_request_state": {
+          "open": "Terbuka",
+          "draft": "Draf",
+          "merged": "Digabungkan",
+          "closed": "Ditutup"
+        }
       }
     }
   }

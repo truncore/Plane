@@ -73,6 +73,15 @@
         "step_fill": "将此 URL 粘贴为“Payload URL”，选择“application/json”，然后粘贴 Webhook 密钥。",
         "step_events": "选择“Let me select individual events”，并勾选“Pull requests”和“Pushes”。",
         "public_url_note": "GitHub 必须能够通过互联网访问此地址。在本地计算机上，请改用 replay 命令。"
+      },
+      "work_item": {
+        "title": "GitHub",
+        "pull_request_state": {
+          "open": "开放",
+          "draft": "草稿",
+          "merged": "已合并",
+          "closed": "已关闭"
+        }
       }
     }
   }

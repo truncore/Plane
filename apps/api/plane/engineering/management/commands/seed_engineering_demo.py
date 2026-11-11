@@ -36,7 +36,7 @@ from plane.db.models import (
 )
 from plane.db.models.issue_type import BUILT_IN_WORK_ITEM_TYPE_SOURCE
 from plane.db.models.state import DEFAULT_STATES
-from plane.engineering.models import GitHubConnection
+from plane.engineering.models import GitHubConnection, LinkedCommit, PullRequest, PullRequestState
 from plane.engineering.serializers import GitHubConnectionSerializer
 
 DEMO_PASSWORD = "Truncore-Demo-2026"
@@ -54,6 +54,19 @@ DEMO_GITHUB = {
     "token": "demo-token-replace-me",
     "webhook_secret": "demo-webhook-secret",
 }
+# Pull requests and a trunk commit as GitHub webhooks would have recorded them (no GitHub calls)
+DEMO_PULL_REQUESTS = [
+    # (work item, number, branch, title, state)
+    (
+        "As a customer I can pay with a saved card",
+        12,
+        "feat/pay-1-saved-cards",
+        "[PAY-1] Saved cards",
+        PullRequestState.OPEN,
+    ),
+    ("As an admin I can refund a payment", 9, "feat/pay-8-refunds", "[PAY-8] Refunds", PullRequestState.MERGED),
+]
+DEMO_COMMIT = ("Refund endpoint", "Add the refund endpoint, fixes PAY-9")
 FIBONACCI_POINTS = ["1", "2", "3", "5", "8", "13"]
 # Points go on stories only (team rule); tasks are sub-work items of their story.
 DEMO_STORIES = [
@@ -111,6 +124,7 @@ class Command(BaseCommand):
         cycle = self.get_cycle(project, admin)
         self.create_stories(project, cycle, users)
         self.connect_github(project)
+        self.link_github_work(project)
 
         self.stdout.write(
             self.style.SUCCESS(
@@ -240,6 +254,39 @@ class Command(BaseCommand):
         serializer = GitHubConnectionSerializer(data=DEMO_GITHUB, context={"project_id": project.id})
         serializer.is_valid(raise_exception=True)
         serializer.save()
+
+    def link_github_work(self, project):
+        repository = f"{DEMO_GITHUB['repository_owner']}/{DEMO_GITHUB['repository_name']}"
+        for name, number, branch, title, state in DEMO_PULL_REQUESTS:
+            PullRequest.objects.get_or_create(
+                issue=Issue.objects.get(project=project, name=name),
+                repository_full_name=repository,
+                number=number,
+                defaults={
+                    "project": project,
+                    "title": title,
+                    "url": f"https://github.com/{repository}/pull/{number}",
+                    "head_branch": branch,
+                    "base_branch": "main",
+                    "state": state,
+                    "author_login": "octocat",
+                },
+            )
+        name, message = DEMO_COMMIT
+        LinkedCommit.objects.get_or_create(
+            issue=Issue.objects.get(project=project, name=name),
+            sha="3f2a9c1e5b7d4a6f8e0c2b4d6f8a0c2e4b6d8f0a",
+            defaults={
+                "project": project,
+                "repository_full_name": repository,
+                "branch": "main",
+                "message": message,
+                "url": f"https://github.com/{repository}/commit/3f2a9c1",
+                "author_name": "Omar Farouk",
+                "author_login": "omar-farouk",
+                "committed_at": timezone.now() - timedelta(days=2),
+            },
+        )
 
     def get_work_item(self, project, name, assignee, **fields):
         work_item = Issue.objects.filter(project=project, name=name).first()

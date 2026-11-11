@@ -1,0 +1,88 @@
+{
+  "engineering": {
+    "github": {
+      "settings": {
+        "title": "GitHub",
+        "description": "このプロジェクトをGitHubリポジトリに接続します。接続すると、プルリクエストとコミットによって作業項目が先に進み、作業項目からプルリクエストを作成できるようになります。",
+        "connected_to": "{repository}に接続済み",
+        "saved": "GitHub設定を保存しました。",
+        "save_failed": "GitHub設定を保存できませんでした。強調表示された項目を確認してください。",
+        "save": "変更を保存",
+        "connect": "リポジトリを接続",
+        "disconnect": "接続を解除",
+        "saved_placeholder": "保存済みです。変更しない場合は空欄のままにしてください。",
+        "default_state": "デフォルト",
+        "repository": {
+          "label": "リポジトリ",
+          "hint": "リポジトリのURLと同じ、オーナーと名前です。",
+          "required": "リポジトリを入力してください。",
+          "invalid": "owner/nameの形式で入力してください（例：truncore/plane）。"
+        },
+        "token": {
+          "label": "アクセストークン",
+          "hint": "このリポジトリにアクセスできるfine-grainedトークンです：Contents（読み取り）、Pull requests（読み取りと書き込み）、Metadata（読み取り）。",
+          "required": "アクセストークンを入力してください。"
+        },
+        "webhook_secret": {
+          "label": "Webhookシークレット",
+          "hint": "同じシークレットをGitHubのWebhookに貼り付けてください。保存したシークレットがPlaneで再表示されることはありません。",
+          "required": "Webhookシークレットを入力するか、生成してください。",
+          "generate": "生成"
+        },
+        "workflow_mode": {
+          "label": "ワークフローモード",
+          "trunk_based": "トランクベース",
+          "trunk_based_description": "全員が小さな変更を頻繁にトランクへマージします。作業項目に言及したトランク上のコミットはその作業項目を更新し、古いブランチや大きなプルリクエストには警告が表示されます。",
+          "feature_branches": "フィーチャーブランチ",
+          "feature_branches_description": "作業は比較的長く存続するブランチで行い、プルリクエストを通じてベースブランチに取り込みます。"
+        },
+        "base_branch": {
+          "label": "デフォルトのベースブランチ",
+          "trunk": "トランクブランチ",
+          "required": "ブランチ名を入力してください。"
+        },
+        "branch_age_limit_days": "ブランチが次の日数より古い場合に警告（日）",
+        "large_pr_lines": "プルリクエストの変更行数が次の値を超えた場合に警告",
+        "mapping": {
+          "title": "作業項目のステータス",
+          "opened": "プルリクエストのオープンまたは再オープン",
+          "merged": "すべてのプルリクエストのマージ",
+          "fixed_rules": "ドラフトのプルリクエストでは作業項目は移動しません。マージせずにクローズされたプルリクエストは、ステータスを変更せずにコメントを追加します。プルリクエストは作業項目を前に進めるだけです。"
+        }
+      },
+      "test": {
+        "button": "接続をテスト",
+        "success": "{repository}に接続しました。Planeはリポジトリと{branch}ブランチを参照できます。"
+      },
+      "errors": {
+        "not_connected": "先にGitHub設定を保存してください。",
+        "bad_token": "GitHubがトークンを拒否しました。トークンが間違っているか、期限切れか、取り消されている可能性があります。",
+        "forbidden": "このトークンにはこの操作の権限がありません。トークンのリポジトリへのアクセス権と権限を確認してください。",
+        "rate_limited": "GitHubのレート制限に達しました。数分後にもう一度お試しください。",
+        "unreachable": "PlaneがGitHubに接続できませんでした。サーバーのインターネット接続を確認して、もう一度お試しください。",
+        "repository_not_found": "GitHubでリポジトリが見つからないか、トークンにそのリポジトリへのアクセス権がありません。",
+        "branch_not_found": "このブランチはリポジトリに存在しません。",
+        "no_push_permission": "このトークンはリポジトリを読み取れますが、プッシュできないため、プルリクエストを作成できません。",
+        "github_error": "GitHubから予期しないエラーが返されました。もう一度お試しください。"
+      },
+      "webhook": {
+        "title": "Webhook",
+        "copy": "コピー",
+        "copied": "Webhook URLをコピーしました",
+        "step_open": "GitHubで、リポジトリのSettings → Webhooks → Add webhookを開きます。",
+        "step_fill": "このURLを「Payload URL」に貼り付け、「application/json」を選択して、Webhookシークレットを貼り付けます。",
+        "step_events": "「Let me select individual events」を選択し、「Pull requests」と「Pushes」にチェックを入れます。",
+        "public_url_note": "GitHubがインターネット経由でこのアドレスにアクセスできる必要があります。ローカルマシンでは、代わりにreplayコマンドを使用してください。"
+      },
+      "work_item": {
+        "title": "GitHub",
+        "pull_request_state": {
+          "open": "オープン",
+          "draft": "下書き",
+          "merged": "マージ済み",
+          "closed": "クローズ"
+        }
+      }
+    }
+  }
+}

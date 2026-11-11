@@ -3,6 +3,14 @@
 # See the LICENSE file for details.
 
 from .github import GitHubConnectionEndpoint, GitHubConnectionTestEndpoint
+from .github_webhook import GitHubWebhookEndpoint
 from .story_progress import StoryProgressEndpoint
+from .work_item_github import WorkItemGitHubEndpoint
 
-__all__ = ["GitHubConnectionEndpoint", "GitHubConnectionTestEndpoint", "StoryProgressEndpoint"]
+__all__ = [
+    "GitHubConnectionEndpoint",
+    "GitHubConnectionTestEndpoint",
+    "GitHubWebhookEndpoint",
+    "StoryProgressEndpoint",
+    "WorkItemGitHubEndpoint",
+]

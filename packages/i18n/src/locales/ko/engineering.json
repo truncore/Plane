@@ -73,6 +73,15 @@
         "step_fill": "이 URL을 \"Payload URL\"에 붙여 넣고 \"application/json\"을 선택한 다음 웹훅 시크릿을 붙여 넣으십시오.",
         "step_events": "\"Let me select individual events\"를 선택하고 \"Pull requests\"와 \"Pushes\"에 체크하십시오.",
         "public_url_note": "GitHub가 인터넷을 통해 이 주소에 접근할 수 있어야 합니다. 로컬 컴퓨터에서는 대신 replay 명령을 사용하십시오."
+      },
+      "work_item": {
+        "title": "GitHub",
+        "pull_request_state": {
+          "open": "열림",
+          "draft": "초안",
+          "merged": "병합됨",
+          "closed": "닫힘"
+        }
       }
     }
   }

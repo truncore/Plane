@@ -57,3 +57,42 @@ export type TGitHubError = {
   code: TGitHubErrorCode;
   error: string;
 };
+
+export type TPullRequestState = "open" | "draft" | "merged" | "closed";
+
+/** A GitHub pull request linked to a work item. */
+export type TPullRequest = {
+  id: string;
+  repository_full_name: string;
+  number: number;
+  title: string;
+  url: string;
+  head_branch: string;
+  base_branch: string;
+  state: TPullRequestState;
+  author_login: string;
+  additions: number | null;
+  deletions: number | null;
+  changed_files: number | null;
+  merged_at: string | null;
+  closed_at: string | null;
+  created_at: string;
+};
+
+/** A commit on the trunk that mentions a work item. */
+export type TLinkedCommit = {
+  id: string;
+  repository_full_name: string;
+  sha: string;
+  branch: string;
+  message: string;
+  url: string;
+  author_name: string;
+  author_login: string;
+  committed_at: string | null;
+};
+
+export type TWorkItemGitHub = {
+  pull_requests: TPullRequest[];
+  commits: TLinkedCommit[];
+};

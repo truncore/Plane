@@ -73,6 +73,15 @@
         "step_fill": "Collez cette URL comme « Payload URL », choisissez « application/json » et collez le secret du webhook.",
         "step_events": "Choisissez « Let me select individual events » et cochez « Pull requests » et « Pushes ».",
         "public_url_note": "GitHub doit pouvoir joindre cette adresse via Internet. Sur une machine locale, utilisez plutôt la commande de rejeu."
+      },
+      "work_item": {
+        "title": "GitHub",
+        "pull_request_state": {
+          "open": "Ouverte",
+          "draft": "Brouillon",
+          "merged": "Fusionnée",
+          "closed": "Fermée"
+        }
       }
     }
   }

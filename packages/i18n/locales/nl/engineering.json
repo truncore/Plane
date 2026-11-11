@@ -1,0 +1,88 @@
+{
+  "engineering": {
+    "github": {
+      "settings": {
+        "title": "GitHub",
+        "description": "Koppel dit project aan een GitHub-repository. Pull requests en commits brengen werkitems dan verder, en je kunt pull requests openen vanuit een werkitem.",
+        "connected_to": "Gekoppeld aan {repository}",
+        "saved": "GitHub-instellingen opgeslagen.",
+        "save_failed": "De GitHub-instellingen konden niet worden opgeslagen. Controleer de gemarkeerde velden.",
+        "save": "Wijzigingen opslaan",
+        "connect": "Repository koppelen",
+        "disconnect": "Ontkoppelen",
+        "saved_placeholder": "Opgeslagen. Laat leeg om de huidige waarde te behouden.",
+        "default_state": "Standaard",
+        "repository": {
+          "label": "Repository",
+          "hint": "Eigenaar en naam, zoals in de URL van de repository.",
+          "required": "Voer de repository in.",
+          "invalid": "Gebruik de vorm owner/name, bijvoorbeeld truncore/plane."
+        },
+        "token": {
+          "label": "Toegangstoken",
+          "hint": "Een fine-grained token met toegang tot deze repository: Contents (lezen), Pull requests (lezen en schrijven) en Metadata (lezen).",
+          "required": "Voer een toegangstoken in."
+        },
+        "webhook_secret": {
+          "label": "Webhookgeheim",
+          "hint": "Plak hetzelfde geheim in de GitHub-webhook. Plane toont een opgeslagen geheim nooit meer.",
+          "required": "Voer een webhookgeheim in of genereer er een.",
+          "generate": "Genereren"
+        },
+        "workflow_mode": {
+          "label": "Workflowmodus",
+          "trunk_based": "Trunk-gebaseerd",
+          "trunk_based_description": "Iedereen merget vaak kleine wijzigingen in de trunk. Commits op de trunk die een werkitem noemen, werken het bij, en oude branches en grote pull requests krijgen een waarschuwing.",
+          "feature_branches": "Featurebranches",
+          "feature_branches_description": "Het werk gebeurt op langer bestaande branches en komt via pull requests in de basisbranch terecht."
+        },
+        "base_branch": {
+          "label": "Standaard basisbranch",
+          "trunk": "Trunkbranch",
+          "required": "Voer een branchnaam in."
+        },
+        "branch_age_limit_days": "Waarschuwen als een branch ouder is dan (dagen)",
+        "large_pr_lines": "Waarschuwen als een pull request meer regels wijzigt dan",
+        "mapping": {
+          "title": "Statussen van werkitems",
+          "opened": "Pull request geopend of heropend",
+          "merged": "Alle pull requests gemerged",
+          "fixed_rules": "Concept-pull requests verplaatsen geen werkitem. Een pull request die zonder merge wordt gesloten, behoudt de status en voegt een opmerking toe. Pull requests verplaatsen werkitems alleen vooruit."
+        }
+      },
+      "test": {
+        "button": "Verbinding testen",
+        "success": "Gekoppeld aan {repository}. Plane kan de repository en de branch {branch} zien."
+      },
+      "errors": {
+        "not_connected": "Sla eerst de GitHub-instellingen op.",
+        "bad_token": "GitHub heeft het token geweigerd. Het is mogelijk onjuist, verlopen of ingetrokken.",
+        "forbidden": "Het token mag dit niet doen. Controleer de toegang tot de repository en de rechten van het token.",
+        "rate_limited": "De rate limit van GitHub is bereikt. Probeer het over een paar minuten opnieuw.",
+        "unreachable": "Plane kon GitHub niet bereiken. Controleer de internetverbinding van de server en probeer het opnieuw.",
+        "repository_not_found": "GitHub kon de repository niet vinden, of het token heeft er geen toegang toe.",
+        "branch_not_found": "De branch bestaat niet in de repository.",
+        "no_push_permission": "Het token kan de repository lezen maar er niet naar pushen, dus het kan geen pull requests openen.",
+        "github_error": "GitHub gaf een onverwachte fout. Probeer het opnieuw."
+      },
+      "webhook": {
+        "title": "Webhook",
+        "copy": "Kopiëren",
+        "copied": "Webhook-URL gekopieerd",
+        "step_open": "Open in GitHub de Settings → Webhooks → Add webhook van de repository.",
+        "step_fill": "Plak deze URL als \"Payload URL\", kies \"application/json\" en plak het webhookgeheim.",
+        "step_events": "Kies \"Let me select individual events\" en vink \"Pull requests\" en \"Pushes\" aan.",
+        "public_url_note": "GitHub moet dit adres via internet kunnen bereiken. Gebruik op een lokale machine in plaats daarvan het replay-commando."
+      },
+      "work_item": {
+        "title": "GitHub",
+        "pull_request_state": {
+          "open": "Open",
+          "draft": "Concept",
+          "merged": "Samengevoegd",
+          "closed": "Gesloten"
+        }
+      }
+    }
+  }
+}

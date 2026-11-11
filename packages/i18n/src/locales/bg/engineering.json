@@ -73,6 +73,15 @@
         "step_fill": "Поставете този URL като „Payload URL“, изберете „application/json“ и поставете тайната на уебхука.",
         "step_events": "Изберете „Let me select individual events“ и отметнете „Pull requests“ и „Pushes“.",
         "public_url_note": "GitHub трябва да може да достига този адрес през интернет. На локална машина използвайте вместо това командата replay."
+      },
+      "work_item": {
+        "title": "GitHub",
+        "pull_request_state": {
+          "open": "Отворен",
+          "draft": "Чернова",
+          "merged": "Слят",
+          "closed": "Затворен"
+        }
       }
     }
   }

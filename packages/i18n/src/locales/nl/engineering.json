@@ -73,6 +73,15 @@
         "step_fill": "Plak deze URL als \"Payload URL\", kies \"application/json\" en plak het webhookgeheim.",
         "step_events": "Kies \"Let me select individual events\" en vink \"Pull requests\" en \"Pushes\" aan.",
         "public_url_note": "GitHub moet dit adres via internet kunnen bereiken. Gebruik op een lokale machine in plaats daarvan het replay-commando."
+      },
+      "work_item": {
+        "title": "GitHub",
+        "pull_request_state": {
+          "open": "Open",
+          "draft": "Concept",
+          "merged": "Samengevoegd",
+          "closed": "Gesloten"
+        }
       }
     }
   }

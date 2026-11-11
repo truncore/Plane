@@ -73,6 +73,15 @@
         "step_fill": "Cole esta URL como \"Payload URL\", escolha \"application/json\" e cole o segredo do webhook.",
         "step_events": "Escolha \"Let me select individual events\" e marque \"Pull requests\" e \"Pushes\".",
         "public_url_note": "O GitHub precisa conseguir acessar este endereço pela internet. Em uma máquina local, use o comando de replay."
+      },
+      "work_item": {
+        "title": "GitHub",
+        "pull_request_state": {
+          "open": "Aberto",
+          "draft": "Rascunho",
+          "merged": "Mesclado",
+          "closed": "Fechado"
+        }
       }
     }
   }

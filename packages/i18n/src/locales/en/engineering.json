@@ -73,6 +73,15 @@
         "step_fill": "Paste this URL as the \"Payload URL\", choose \"application/json\", and paste the webhook secret.",
         "step_events": "Choose \"Let me select individual events\" and tick \"Pull requests\" and \"Pushes\".",
         "public_url_note": "GitHub must be able to reach this address over the internet. On a local machine, use the replay command instead."
+      },
+      "work_item": {
+        "title": "GitHub",
+        "pull_request_state": {
+          "open": "Open",
+          "draft": "Draft",
+          "merged": "Merged",
+          "closed": "Closed"
+        }
       }
     }
   }

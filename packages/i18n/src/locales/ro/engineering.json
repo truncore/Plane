@@ -73,6 +73,15 @@
         "step_fill": "Lipiți acest URL ca „Payload URL”, alegeți „application/json” și lipiți secretul webhook-ului.",
         "step_events": "Alegeți „Let me select individual events” și bifați „Pull requests” și „Pushes”.",
         "public_url_note": "GitHub trebuie să poată accesa această adresă prin internet. Pe un calculator local, folosiți în schimb comanda replay."
+      },
+      "work_item": {
+        "title": "GitHub",
+        "pull_request_state": {
+          "open": "Deschis",
+          "draft": "Ciornă",
+          "merged": "Îmbinat",
+          "closed": "Închis"
+        }
       }
     }
   }

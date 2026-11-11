@@ -1,0 +1,88 @@
+{
+  "engineering": {
+    "github": {
+      "settings": {
+        "title": "GitHub",
+        "description": "이 프로젝트를 GitHub 리포지토리에 연결합니다. 연결하면 풀 리퀘스트와 커밋이 작업 항목을 다음 단계로 진행시키며, 작업 항목에서 풀 리퀘스트를 열 수 있습니다.",
+        "connected_to": "{repository}에 연결됨",
+        "saved": "GitHub 설정이 저장되었습니다.",
+        "save_failed": "GitHub 설정을 저장하지 못했습니다. 강조 표시된 필드를 확인하십시오.",
+        "save": "변경 사항 저장",
+        "connect": "리포지토리 연결",
+        "disconnect": "연결 해제",
+        "saved_placeholder": "저장되었습니다. 그대로 유지하려면 비워 두십시오.",
+        "default_state": "기본값",
+        "repository": {
+          "label": "리포지토리",
+          "hint": "리포지토리 URL에 표시되는 소유자와 이름입니다.",
+          "required": "리포지토리를 입력하십시오.",
+          "invalid": "owner/name 형식을 사용하십시오(예: truncore/plane)."
+        },
+        "token": {
+          "label": "액세스 토큰",
+          "hint": "이 리포지토리에 대한 액세스 권한이 있는 세분화된(fine-grained) 토큰입니다: Contents(읽기), Pull requests(읽기 및 쓰기), Metadata(읽기).",
+          "required": "액세스 토큰을 입력하십시오."
+        },
+        "webhook_secret": {
+          "label": "웹훅 시크릿",
+          "hint": "동일한 시크릿을 GitHub 웹훅에 붙여 넣으십시오. Plane은 저장된 시크릿을 다시 표시하지 않습니다.",
+          "required": "웹훅 시크릿을 입력하거나 생성하십시오.",
+          "generate": "생성"
+        },
+        "workflow_mode": {
+          "label": "워크플로 모드",
+          "trunk_based": "트렁크 기반",
+          "trunk_based_description": "모든 팀원이 작은 변경 사항을 트렁크에 자주 병합합니다. 작업 항목을 언급하는 트렁크 커밋은 해당 작업 항목을 업데이트하며, 오래된 브랜치와 큰 풀 리퀘스트에는 경고가 표시됩니다.",
+          "feature_branches": "기능 브랜치",
+          "feature_branches_description": "작업은 비교적 오래 유지되는 브랜치에서 진행되며 풀 리퀘스트를 통해 베이스 브랜치에 반영됩니다."
+        },
+        "base_branch": {
+          "label": "기본 베이스 브랜치",
+          "trunk": "트렁크 브랜치",
+          "required": "브랜치 이름을 입력하십시오."
+        },
+        "branch_age_limit_days": "브랜치가 다음 기간보다 오래되면 경고(일)",
+        "large_pr_lines": "풀 리퀘스트의 변경 줄 수가 다음 값을 초과하면 경고",
+        "mapping": {
+          "title": "작업 항목 상태",
+          "opened": "풀 리퀘스트 열림 또는 다시 열림",
+          "merged": "모든 풀 리퀘스트 병합됨",
+          "fixed_rules": "초안 풀 리퀘스트는 작업 항목을 이동하지 않습니다. 병합되지 않고 닫힌 풀 리퀘스트는 상태를 유지하고 댓글을 추가합니다. 풀 리퀘스트는 작업 항목을 앞으로만 이동합니다."
+        }
+      },
+      "test": {
+        "button": "연결 테스트",
+        "success": "{repository}에 연결되었습니다. Plane에서 리포지토리와 {branch} 브랜치를 확인할 수 있습니다."
+      },
+      "errors": {
+        "not_connected": "먼저 GitHub 설정을 저장하십시오.",
+        "bad_token": "GitHub에서 토큰을 거부했습니다. 토큰이 잘못되었거나 만료되었거나 취소되었을 수 있습니다.",
+        "forbidden": "이 토큰에는 이 작업을 수행할 권한이 없습니다. 토큰의 리포지토리 액세스 권한과 권한 설정을 확인하십시오.",
+        "rate_limited": "GitHub 요청 한도에 도달했습니다. 몇 분 후에 다시 시도하십시오.",
+        "unreachable": "Plane에서 GitHub에 연결할 수 없습니다. 서버의 인터넷 연결을 확인하고 다시 시도하십시오.",
+        "repository_not_found": "GitHub에서 리포지토리를 찾을 수 없거나 토큰에 해당 리포지토리에 대한 액세스 권한이 없습니다.",
+        "branch_not_found": "리포지토리에 해당 브랜치가 없습니다.",
+        "no_push_permission": "토큰으로 리포지토리를 읽을 수는 있지만 푸시할 수 없으므로 풀 리퀘스트를 열 수 없습니다.",
+        "github_error": "GitHub에서 예기치 않은 오류를 반환했습니다. 다시 시도하십시오."
+      },
+      "webhook": {
+        "title": "웹훅",
+        "copy": "복사",
+        "copied": "웹훅 URL이 복사되었습니다",
+        "step_open": "GitHub에서 리포지토리의 Settings → Webhooks → Add webhook을 여십시오.",
+        "step_fill": "이 URL을 \"Payload URL\"에 붙여 넣고 \"application/json\"을 선택한 다음 웹훅 시크릿을 붙여 넣으십시오.",
+        "step_events": "\"Let me select individual events\"를 선택하고 \"Pull requests\"와 \"Pushes\"에 체크하십시오.",
+        "public_url_note": "GitHub가 인터넷을 통해 이 주소에 접근할 수 있어야 합니다. 로컬 컴퓨터에서는 대신 replay 명령을 사용하십시오."
+      },
+      "work_item": {
+        "title": "GitHub",
+        "pull_request_state": {
+          "open": "열림",
+          "draft": "초안",
+          "merged": "병합됨",
+          "closed": "닫힘"
+        }
+      }
+    }
+  }
+}

@@ -73,6 +73,15 @@
         "step_fill": "ჩასვით ეს URL, როგორც „Payload URL“, აირჩიეთ „application/json“ და ჩასვით ვებჰუკის საიდუმლო.",
         "step_events": "აირჩიეთ „Let me select individual events“ და მონიშნეთ „Pull requests“ და „Pushes“.",
         "public_url_note": "GitHub-ს ამ მისამართთან ინტერნეტით წვდომა უნდა ჰქონდეს. ლოკალურ კომპიუტერზე ამის ნაცვლად გამოიყენეთ replay ბრძანება."
+      },
+      "work_item": {
+        "title": "GitHub",
+        "pull_request_state": {
+          "open": "ღია",
+          "draft": "მონახაზი",
+          "merged": "შერწყმული",
+          "closed": "დახურული"
+        }
       }
     }
   }

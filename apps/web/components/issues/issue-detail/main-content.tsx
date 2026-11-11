@@ -24,6 +24,7 @@ import useSize from "@/hooks/use-window-size";
 // services
 import { WorkItemVersionService } from "@/services/issue";
 // local imports
+import { WorkItemGitHub } from "@/components/engineering/github/work-item-github";
 import { IssueDetailWidgets } from "../issue-detail-widgets";
 import { NameDescriptionUpdateStatus } from "../issue-update-status";
 import { PeekOverviewProperties } from "../peek-overview/properties";
@@ -170,6 +171,8 @@ export const IssueMainContent = observer(function IssueMainContent(props: Props)
         renderWidgetModals={!isPeekModeActive}
         issueServiceType={EIssueServiceType.ISSUES}
       />
+
+      <WorkItemGitHub workspaceSlug={workspaceSlug} projectId={projectId} workItemId={issueId} />
 
       {windowSize[0] < 768 && (
         <PeekOverviewProperties

@@ -73,6 +73,15 @@
         "step_fill": "Bu URL'yi \"Payload URL\" olarak yapıştırın, \"application/json\" seçin ve webhook gizli anahtarını yapıştırın.",
         "step_events": "\"Let me select individual events\" seçeneğini seçin ve \"Pull requests\" ile \"Pushes\" kutularını işaretleyin.",
         "public_url_note": "GitHub'ın bu adrese internet üzerinden ulaşabilmesi gerekir. Yerel bir makinede bunun yerine replay komutunu kullanın."
+      },
+      "work_item": {
+        "title": "GitHub",
+        "pull_request_state": {
+          "open": "Açık",
+          "draft": "Taslak",
+          "merged": "Birleştirildi",
+          "closed": "Kapalı"
+        }
       }
     }
   }

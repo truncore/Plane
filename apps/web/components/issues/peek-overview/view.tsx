@@ -19,6 +19,7 @@ import usePeekOverviewOutsideClickDetector from "@/hooks/use-peek-overview-outsi
 // local imports
 import type { TIssueOperations } from "../issue-detail";
 import { IssueActivity } from "../issue-detail/issue-activity";
+import { WorkItemGitHub } from "@/components/engineering/github/work-item-github";
 import { IssueDetailWidgets } from "../issue-detail-widgets";
 import { IssuePeekOverviewError } from "./error";
 import type { TPeekModes } from "./header";
@@ -195,6 +196,7 @@ export const IssueView = observer(function IssueView(props: IIssueView) {
                         disabled={disabled || is_archived}
                         issueServiceType={EIssueServiceType.ISSUES}
                       />
+                      <WorkItemGitHub workspaceSlug={workspaceSlug} projectId={projectId} workItemId={issueId} />
                     </div>
 
                     <PeekOverviewProperties
@@ -236,6 +238,7 @@ export const IssueView = observer(function IssueView(props: IIssueView) {
                             disabled={disabled}
                             issueServiceType={EIssueServiceType.ISSUES}
                           />
+                          <WorkItemGitHub workspaceSlug={workspaceSlug} projectId={projectId} workItemId={issueId} />
                         </div>
 
                         <IssueActivity

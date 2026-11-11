@@ -24,7 +24,7 @@ export const DEMO = {
   },
 };
 
-const API_URL = process.env.E2E_API_URL ?? "http://localhost:8000";
+export const API_URL = process.env.E2E_API_URL ?? "http://localhost:8000";
 const TEST_ITEM_PREFIX = "[e2e]";
 
 /** Name for a work item a test creates. Such items are deleted before and after every test. */
@@ -90,9 +90,14 @@ export async function openWorkItemPage(page: Page, name: string) {
   const identifier = await workItemRow(page, name)
     .getByText(new RegExp(`^${DEMO.projectIdentifier}-\\d+$`))
     .innerText();
-  await page.goto(`/${DEMO.workspaceSlug}/browse/${identifier}/`);
+  await openWorkItemByKey(page, identifier);
+}
+
+/** Open a work item's own page by its key, e.g. PAY-12. */
+export async function openWorkItemByKey(page: Page, key: string) {
+  await page.goto(`/${DEMO.workspaceSlug}/browse/${key}/`);
   // The first visit compiles the page in development, which can take much longer than an assertion.
-  await page.getByText(identifier).first().waitFor({ timeout: 180_000 });
+  await page.getByText(key).first().waitFor({ timeout: 180_000 });
 }
 
 /** Open one of the demo project's pages from the sidebar, e.g. "Work items" or "Cycles". */

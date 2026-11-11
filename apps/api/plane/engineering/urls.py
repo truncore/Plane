@@ -4,7 +4,13 @@
 
 from django.urls import path
 
-from plane.engineering.views import GitHubConnectionEndpoint, GitHubConnectionTestEndpoint, StoryProgressEndpoint
+from plane.engineering.views import (
+    GitHubConnectionEndpoint,
+    GitHubConnectionTestEndpoint,
+    GitHubWebhookEndpoint,
+    StoryProgressEndpoint,
+    WorkItemGitHubEndpoint,
+)
 
 urlpatterns = [
     path(
@@ -22,4 +28,10 @@ urlpatterns = [
         GitHubConnectionTestEndpoint.as_view(),
         name="project-github-connection-test",
     ),
+    path(
+        "workspaces/<str:slug>/projects/<uuid:project_id>/issues/<uuid:issue_id>/github/",
+        WorkItemGitHubEndpoint.as_view(),
+        name="work-item-github",
+    ),
+    path("github/webhook/", GitHubWebhookEndpoint.as_view(), name="github-webhook"),
 ]

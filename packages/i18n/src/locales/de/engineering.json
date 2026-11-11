@@ -73,6 +73,15 @@
         "step_fill": "Fügen Sie diese URL als „Payload URL“ ein, wählen Sie „application/json“ und fügen Sie das Webhook-Secret ein.",
         "step_events": "Wählen Sie „Let me select individual events“ und aktivieren Sie „Pull requests“ und „Pushes“.",
         "public_url_note": "GitHub muss diese Adresse über das Internet erreichen können. Verwenden Sie auf einem lokalen Rechner stattdessen den Replay-Befehl."
+      },
+      "work_item": {
+        "title": "GitHub",
+        "pull_request_state": {
+          "open": "Offen",
+          "draft": "Entwurf",
+          "merged": "Zusammengeführt",
+          "closed": "Geschlossen"
+        }
       }
     }
   }
